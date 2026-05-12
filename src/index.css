@@ -1,0 +1,15 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #e8e6e0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+::selection { background: #cf3a1f; color: #fff; }
+body, body * { cursor: none !important; }
+
+@keyframes v2-wave {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(20deg); }
+}
+@keyframes v2-flash {
+  from { opacity: 0.6; }
+  to { opacity: 0; }
+}
