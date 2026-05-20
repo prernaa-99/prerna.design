@@ -11,7 +11,7 @@ export const PROJECTS = [
     tags: ["Product", "Research", "Information architecture"],
     role: "Product designer",
     accent: "#C8553D",
-    href: null,
+    href: "#case-stage",
   },
   {
     n: "02",
