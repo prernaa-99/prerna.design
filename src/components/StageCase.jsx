@@ -668,9 +668,6 @@ function CaseFooter() {
 }
 
 export default function StageCase() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <div style={{ background: SC.bg, color: SC.ink, fontFamily: FP.body, minHeight: "100vh" }}>
       <CaseNav />
