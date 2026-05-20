@@ -94,8 +94,8 @@ function CaseHero() {
           <span style={{ width: 24, height: 1, background: SC.rule }} />
           <span>JUNE 2024</span>
         </div>
-        <h1 style={{ fontFamily: FP.display, fontSize: "clamp(44px, 6.4vw, 96px)", fontWeight: 500, lineHeight: 0.95, letterSpacing: -2.5, margin: 0, color: SC.ink, maxWidth: 980 }}>
-          Scaling discovery for the<br />
+        <h1 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 5.4vw, 84px)", fontWeight: 500, lineHeight: 1, letterSpacing: -2, margin: 0, color: SC.ink }}>
+          <span style={{ whiteSpace: "nowrap" }}>Scaling discovery for the</span><br />
           <span style={{ color: SC.accent }}>next million users.</span>
         </h1>
         <p style={{ fontSize: 19, lineHeight: 1.5, color: SC.ink2, maxWidth: 720, marginTop: 32 }}>
@@ -361,32 +361,24 @@ function ResearchSection() {
 }
 
 function InsightCard({ n, title, hook, detail }) {
-  const [hover, setHover] = useState(false);
   return (
-    <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      data-cursor="hover"
-      style={{
-        background: hover ? SC.ink : SC.paper,
-        color: hover ? SC.bg : SC.ink,
-        border: `1px solid ${SC.rule}`,
-        padding: 28, minHeight: 320,
-        display: "flex", flexDirection: "column",
-        transition: "background 0.25s, color 0.25s, transform 0.25s",
-        transform: hover ? "translateY(-4px)" : "translateY(0)",
-        cursor: "pointer",
-      }}>
+    <div style={{
+      background: SC.paper,
+      color: SC.ink,
+      border: `1px solid ${SC.rule}`,
+      padding: 28, minHeight: 320,
+      display: "flex", flexDirection: "column",
+    }}>
       <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.25em", color: SC.muted, marginBottom: 28 }}>
         INSIGHT · {n}
       </div>
-      <div style={{ fontFamily: FP.display, fontSize: 14, letterSpacing: "0.15em", textTransform: "uppercase", color: hover ? SC.accent : SC.muted, marginBottom: 12 }}>
+      <div style={{ fontFamily: FP.display, fontSize: 14, letterSpacing: "0.15em", textTransform: "uppercase", color: SC.muted, marginBottom: 12 }}>
         {title}
       </div>
       <div style={{ fontFamily: FP.display, fontSize: 26, fontWeight: 500, lineHeight: 1.15, letterSpacing: -0.6, marginBottom: 20 }}>
         {hook}
       </div>
-      <div style={{ fontSize: 14, lineHeight: 1.6, color: hover ? "#cccac4" : SC.ink2, marginTop: "auto" }}>
+      <div style={{ fontSize: 14, lineHeight: 1.6, color: SC.ink2, marginTop: "auto" }}>
         {detail}
       </div>
     </div>
@@ -480,7 +472,7 @@ function FilterDemo() {
   const results = content[key] || ["Aakhri Vidaai", "Sher Aur Sava Sher", "Maati Ke Laal"];
 
   return (
-    <div style={{ background: SC.paper, border: `1px solid ${SC.rule}`, padding: 24, fontFamily: FP.body }}>
+    <div style={{ background: SC.paper, border: `1px solid ${SC.rule}`, padding: 24, fontFamily: FP.body, display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted }}>
         <span>↳ INTERACTIVE DEMO</span>
         <span>STAGE / MVP</span>
@@ -488,20 +480,29 @@ function FilterDemo() {
       <FilterRow label="MOOD" value={filters.mood} options={moods} onChange={(v) => setFilters({ ...filters, mood: v })} />
       <FilterRow label="LANGUAGE" value={filters.lang} options={langs} onChange={(v) => setFilters({ ...filters, lang: v })} />
       <FilterRow label="THEME" value={filters.theme} options={themes} onChange={(v) => setFilters({ ...filters, theme: v })} />
+
       <div style={{ borderTop: `1px solid ${SC.ruleSoft}`, marginTop: 16, paddingTop: 16 }}>
         <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, marginBottom: 12 }}>
           ↳ {results.length} MATCHES
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
           {results.map((r, i) => (
-            <div key={r + i} style={{ aspectRatio: "3 / 4", background: SC.bg, border: `1px solid ${SC.ruleSoft}`, position: "relative", overflow: "hidden" }}>
+            <div key={r + i} style={{ aspectRatio: "2 / 3", background: SC.bg, border: `1px solid ${SC.ruleSoft}`, position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", inset: 0, background: `linear-gradient(180deg, ${SC.accent}33 0%, ${SC.accent}99 100%)` }} />
-              <div style={{ position: "absolute", inset: 0, padding: 8, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-                <div style={{ fontSize: 11, fontWeight: 600, color: SC.paper, lineHeight: 1.2 }}>{r}</div>
-                <div style={{ fontFamily: FP.mono, fontSize: 8, letterSpacing: "0.1em", color: SC.paper, opacity: 0.7, marginTop: 2 }}>{filters.lang.toUpperCase()}</div>
+              <div style={{ position: "absolute", inset: 0, padding: 10, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: SC.paper, lineHeight: 1.2 }}>{r}</div>
+                <div style={{ fontFamily: FP.mono, fontSize: 8, letterSpacing: "0.1em", color: SC.paper, opacity: 0.75, marginTop: 3 }}>{filters.lang.toUpperCase()}</div>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Footer caption — pushed to bottom of card so it aligns with right-card footer */}
+      <div style={{ borderTop: `1px solid ${SC.ruleSoft}`, marginTop: "auto", paddingTop: 16, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, lineHeight: 1.6 }}>
+        <div style={{ marginTop: 16 }}>
+          ↳ TRY · TWEAK · MATCH<br />
+          <span style={{ opacity: 0.75, textTransform: "none", letterSpacing: "0.05em", fontSize: 11 }}>Combine any mood, language, and theme — results update in real time.</span>
         </div>
       </div>
     </div>
@@ -520,9 +521,62 @@ function SolutionSection() {
           We moved away from single-label systems. Home-screen filters let users browse content by mood, theme, and regional preference, combining as many dimensions as they wanted.
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, marginTop: 56, alignItems: "center" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, marginTop: 56, alignItems: "stretch" }}>
           <FilterDemo />
-          <Placeholder label="VIDEO · MVP RECORDING" ratio="9 / 14" note="Screen recording: user taps 'Romance' filter, toggles to 'Bhojpuri', content updates instantly." accent={SC.accent} />
+
+          {/* Phone preview — wrapped in a matching paper card */}
+          <div style={{ background: SC.paper, border: `1px solid ${SC.rule}`, padding: 24, display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted }}>
+              <span>↳ MVP PREVIEW</span>
+              <span>STAGE / iOS</span>
+            </div>
+
+            <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", background: SC.bgDeep, borderRadius: 4, position: "relative", minHeight: 460, padding: 24 }}>
+              {/* Phone */}
+              <div style={{ width: 220, aspectRatio: "9 / 19", background: SC.ink, borderRadius: 24, padding: 7, position: "relative", boxShadow: "0 18px 36px rgba(0,0,0,0.18)" }}>
+                <div style={{ width: "100%", height: "100%", background: SC.bg, borderRadius: 18, position: "relative", overflow: "hidden" }}>
+                  {/* notch */}
+                  <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 50, height: 5, background: SC.ink, borderRadius: 3, zIndex: 2 }} />
+                  {/* status */}
+                  <div style={{ position: "absolute", top: 22, left: 14, right: 14, display: "flex", justifyContent: "space-between", fontFamily: FP.mono, fontSize: 7, color: SC.muted, letterSpacing: "0.1em" }}>
+                    <span>9:41</span>
+                    <span>●●●</span>
+                  </div>
+                  {/* content */}
+                  <div style={{ position: "absolute", inset: "42px 12px 12px", display: "flex", flexDirection: "column", gap: 7 }}>
+                    <div style={{ fontFamily: FP.display, fontSize: 13, fontWeight: 600, color: SC.ink }}>Discover</div>
+                    <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+                      <span style={{ padding: "3px 7px", background: SC.ink, color: SC.bg, fontSize: 8, borderRadius: 8, fontWeight: 600 }}>Romance</span>
+                      <span style={{ padding: "3px 7px", background: SC.ruleSoft, color: SC.ink2, fontSize: 8, borderRadius: 8 }}>Bhojpuri</span>
+                      <span style={{ padding: "3px 7px", background: SC.ruleSoft, color: SC.ink2, fontSize: 8, borderRadius: 8 }}>Family</span>
+                    </div>
+                    <div style={{ fontFamily: FP.mono, fontSize: 6, letterSpacing: "0.2em", color: SC.muted, marginTop: 2 }}>↳ 12 MATCHES</div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 5, flex: 1 }}>
+                      {["Pyaar Ke Liye", "Saiyan Ji", "Lal Ghaghra", "Dil Se Dil"].map((title, i) => (
+                        <div key={i} style={{ background: SC.bg, position: "relative", overflow: "hidden", borderRadius: 4 }}>
+                          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(180deg, ${SC.accent}33 0%, ${SC.accent}cc 100%)` }} />
+                          <div style={{ position: "absolute", bottom: 3, left: 4, right: 4, fontSize: 6, fontWeight: 600, color: SC.paper, lineHeight: 1.1 }}>
+                            {title}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* play overlay */}
+                  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
+                    <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,0.55)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ fontSize: 14, color: "#fff", marginLeft: 2 }}>▶</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ borderTop: `1px solid ${SC.ruleSoft}`, marginTop: 16, paddingTop: 16, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, lineHeight: 1.6 }}>
+              ↳ VIDEO · MVP RECORDING<br />
+              <span style={{ opacity: 0.75, textTransform: "none", letterSpacing: "0.05em", fontSize: 11 }}>User taps 'Romance' filter, toggles to 'Bhojpuri', content updates instantly.</span>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
