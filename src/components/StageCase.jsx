@@ -161,83 +161,223 @@ function HeroVisual() {
   );
 }
 
-function CompareCard({ kind }) {
-  const before = kind === "before";
-  const results = before
-    ? [
-        { t: "Action Spectacle 7", g: "ACTION", match: false },
-        { t: "Detective Shadow", g: "CRIME", match: false },
-        { t: "Highway Brawl", g: "ACTION", match: false },
-        { t: "(no relevant results)", g: "—", match: null },
-      ]
-    : [
-        { t: "Pyaar Ke Liye Kuch Bhi", g: "EMOTION · ROMANCE", match: true },
-        { t: "Maa Ki Mamta", g: "EMOTION · FAMILY", match: true },
-        { t: "Aakhri Vidaai", g: "EMOTION · TRAGEDY", match: true },
-        { t: "Dil Se Dil Tak", g: "EMOTION · DRAMA", match: true },
-      ];
-  return (
-    <div style={{ padding: "32px 28px", borderRight: before ? `1px solid ${SC.rule}` : "none", background: before ? SC.paper : "#fcfaf5" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-        <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: before ? SC.bad : SC.good }}>
-          {before ? "✕ BEFORE" : "✓ AFTER"}
-        </span>
-        <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.15em", color: SC.muted }}>
-          QUERY: "EMOTIONAL DRAMA"
-        </span>
-      </div>
-      <div style={{ border: `1px solid ${SC.rule}`, padding: "10px 14px", display: "flex", alignItems: "center", gap: 10, background: SC.bg, marginBottom: 16 }}>
-        <span style={{ color: SC.muted, fontSize: 14 }}>⌕</span>
-        <span style={{ fontSize: 14, color: SC.ink }}>Emotional Drama</span>
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        {results.map((r, i) => (
-          <div key={i} style={{
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            padding: "10px 12px",
-            background: r.match === false ? "#fbeaea" : r.match ? "#eaf6ee" : SC.paper,
-            border: `1px solid ${r.match === false ? "#f0d0d0" : r.match ? "#cfe7d5" : SC.ruleSoft}`,
-          }}>
-            <span style={{ fontSize: 14, color: SC.ink, fontStyle: r.match === null ? "italic" : "normal", opacity: r.match === null ? 0.6 : 1 }}>
-              {r.t}
-            </span>
-            <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.15em", color: r.match === false ? SC.bad : r.match ? SC.good : SC.muted }}>
-              {r.g}
-            </span>
-          </div>
-        ))}
-      </div>
-      <div style={{ marginTop: 20, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.15em", color: SC.muted }}>
-        {before ? "↳ 0 RELEVANT MATCHES · 30% BOUNCE" : "↳ 4 RELEVANT MATCHES · +30% VIEWING"}
-      </div>
-    </div>
-  );
-}
-
 function BeforeAfterCompare() {
-  const [side, setSide] = useState("both");
+  const [open, setOpen] = useState(false);
+
+  const RED = "#A32D2D";
+  const GREEN = "#0F6E56";
+  const MISS_ROW_BG = "#FCEBEB22";
+  const MISS_ROW_BORDER = "#F09595";
+  const MISS_TAG_BG = "#FCEBEB";
+  const HIT_ROW_BG = "#E1F5EE66";
+  const HIT_ROW_BORDER = "#5DCAA5";
+  const HIT_TAG_BG = "#E1F5EE";
+  const HIT_TAG_TEXT = "#085041";
+
+  const misses = [
+    { title: "Action Spectacle 7", tag: "ACTION" },
+    { title: "Detective Shadow", tag: "CRIME" },
+    { title: "Highway Brawl", tag: "ACTION" },
+  ];
+  const hits = [
+    { title: "Pyaar Ke Liye Kuch Bhi", tag: "EMOTION · ROMANCE" },
+    { title: "Maa Ki Mamta", tag: "EMOTION · FAMILY" },
+    { title: "Aakhri Vidaai", tag: "EMOTION · TRAGEDY" },
+    { title: "Dil Se Dil Tak", tag: "EMOTION · DRAMA" },
+  ];
+
+  const labelStyle = {
+    fontFamily: FP.mono,
+    fontSize: 11,
+    letterSpacing: "0.18em",
+    textTransform: "uppercase",
+    color: SC.muted,
+  };
+
   return (
-    <div>
-      <div style={{ display: "flex", gap: 8, marginBottom: 16, fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em" }}>
-        {[["both", "BOTH"], ["before", "BEFORE ONLY"], ["after", "AFTER ONLY"]].map(([k, l]) => (
-          <button
-            key={k}
-            onClick={() => setSide(k)}
-            data-cursor="hover"
-            style={{
-              padding: "8px 14px",
-              border: `1px solid ${side === k ? SC.ink : SC.rule}`,
-              background: side === k ? SC.ink : "transparent",
-              color: side === k ? SC.bg : SC.ink,
-              fontFamily: "inherit", fontSize: "inherit", letterSpacing: "inherit", cursor: "pointer",
-            }}>
-            {l}
-          </button>
-        ))}
+    <div
+      style={{
+        background: "#fff",
+        border: `0.5px solid ${SC.rule}`,
+        borderRadius: 12,
+        padding: 28,
+        maxWidth: 520,
+        fontFamily: FP.body,
+      }}
+    >
+      {/* Hero: 0 → 4 with before/after labels */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 20 }}>
+          <div>
+            <div style={{ fontSize: 40, fontWeight: 500, color: RED, lineHeight: 1, fontFamily: FP.display }}>0</div>
+            <div style={{ ...labelStyle, fontSize: 10, marginTop: 6, letterSpacing: "0.2em" }}>before</div>
+          </div>
+          <div style={{ fontSize: 24, color: SC.muted, paddingBottom: 18, lineHeight: 1 }}>→</div>
+          <div>
+            <div style={{ fontSize: 40, fontWeight: 500, color: GREEN, lineHeight: 1, fontFamily: FP.display }}>4</div>
+            <div style={{ ...labelStyle, fontSize: 10, marginTop: 6, letterSpacing: "0.2em" }}>after</div>
+          </div>
+        </div>
+        <div style={{ ...labelStyle, paddingBottom: 4, textAlign: "right" }}>
+          relevant matches
+        </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: side === "both" ? "1fr 1fr" : "1fr", gap: 0, border: `1px solid ${SC.rule}`, background: SC.paper }}>
-        {(side === "both" || side === "before") && <CompareCard kind="before" />}
-        {(side === "both" || side === "after") && <CompareCard kind="after" />}
+
+      {/* Query pill */}
+      <div style={{ marginTop: 20 }}>
+        <span
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "6px 12px",
+            background: "#F4F2EE",
+            borderRadius: 999,
+            fontSize: 13,
+            color: SC.ink,
+          }}
+        >
+          <span style={{ color: SC.muted, fontSize: 14 }}>⌕</span>
+          Emotional Drama
+        </span>
+      </div>
+
+      {/* Secondary metrics row */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          borderTop: `1px solid ${SC.ruleSoft}`,
+          borderBottom: `1px solid ${SC.ruleSoft}`,
+          padding: "16px 0",
+          marginTop: 24,
+        }}
+      >
+        <div style={{ paddingRight: 16, borderRight: `1px solid ${SC.ruleSoft}` }}>
+          <div style={{ fontSize: 15, fontWeight: 500, color: RED }}>30% bounce</div>
+          <div style={{ ...labelStyle, fontSize: 10, marginTop: 4 }}>before</div>
+        </div>
+        <div style={{ paddingLeft: 16 }}>
+          <div style={{ fontSize: 15, fontWeight: 500, color: GREEN }}>+30% viewing</div>
+          <div style={{ ...labelStyle, fontSize: 10, marginTop: 4 }}>after</div>
+        </div>
+      </div>
+
+      {/* Collapsible: Example results */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        data-cursor="hover"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+          padding: "16px 0 4px",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          ...labelStyle,
+          color: SC.ink,
+          fontSize: 11,
+        }}
+      >
+        <span>{open ? "Hide example results" : "View example results"}</span>
+        <span
+          style={{
+            display: "inline-block",
+            transition: "transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            fontSize: 14,
+            lineHeight: 1,
+          }}
+        >
+          ⌄
+        </span>
+      </button>
+
+      <div
+        style={{
+          maxHeight: open ? 800 : 0,
+          overflow: "hidden",
+          transition: "max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+        }}
+      >
+        <div style={{ paddingTop: 16 }}>
+          {/* Before group */}
+          <div style={{ ...labelStyle, fontSize: 10, marginBottom: 8 }}>
+            Before — irrelevant results
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 20 }}>
+            {misses.map((r) => (
+              <div
+                key={r.title}
+                style={{
+                  padding: "10px 12px",
+                  background: MISS_ROW_BG,
+                  borderLeft: `3px solid ${MISS_ROW_BORDER}`,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: 12,
+                }}
+              >
+                <span style={{ fontSize: 13, color: SC.ink }}>{r.title}</span>
+                <span
+                  style={{
+                    fontFamily: FP.mono,
+                    fontSize: 10,
+                    letterSpacing: "0.12em",
+                    background: MISS_TAG_BG,
+                    color: RED,
+                    padding: "3px 8px",
+                    borderRadius: 999,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {r.tag}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* After group */}
+          <div style={{ ...labelStyle, fontSize: 10, marginBottom: 8 }}>
+            After — relevant matches
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            {hits.map((r) => (
+              <div
+                key={r.title}
+                style={{
+                  padding: "10px 12px",
+                  background: HIT_ROW_BG,
+                  borderLeft: `3px solid ${HIT_ROW_BORDER}`,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: 12,
+                }}
+              >
+                <span style={{ fontSize: 13, color: SC.ink }}>{r.title}</span>
+                <span
+                  style={{
+                    fontFamily: FP.mono,
+                    fontSize: 10,
+                    letterSpacing: "0.12em",
+                    background: HIT_TAG_BG,
+                    color: HIT_TAG_TEXT,
+                    padding: "3px 8px",
+                    borderRadius: 999,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {r.tag}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
