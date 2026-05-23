@@ -1,6 +1,5 @@
 import { useRef, useEffect } from 'react';
 import { V2, FP } from '../data';
-import Reveal from './Reveal';
 import DesignerCharacter from './DesignerCharacter';
 
 function DeskScene() {
@@ -66,28 +65,75 @@ function DeskScene() {
 
 export default function About() {
   return (
-    <section id="about" style={{ padding: "120px 32px", background: V2.bg, borderTop: `1px solid ${V2.rule}` }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto" }}>
-        <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: V2.muted, marginBottom: 32 }}>§02 ──── ABOUT</div>
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 80, alignItems: "center" }}>
+    <section
+      id="about"
+      style={{
+        padding: "6rem 32px",
+        background: V2.bg,
+        borderTop: `1px solid ${V2.rule}`,
+      }}
+    >
+      <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+        <div
+          style={{
+            fontFamily: FP.mono,
+            fontSize: 11,
+            letterSpacing: "0.2em",
+            color: V2.muted,
+            marginBottom: 24,
+          }}
+        >
+          §02 ──── ABOUT
+        </div>
+
+        <div className="about-grid">
           <div>
-            <h2 style={{ fontFamily: FP.display, fontSize: 36, fontWeight: 400, lineHeight: 1.25, letterSpacing: -0.8, color: V2.ink, margin: 0 }}>
-              I build systems that other people's good ideas can grow inside.<br />
-              {["Type,", "structure,", "motion"].map((w, i) => (
-                <Reveal key={i} delay={i * 200} y={12}>
-                  <span style={{ color: V2.accent, display: "inline-block", marginRight: 8 }}>{w}</span>
-                </Reveal>
-              ))}
-              — in that order.
+            <h2
+              style={{
+                fontFamily: FP.display,
+                fontSize: "clamp(28px, 3vw, 36px)",
+                fontWeight: 400,
+                lineHeight: 1.15,
+                letterSpacing: -0.8,
+                color: V2.ink,
+                margin: 0,
+                maxWidth: 540,
+              }}
+            >
+              I build systems that other people's good ideas can grow inside.
+              <br />
+              <span style={{ color: V2.accent }}>Type, structure, motion</span>
+              {" "}— in that order.
             </h2>
-            <div style={{ marginTop: 32, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, fontSize: 14, lineHeight: 1.6, color: V2.ink2 }}>
-              <p style={{ margin: 0 }}>Eight years between studios and in-house teams. I tend to start with type and structure, then work outward into motion and detail.</p>
-              <p style={{ margin: 0 }}>Most engagements run six to twelve weeks, in small teams — usually one founder, one engineer, me.</p>
-            </div>
+
+            <p
+              style={{
+                marginTop: 20,
+                fontSize: 14,
+                lineHeight: 1.65,
+                color: V2.ink2,
+                maxWidth: 520,
+                margin: "20px 0 0",
+              }}
+            >
+              Eight years between studios and in-house teams. I tend to start with type and structure, then work outward into motion and detail. Most engagements run six to twelve weeks, in small teams — usually one founder, one engineer, me.
+            </p>
           </div>
+
           <div style={{ border: `1px solid ${V2.rule}`, padding: 12, background: V2.paper }}>
             <DeskScene />
-            <div style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: V2.muted, marginTop: 8, textAlign: "center" }}>FIG.02 / STUDIO</div>
+            <div
+              style={{
+                fontFamily: FP.mono,
+                fontSize: 9,
+                letterSpacing: "0.2em",
+                color: V2.muted,
+                marginTop: 8,
+                textAlign: "center",
+              }}
+            >
+              FIG.02 / STUDIO
+            </div>
           </div>
         </div>
       </div>

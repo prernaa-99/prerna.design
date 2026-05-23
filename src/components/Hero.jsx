@@ -21,12 +21,24 @@ export default function Hero() {
   const lines = ["DESIGN", "FOR THE", "EDGES", "OF A", "PRODUCT."];
 
   return (
-    <section id="hero" style={{ minHeight: "calc(100vh - 70px)", padding: "0 32px 60px", position: "relative" }}>
+    <section
+      id="hero"
+      style={{
+        padding: "5rem 32px",
+        position: "relative",
+      }}
+    >
       {flash && <div style={{ position: "fixed", inset: 0, background: V2.accent, opacity: 0.4, zIndex: 9990, pointerEvents: "none", animation: "v2-flash 0.3s" }} />}
 
-      <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "minmax(0,1.5fr) minmax(0,1fr)", gap: 48, paddingTop: 60, alignItems: "center" }}>
+      <div className="hero-grid" style={{ maxWidth: 1320, margin: "0 auto" }}>
         <div>
-          <h1 style={{ fontFamily: FP.display, fontSize: "clamp(56px,8vw,132px)", fontWeight: 500, lineHeight: 0.9, letterSpacing: -3, margin: 0, color: V2.ink }}>
+          <h1
+            className="hero-headline"
+            style={{
+              fontFamily: FP.display,
+              color: V2.ink,
+            }}
+          >
             {lines.map((line, i) => (
               <span key={i}>
                 {line.split(" ").map((w, j) => (
@@ -39,13 +51,31 @@ export default function Hero() {
               </span>
             ))}
           </h1>
-          <div style={{ marginTop: 40, display: "flex", gap: 24, alignItems: "flex-start", borderTop: `1px solid ${V2.rule}`, paddingTop: 16, maxWidth: 560 }}>
-            <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted, minWidth: 56 }}>BIO ↗</div>
+
+          <div
+            className="hero-bio"
+            style={{
+              marginTop: "1.5rem",
+              borderTop: `1px solid ${V2.rule}`,
+              paddingTop: 16,
+              maxWidth: 560,
+            }}
+          >
+            <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted, minWidth: 56, lineHeight: 1.6 }}>BIO ↗</div>
             <div style={{ fontSize: 14, lineHeight: 1.6, color: V2.ink2 }}>{PRERNA_BIO}</div>
           </div>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", aspectRatio: "1/1", position: "relative" }} onClick={onCharClick} data-cursor="hover">
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}
+          onClick={onCharClick}
+          data-cursor="hover"
+        >
           <DesignerCharacter size={360} intensity={1} />
           {clicks > 0 && clicks < 5 && (
             <div style={{ position: "absolute", bottom: 0, fontFamily: FP.mono, fontSize: 10, color: V2.muted, letterSpacing: "0.2em" }}>
