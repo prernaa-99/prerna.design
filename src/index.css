@@ -61,3 +61,18 @@ body, body * { cursor: none !important; }
     gap: 0.5rem;
   }
 }
+
+/* §01 — Problem section: paragraphs + card side-by-side below full-width heading */
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .problem-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+

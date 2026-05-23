@@ -201,7 +201,6 @@ function BeforeAfterCompare() {
         border: `0.5px solid ${SC.rule}`,
         borderRadius: 12,
         padding: 28,
-        maxWidth: 520,
         fontFamily: FP.body,
       }}
     >
@@ -387,24 +386,36 @@ function ProblemSection() {
   return (
     <section style={{ padding: "100px 0", background: SC.bg }}>
       <Container>
+        {/* Full-width section label + heading */}
         <SectionMark num="01" label="The problem" />
-        <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: SC.ink, maxWidth: 880 }}>
+        <h2
+          style={{
+            fontFamily: FP.display,
+            fontSize: "clamp(36px, 4.5vw, 64px)",
+            fontWeight: 500,
+            lineHeight: 1,
+            letterSpacing: -1.5,
+            margin: 0,
+            color: SC.ink,
+          }}
+        >
           The <span style={{ background: SC.highlight, padding: "0 8px" }}>"generic genre" trap</span>
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, marginTop: 40, alignItems: "start" }}>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: SC.ink2, margin: 0 }}>
-            Standard OTT platforms rely on basic genres like "Drama" or "Crime", but for STAGE, these labels were too rigid. Users searched in cultural and emotional terms that the system simply couldn't parse.
-          </p>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: SC.ink2, margin: 0 }}>
-            The absence of granular, culturally-rooted tagging became a major blocker for personalization, the very feature users expect from a modern streaming service.
-          </p>
-        </div>
 
-        <div style={{ marginTop: 64 }}>
-          <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: SC.muted, marginBottom: 16 }}>
-            FIG.01 · BEFORE / AFTER
+        {/* Two-column row below heading: paragraphs left, card right */}
+        <div className="problem-grid" style={{ marginTop: 48 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <p style={{ fontSize: 17, lineHeight: 1.65, color: SC.ink2, margin: 0 }}>
+              Standard OTT platforms rely on basic genres like "Drama" or "Crime", but for STAGE, these labels were too rigid. Users searched in cultural and emotional terms that the system simply couldn't parse.
+            </p>
+            <p style={{ fontSize: 17, lineHeight: 1.65, color: SC.ink2, margin: 0 }}>
+              The absence of granular, culturally-rooted tagging became a major blocker for personalization, the very feature users expect from a modern streaming service.
+            </p>
           </div>
-          <BeforeAfterCompare />
+
+          <div>
+            <BeforeAfterCompare />
+          </div>
         </div>
       </Container>
     </section>
