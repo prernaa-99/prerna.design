@@ -9,6 +9,7 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Reveal from './components/Reveal';
 import StageCase from './components/StageCase';
+import PlatterCase from './components/PlatterCase';
 import { V2 } from './data';
 
 // section anchors used by Nav/Contact; everything else is treated as a case route
@@ -56,6 +57,15 @@ export default function App() {
       <div style={{ background: "#f0eee9", color: "#1a1a1a", fontFamily: "'IBM Plex Sans', sans-serif" }}>
         <CustomCursor />
         <StageCase />
+      </div>
+    );
+  }
+
+  if (route === "case-stage-platter") {
+    return (
+      <div style={{ background: "#f0eee9", color: "#1a1a1a", fontFamily: "'IBM Plex Sans', sans-serif" }}>
+        <CustomCursor />
+        <PlatterCase />
       </div>
     );
   }

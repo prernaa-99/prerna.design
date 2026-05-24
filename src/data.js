@@ -16,11 +16,12 @@ export const PROJECTS = [
   {
     n: "02",
     year: "2024",
-    title: "Loomstate",
-    subtitle: "Editorial site & art direction for an indie textile label",
-    tags: ["Web", "Art direction"],
-    role: "Designer & developer",
-    accent: "#3D5A6C",
+    title: "STAGE · Platter",
+    subtitle: "Turning static into intent — redesigning the homepage poster from passive visual into an interactive preview that drove a +19.6% preview-to-content lift.",
+    tags: ["Product", "Interaction", "Motion"],
+    role: "Product designer",
+    accent: "#C8553D",
+    href: "#case-stage-platter",
   },
   {
     n: "03",
