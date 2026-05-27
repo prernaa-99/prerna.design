@@ -120,26 +120,49 @@ function CaseHero() {
   );
 }
 
-function PhoneMock({ label }) {
+function PhoneFrame({ src, alt, caption }) {
   return (
-    <div style={{ width: 160, aspectRatio: "9 / 19", background: SC.ink, borderRadius: 18, padding: 6, position: "relative" }}>
-      <div style={{ width: "100%", height: "100%", background: SC.bg, borderRadius: 12, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 40, height: 4, background: SC.ink, borderRadius: 2 }} />
-        <div style={{ position: "absolute", inset: "30px 12px 12px", display: "flex", flexDirection: "column", gap: 6 }}>
-          <div style={{ height: 8, width: "60%", background: SC.rule, borderRadius: 2 }} />
-          <div style={{ height: 50, background: SC.accent, borderRadius: 4, opacity: 0.85 }} />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4 }}>
-            <div style={{ height: 28, background: SC.rule, borderRadius: 3 }} />
-            <div style={{ height: 28, background: SC.rule, borderRadius: 3 }} />
-          </div>
-          <div style={{ height: 6, width: "40%", background: SC.muted, borderRadius: 2 }} />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 4 }}>
-            <div style={{ height: 36, background: SC.ruleSoft, borderRadius: 3 }} />
-            <div style={{ height: 36, background: SC.ruleSoft, borderRadius: 3 }} />
-            <div style={{ height: 36, background: SC.ruleSoft, borderRadius: 3 }} />
-          </div>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 240,
+          aspectRatio: "9 / 19.5",
+          background: "#0a0a0a",
+          borderRadius: 36,
+          padding: 6,
+          boxShadow:
+            "0 28px 48px rgba(0,0,0,0.18), 0 8px 16px rgba(0,0,0,0.10), inset 0 0 0 1px rgba(255,255,255,0.05)",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: 30,
+            overflow: "hidden",
+            background: "#000",
+            position: "relative",
+          }}
+        >
+          <img
+            src={src}
+            alt={alt}
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          />
         </div>
-        <div style={{ position: "absolute", bottom: 6, left: 0, right: 0, textAlign: "center", fontFamily: FP.mono, fontSize: 7, letterSpacing: "0.15em", color: SC.muted }}>{label}</div>
+      </div>
+      <div
+        style={{
+          fontFamily: FP.mono,
+          fontSize: 10,
+          letterSpacing: "0.22em",
+          color: SC.muted,
+          textTransform: "uppercase",
+        }}
+      >
+        {caption}
       </div>
     </div>
   );
@@ -147,15 +170,67 @@ function PhoneMock({ label }) {
 
 function HeroVisual() {
   return (
-    <section style={{ padding: "60px 0", background: SC.bgDeep, borderBottom: `1px solid ${SC.rule}` }}>
-      <Container>
-        <Placeholder label="HERO · PRODUCT SHOT" ratio="16 / 8" note="Final product hero — STAGE app on phone with new tagging UI visible.">
-          <div style={{ display: "flex", justifyContent: "center", gap: 24, alignItems: "center", width: "100%" }}>
-            <PhoneMock label="STAGE · HOME" />
-            <PhoneMock label="DISCOVER" />
-            <PhoneMock label="FILTERS" />
-          </div>
-        </Placeholder>
+    <section
+      style={{
+        padding: "100px 0",
+        background: SC.bgDeep,
+        borderBottom: `1px solid ${SC.rule}`,
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Soft radial vignette to lift the phones off the background */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(80% 60% at 50% 45%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 60%)",
+          pointerEvents: "none",
+        }}
+      />
+      <Container style={{ position: "relative" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+            marginBottom: 48,
+            fontFamily: FP.mono,
+            fontSize: 10,
+            letterSpacing: "0.22em",
+            color: SC.muted,
+          }}
+        >
+          <span>STAGE APP · LIVE PRODUCT</span>
+          <span>HOME → CATEGORIES → FILTERED</span>
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 32,
+            alignItems: "end",
+            maxWidth: 900,
+            margin: "0 auto",
+          }}
+        >
+          <PhoneFrame
+            src="/images/stage/home-1.png"
+            alt="STAGE home with featured original poster"
+            caption="Home · Originals"
+          />
+          <PhoneFrame
+            src="/images/stage/home-2.png"
+            alt="STAGE categories with cultural genres"
+            caption="Categories · Discovery"
+          />
+          <PhoneFrame
+            src="/images/stage/home-3.png"
+            alt="STAGE movies filtered view"
+            caption="Movies · Filtered"
+          />
+        </div>
       </Container>
     </section>
   );
