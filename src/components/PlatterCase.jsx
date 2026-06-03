@@ -97,74 +97,22 @@ function CaseHero() {
 function SplitPhoneHero() {
   return (
     <div style={{ position: "relative" }}>
-      <div style={{ width: 360, aspectRatio: "9 / 19", background: "#000", borderRadius: 42, padding: 8, position: "relative", boxShadow: "0 60px 120px rgba(0,0,0,0.6), 0 20px 40px rgba(0,0,0,0.4)" }}>
-        <div style={{ width: "100%", height: "100%", background: "#0c0a09", borderRadius: 35, position: "relative", overflow: "hidden", color: "#fff" }}>
-          <div style={{ position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)", width: 96, height: 26, background: "#000", borderRadius: 13, zIndex: 5 }} />
-          <div style={{ position: "absolute", top: 16, left: 28, right: 28, display: "flex", justifyContent: "space-between", fontSize: 10, fontFamily: FP.mono, color: "#fff", zIndex: 4 }}>
-            <span>9:41</span>
-            <span style={{ display: "flex", gap: 5 }}><span>●●●</span><span>◓</span></span>
-          </div>
-          <div style={{ position: "absolute", top: 52, left: 18, right: 18, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div style={{ fontFamily: FP.display, fontWeight: 700, fontSize: 17, letterSpacing: 0.8 }}>STAGE</div>
-            <div style={{ display: "flex", gap: 11, color: "#bbb", fontSize: 12 }}><span>⌕</span><span>◔</span></div>
-          </div>
-          <div style={{ position: "absolute", top: 86, left: 18, right: 18, display: "flex", gap: 17, fontSize: 11, color: "#888" }}>
-            <span style={{ color: "#fff", borderBottom: `2px solid ${PL.accent}`, paddingBottom: 5 }}>Home</span>
-            <span style={{ paddingBottom: 5 }}>Movies</span>
-            <span style={{ paddingBottom: 5 }}>Serials</span>
-            <span style={{ paddingBottom: 5 }}>Live</span>
-          </div>
-          <div style={{ position: "absolute", top: 122, left: 18, right: 18, height: 376, borderRadius: 10, overflow: "hidden", background: "#1a0c0a" }}>
-            <div style={{ position: "absolute", inset: 0, width: "50%", overflow: "hidden", background: "linear-gradient(180deg, #4d2218 0%, #1a0c0a 100%)" }}>
-              <div style={{ position: "absolute", top: "30%", left: "100%", transform: "translate(-50%, -50%)", width: 160, height: 160, borderRadius: "50%", background: "radial-gradient(circle, #c8856a, #6a2c1c 60%, transparent 80%)", filter: "saturate(0.55) brightness(0.85)" }} />
-              <div style={{ position: "absolute", bottom: 60, left: 14, right: 4, opacity: 0.85 }}>
-                <div style={{ fontFamily: FP.display, fontSize: 19, fontWeight: 700, color: "#fff", letterSpacing: -0.4, lineHeight: 1 }}>Aakhri<br/>Vidaai</div>
-                <div style={{ fontFamily: FP.mono, fontSize: 9, color: "#e0c4bb", letterSpacing: "0.2em", marginTop: 6 }}>STATIC</div>
-              </div>
-              <div style={{ position: "absolute", top: 10, left: 10, fontFamily: FP.mono, fontSize: 8, letterSpacing: "0.2em", color: "rgba(255,255,255,0.55)", padding: "2px 5px", border: "1px solid rgba(255,255,255,0.25)" }}>2:3 · STATIC</div>
-            </div>
-            <div style={{ position: "absolute", inset: 0, left: "50%", width: "50%", overflow: "hidden", background: "radial-gradient(120% 80% at 30% 40%, #8a3a26 0%, #2b1410 60%, #0e0908 100%)" }}>
-              <div style={{ position: "absolute", top: "32%", left: "0%", transform: "translate(-50%, -50%)", width: 160, height: 160, borderRadius: "50%", background: "radial-gradient(circle, #d99478, #6a2c1c 60%, transparent 80%)", boxShadow: "0 0 60px rgba(200,85,61,0.4)" }} />
-              <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 3px)", mixBlendMode: "overlay" }} />
-              <div style={{ position: "absolute", top: 10, right: 10, display: "flex", alignItems: "center", gap: 5, padding: "3px 7px", background: "rgba(0,0,0,0.55)", borderRadius: 100, fontFamily: FP.mono, fontSize: 8, color: "#fff", letterSpacing: "0.15em" }}>
-                <span style={{ width: 5, height: 5, borderRadius: "50%", background: PL.accent }} />
-                PREVIEW
-              </div>
-              <div style={{ position: "absolute", top: 10, left: 10, fontFamily: FP.mono, fontSize: 8, letterSpacing: "0.2em", color: PL.accent, padding: "2px 5px", border: `1px solid ${PL.accent}` }}>1:1 · MOTION</div>
-              <div style={{ position: "absolute", bottom: 60, left: 10, right: 14 }}>
-                <div style={{ fontFamily: FP.display, fontSize: 17, fontWeight: 700, color: "#fff", letterSpacing: -0.3, lineHeight: 1 }}>Aakhri<br/>Vidaai</div>
-                <div style={{ fontFamily: FP.mono, fontSize: 9, color: "#e8c9be", letterSpacing: "0.2em", marginTop: 6 }}>0:08 / 0:15</div>
-              </div>
-              <div style={{ position: "absolute", bottom: 42, left: 10, right: 10, height: 2.5, background: "rgba(255,255,255,0.2)", borderRadius: 2 }}>
-                <div style={{ width: "55%", height: "100%", background: PL.accent, borderRadius: 2 }} />
-                <div style={{ position: "absolute", left: "55%", top: "50%", transform: "translate(-50%,-50%)", width: 8, height: 8, borderRadius: "50%", background: "#fff" }} />
-              </div>
-            </div>
-            <div style={{ position: "absolute", top: 0, bottom: 0, left: "50%", width: 1, background: "rgba(255,255,255,0.18)", boxShadow: "0 0 12px rgba(255,255,255,0.15)" }} />
-            <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, borderRadius: "50%", background: "#0c0a09", border: `1px solid ${PL.accent}`, color: PL.accent, fontFamily: FP.mono, fontSize: 14, boxShadow: "0 0 24px rgba(200,85,61,0.4)" }}>→</div>
-            <div style={{ position: "absolute", bottom: 14, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 4 }}>
-              {[0, 1, 2, 3].map((i) => (
-                <div key={i} style={{ width: i === 0 ? 14 : 4, height: 4, borderRadius: 2, background: i === 0 ? "#fff" : "rgba(255,255,255,0.4)" }} />
-              ))}
-            </div>
-          </div>
-          <div style={{ position: "absolute", left: 18, right: 18, top: 514, display: "flex", gap: 10, alignItems: "center" }}>
-            <button style={{ flex: 1, background: PL.accent, color: "#fff", border: "none", padding: "11px 0", fontFamily: FP.body, fontWeight: 600, fontSize: 13, borderRadius: 5 }}>▶  Watch now</button>
-            <button style={{ width: 38, height: 38, background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 5, fontSize: 15 }}>＋</button>
-          </div>
-          <div style={{ position: "absolute", left: 18, right: 18, top: 570 }}>
-            <div style={{ fontSize: 11, color: "#bbb", marginBottom: 8 }}>Continue watching</div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
-              {[0, 1, 2].map((i) => (
-                <div key={i} style={{ aspectRatio: "3 / 4", background: "linear-gradient(135deg, #2a2a2a, #1a1a1a)", borderRadius: 5 }} />
-              ))}
-            </div>
-          </div>
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 50, background: "#000", borderTop: "1px solid #1a1a1a", display: "flex", justifyContent: "space-around", alignItems: "center", color: "#888", fontSize: 9, fontFamily: FP.mono, letterSpacing: 0.5 }}>
-            <span style={{ color: PL.accent }}>HOME</span>
-            <span>SEARCH</span>
-            <span>SAVED</span>
-            <span>ME</span>
+      <div style={{ width: 288, aspectRatio: "9 / 19", background: "#000", borderRadius: 36, padding: 7, position: "relative", boxShadow: "0 60px 120px rgba(0,0,0,0.6), 0 20px 40px rgba(0,0,0,0.4)" }}>
+        <div style={{ width: "100%", height: "100%", background: "#0c0a09", borderRadius: 30, position: "relative", overflow: "hidden", color: "#fff" }}>
+          <img src="/platter_image_1.jpg" alt="STAGE app — static poster morphing into motion preview" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <div style={{
+            position: "absolute", top: "46.5%", left: "50%", transform: "translate(-50%, -50%)",
+            width: 46, height: 46, borderRadius: "50%",
+            background: "rgba(255,255,255,0.16)",
+            border: "1px solid rgba(255,255,255,0.45)",
+            backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.35)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            pointerEvents: "none",
+          }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+              <path d="M6.99 11 3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z" />
+            </svg>
           </div>
         </div>
       </div>
