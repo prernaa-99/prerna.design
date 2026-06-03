@@ -539,6 +539,7 @@ function PhotoChip({ rotate, caption }) {
 function CollageVideoTile({ src, index }) {
   const ref = useRef(null);
   const [playing, setPlaying] = useState(true);
+  const [hover, setHover] = useState(false);
   const toggle = () => {
     const v = ref.current;
     if (!v) return;
@@ -546,12 +547,15 @@ function CollageVideoTile({ src, index }) {
     else { v.pause(); setPlaying(false); }
   };
   return (
-    <div style={{
-      position: "relative", flex: 1, minWidth: 0,
-      aspectRatio: "2 / 3", overflow: "hidden",
-      background: SC.ink, border: `1px solid ${SC.rule}`, borderRadius: 10,
-      boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
-    }}>
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        position: "relative", flex: 1, minWidth: 0,
+        aspectRatio: "2 / 3", overflow: "hidden",
+        background: SC.ink, border: `1px solid ${SC.rule}`, borderRadius: 10,
+        boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
+      }}>
       <video
         ref={ref}
         src={src}
@@ -567,15 +571,29 @@ function CollageVideoTile({ src, index }) {
         aria-label={playing ? "Pause video" : "Play video"}
         data-cursor="hover"
         style={{
-          position: "absolute", bottom: 12, left: 12,
-          width: 36, height: 36, borderRadius: "50%",
-          border: "none", background: SC.accent, color: "#fff",
+          position: "absolute", top: "50%", left: "50%",
+          transform: `translate(-50%, -50%) scale(${hover ? 1 : 0.85})`,
+          width: 64, height: 44, borderRadius: 12,
+          border: "none", background: "rgba(20,20,20,0.72)", color: "#fff",
           display: "flex", alignItems: "center", justifyContent: "center",
-          cursor: "pointer", fontSize: 12, lineHeight: 1, padding: 0,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+          cursor: "pointer", padding: 0,
+          opacity: hover ? 1 : 0,
+          transition: "opacity 0.2s ease, transform 0.2s ease, background 0.15s ease",
+          backdropFilter: "blur(2px)", WebkitBackdropFilter: "blur(2px)",
         }}
+        onMouseDown={(e) => { e.currentTarget.style.background = SC.accent; }}
+        onMouseUp={(e) => { e.currentTarget.style.background = "rgba(20,20,20,0.72)"; }}
       >
-        {playing ? "❚❚" : "▶"}
+        {playing ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+            <rect x="6" y="5" width="4" height="14" rx="1" />
+            <rect x="14" y="5" width="4" height="14" rx="1" />
+          </svg>
+        ) : (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5z" />
+          </svg>
+        )}
       </button>
     </div>
   );
