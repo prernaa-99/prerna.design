@@ -536,6 +536,77 @@ function PhotoChip({ rotate, caption }) {
   );
 }
 
+function CollageVideoTile({ src, index }) {
+  const ref = useRef(null);
+  const [playing, setPlaying] = useState(true);
+  const toggle = () => {
+    const v = ref.current;
+    if (!v) return;
+    if (v.paused) { v.play(); setPlaying(true); }
+    else { v.pause(); setPlaying(false); }
+  };
+  return (
+    <div style={{
+      position: "relative", flex: 1, minWidth: 0,
+      aspectRatio: "2 / 3", overflow: "hidden",
+      background: SC.ink, border: `1px solid ${SC.rule}`, borderRadius: 10,
+      boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
+    }}>
+      <video
+        ref={ref}
+        src={src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+      />
+      <div style={{ position: "absolute", top: 12, left: 12, fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.18em", color: "#fff", mixBlendMode: "difference", pointerEvents: "none" }}>{index} · VIDEO</div>
+      <button
+        onClick={toggle}
+        aria-label={playing ? "Pause video" : "Play video"}
+        data-cursor="hover"
+        style={{
+          position: "absolute", bottom: 12, left: 12,
+          width: 36, height: 36, borderRadius: "50%",
+          border: "none", background: SC.accent, color: "#fff",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          cursor: "pointer", fontSize: 12, lineHeight: 1, padding: 0,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+        }}
+      >
+        {playing ? "❚❚" : "▶"}
+      </button>
+    </div>
+  );
+}
+
+function CollageImageTile({ src, index }) {
+  return (
+    <div style={{
+      position: "relative", aspectRatio: "16 / 9", overflow: "hidden",
+      background: SC.ink, border: `1px solid ${SC.rule}`, borderRadius: 10,
+      boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
+    }}>
+      <img src={src} alt="Field research — card sorting" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+      <div style={{ position: "absolute", top: 12, left: 12, fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.18em", color: "#fff", mixBlendMode: "difference", pointerEvents: "none" }}>{index} · PHOTO</div>
+    </div>
+  );
+}
+
+function FieldCollage() {
+  return (
+    <div style={{ display: "flex", gap: 20, alignItems: "center", justifyContent: "center" }}>
+      <CollageVideoTile src="/2_video_1.MP4" index="01" />
+      <CollageVideoTile src="/2_video_2.MP4" index="02" />
+      <div style={{ flex: 1.3, minWidth: 0, display: "flex", flexDirection: "column", gap: 20 }}>
+        <CollageImageTile src="/2_image_1.JPG" index="03" />
+        <CollageImageTile src="/2_image_2.JPG" index="04" />
+      </div>
+    </div>
+  );
+}
+
 function ResearchSection() {
   return (
     <section style={{ padding: "100px 0", background: SC.bgDeep, borderTop: `1px solid ${SC.rule}` }}>
@@ -566,20 +637,10 @@ function ResearchSection() {
         </div>
 
         <div style={{ marginTop: 48 }}>
-          <Placeholder label="VIDEO · 5–10S TIMELAPSE" ratio="16 / 9" note="Ken-Burns timelapse of in-person card sorting on a charpai. Caption: 'Testing mental models in the field.'" accent={SC.accent}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flex: 1, gap: 16 }}>
-              <PhotoChip rotate={-4} caption="01 · CHARPAI" />
-              <PhotoChip rotate={2} caption="02 · POSTERS" />
-              <PhotoChip rotate={-1} caption="03 · SORTING" />
-              <PhotoChip rotate={5} caption="04 · DEBRIEF" />
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, marginLeft: 8 }}>
-                <div style={{ width: 56, height: 56, borderRadius: "50%", border: `2px solid ${SC.ink}`, display: "flex", alignItems: "center", justifyContent: "center", background: SC.bg }}>
-                  <span style={{ fontSize: 18, color: SC.ink }}>▶</span>
-                </div>
-                <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: SC.muted }}>0:08</span>
-              </div>
-            </div>
-          </Placeholder>
+          <FieldCollage />
+          <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.15em", color: SC.muted, lineHeight: 1.5, marginTop: 14 }}>
+            ↳ TESTING MENTAL MODELS IN THE FIELD — IN-PERSON CARD SORTING WITH PHYSICAL POSTERS
+          </div>
         </div>
       </Container>
     </section>
