@@ -760,17 +760,17 @@ function FilterRow({ label, value, options, onChange }) {
 
 function FilterDemo() {
   const [filters, setFilters] = useState({ mood: "Romance", lang: "Rajasthani", format: "Movies" });
-  const moods = ["Romance", "Action", "Emotional", "Comedy", "Drama"];
+  const moods = ["Romance", "Mystery", "Thriller", "Comedy", "Drama"];
   const langs = ["Rajasthani", "Haryanvi", "Bhojpuri"];
   const formats = ["Movies", "Webseries"];
 
   const content = {
-    "Romance·Rajasthani": ["Pyaar Ke Liye", "Dil Se Dil Tak", "Suhaag Raat", "Mehndi Raat"],
-    "Romance·Bhojpuri": ["Bhojpuri Pyaar", "Saiyan Ji", "Lal Ghaghra", "Gaon Ki Gori"],
-    "Action·Rajasthani": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don", "Khoon Ka Badla"],
-    "Emotional·Rajasthani": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah", "Maati Ke Laal"],
+    "Romance·Rajasthani·Movies": ["Pyaar Ke Liye", "Dil Se Dil Tak", "Suhaag Raat", "Mehndi Raat"],
+    "Romance·Bhojpuri·Movies": ["Bhojpuri Pyaar", "Saiyan Ji", "Lal Ghaghra", "Gaon Ki Gori"],
+    "Mystery·Rajasthani·Movies": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don", "Khoon Ka Badla"],
+    "Thriller·Rajasthani·Movies": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah", "Maati Ke Laal"],
   };
-  const key = `${filters.mood}·${filters.lang}`;
+  const key = `${filters.mood}·${filters.lang}·${filters.format}`;
   const results = content[key] || ["Aakhri Vidaai", "Sher Aur Sava Sher", "Maati Ke Laal", "Gaon Ki Beti"];
 
   return (
@@ -788,15 +788,20 @@ function FilterDemo() {
           ↳ {results.length} MATCHES
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-          {results.map((r, i) => (
-            <div key={r + i} style={{ aspectRatio: "16 / 9", background: SC.bg, border: `1px solid ${SC.ruleSoft}`, position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", inset: 0, background: `linear-gradient(180deg, ${SC.accent}33 0%, ${SC.accent}99 100%)` }} />
-              <div style={{ position: "absolute", inset: 0, padding: 10, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-                <div style={{ fontSize: 12, fontWeight: 600, color: SC.paper, lineHeight: 1.2 }}>{r}</div>
-                <div style={{ fontFamily: FP.mono, fontSize: 8, letterSpacing: "0.1em", color: SC.paper, opacity: 0.75, marginTop: 3 }}>{filters.lang.toUpperCase()}</div>
+          {results.map((r, i) => {
+            const poster = `/posters/${filters.mood.toLowerCase()}-${filters.lang.toLowerCase()}-${filters.format.toLowerCase()}-${i + 1}.jpg`;
+            return (
+              <div key={r + i} style={{ aspectRatio: "16 / 9", background: SC.bg, border: `1px solid ${SC.ruleSoft}`, position: "relative", overflow: "hidden" }}>
+                <div style={{ position: "absolute", inset: 0, background: `linear-gradient(180deg, ${SC.accent}33 0%, ${SC.accent}99 100%)` }} />
+                <img src={poster} alt={r} loading="lazy" onError={(e) => { e.currentTarget.style.display = "none"; }} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, padding: 10, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: SC.paper, lineHeight: 1.2 }}>{r}</div>
+                  <div style={{ fontFamily: FP.mono, fontSize: 8, letterSpacing: "0.1em", color: SC.paper, opacity: 0.75, marginTop: 3 }}>{filters.lang.toUpperCase()}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
