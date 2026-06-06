@@ -765,13 +765,13 @@ function FilterDemo() {
   const themes = ["Family", "Friendship", "Revenge", "Devotion"];
 
   const content = {
-    "Romance·Hindi": ["Pyaar Ke Liye", "Dil Se Dil Tak", "Suhaag Raat"],
-    "Romance·Bhojpuri": ["Bhojpuri Pyaar", "Saiyan Ji", "Lal Ghaghra"],
-    "Action·Hindi": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don"],
-    "Emotional·Hindi": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah"],
+    "Romance·Hindi": ["Pyaar Ke Liye", "Dil Se Dil Tak", "Suhaag Raat", "Mehndi Raat"],
+    "Romance·Bhojpuri": ["Bhojpuri Pyaar", "Saiyan Ji", "Lal Ghaghra", "Gaon Ki Gori"],
+    "Action·Hindi": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don", "Khoon Ka Badla"],
+    "Emotional·Hindi": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah", "Maati Ke Laal"],
   };
   const key = `${filters.mood}·${filters.lang}`;
-  const results = content[key] || ["Aakhri Vidaai", "Sher Aur Sava Sher", "Maati Ke Laal"];
+  const results = content[key] || ["Aakhri Vidaai", "Sher Aur Sava Sher", "Maati Ke Laal", "Gaon Ki Beti"];
 
   return (
     <div style={{ background: SC.paper, border: `1px solid ${SC.rule}`, padding: 24, fontFamily: FP.body, display: "flex", flexDirection: "column" }}>
@@ -787,9 +787,9 @@ function FilterDemo() {
         <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, marginBottom: 12 }}>
           ↳ {results.length} MATCHES
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
           {results.map((r, i) => (
-            <div key={r + i} style={{ aspectRatio: "2 / 3", background: SC.bg, border: `1px solid ${SC.ruleSoft}`, position: "relative", overflow: "hidden" }}>
+            <div key={r + i} style={{ aspectRatio: "16 / 9", background: SC.bg, border: `1px solid ${SC.ruleSoft}`, position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", inset: 0, background: `linear-gradient(180deg, ${SC.accent}33 0%, ${SC.accent}99 100%)` }} />
               <div style={{ position: "absolute", inset: 0, padding: 10, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: SC.paper, lineHeight: 1.2 }}>{r}</div>
