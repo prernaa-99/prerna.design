@@ -767,7 +767,7 @@ function FilterDemo() {
   const content = {
     "Romance·Rajasthani·Movies": ["Pyaar Ke Liye", "Dil Se Dil Tak", "Suhaag Raat", "Mehndi Raat"],
     "Romance·Bhojpuri·Movies": ["Bhojpuri Pyaar", "Saiyan Ji", "Lal Ghaghra", "Gaon Ki Gori"],
-    "Mystery·Rajasthani·Movies": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don", "Khoon Ka Badla"],
+    "Mystery·Rajasthani·Movies": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don"],
     "Thriller·Rajasthani·Movies": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah", "Maati Ke Laal"],
   };
   const key = `${filters.mood}·${filters.lang}·${filters.format}`;
@@ -794,11 +794,6 @@ function FilterDemo() {
               <div key={r + i} style={{ aspectRatio: "16 / 9", background: SC.bg, border: `1px solid ${SC.ruleSoft}`, position: "relative", overflow: "hidden" }}>
                 <div style={{ position: "absolute", inset: 0, background: `linear-gradient(180deg, ${SC.accent}33 0%, ${SC.accent}99 100%)` }} />
                 <img src={poster} alt={r} loading="lazy" onError={(e) => { e.currentTarget.style.display = "none"; }} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55) 100%)" }} />
-                <div style={{ position: "absolute", inset: 0, padding: 10, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: SC.paper, lineHeight: 1.2 }}>{r}</div>
-                  <div style={{ fontFamily: FP.mono, fontSize: 8, letterSpacing: "0.1em", color: SC.paper, opacity: 0.75, marginTop: 3 }}>{filters.lang.toUpperCase()}</div>
-                </div>
               </div>
             );
           })}
