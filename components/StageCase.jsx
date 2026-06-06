@@ -789,7 +789,7 @@ function FilterDemo() {
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
           {results.map((r, i) => {
-            const poster = `/posters/${filters.mood.toLowerCase()}-${filters.lang.toLowerCase()}-${filters.format.toLowerCase()}-${i + 1}.jpg`;
+            const poster = `/posters/${filters.mood.toLowerCase()}-${filters.lang.toLowerCase()}-${filters.format.toLowerCase()}-${i + 1}.jpeg`;
             return (
               <div key={r + i} style={{ aspectRatio: "16 / 9", background: SC.bg, border: `1px solid ${SC.ruleSoft}`, position: "relative", overflow: "hidden" }}>
                 <div style={{ position: "absolute", inset: 0, background: `linear-gradient(180deg, ${SC.accent}33 0%, ${SC.accent}99 100%)` }} />
