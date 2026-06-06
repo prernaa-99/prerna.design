@@ -1,0 +1,64 @@
+/* Tailwind v4 — theme + utilities only.
+   Preflight (Tailwind's CSS reset) is intentionally NOT imported: this site predates
+   Tailwind and ships its own reset below. Importing preflight would re-style headings,
+   buttons, lists and margins and change the existing desktop look. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* ===========================================================================
+   Site base & reset (migrated verbatim from src/index.css)
+   =========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #e8e6e0; }
+/* Prevent decorative absolutely-positioned elements (e.g. the hero character's
+   floating heart/sketch) from creating horizontal scroll on narrow screens.
+   `clip` (not `hidden`) avoids establishing a scroll container, so position: sticky still works. */
+html, body { overflow-x: clip; max-width: 100%; }
+html { scroll-behavior: smooth; }
+body { font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+::selection { background: #cf3a1f; color: #fff; }
+body, body * { cursor: none !important; }
+
+@keyframes v2-wave {
+  0%, 100% { transform: rotate(-15deg); }
+  50% { transform: rotate(20deg); }
+}
+@keyframes v2-flash {
+  from { opacity: 0.6; }
+  to { opacity: 0; }
+}
+
+/* NOTE: the former .about-grid / .hero-grid / .hero-headline / .hero-bio /
+   .problem-grid responsive rules were migrated to Tailwind utilities directly
+   on the components during the Next.js conversion, so they were removed here. */
+
+/* ===========================================================================
+   Legacy Vite-starter styles (migrated from src/App.css).
+   These selectors are not used by the portfolio; kept for completeness only.
+   =========================================================================== */
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+}
+.counter:hover { border-color: var(--accent-border); }
+.counter:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.hero { position: relative; }
+.hero .base, .hero .framework, .hero .vite { inset-inline: 0; margin: 0 auto; }
+.hero .base { width: 170px; position: relative; z-index: 0; }
+.hero .framework, .hero .vite { position: absolute; }
+.hero .framework {
+  z-index: 1; top: 34px; height: 28px;
+  transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.4);
+}
+.hero .vite {
+  z-index: 0; top: 107px; height: 26px; width: auto;
+  transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.8);
+}
