@@ -662,25 +662,12 @@ function SolutionSection() {
   );
 }
 
-function StoryPhone({ state }) {
-  const ratio = state === "motion" ? "1 / 1" : "2 / 3";
+function StoryPhone({ src, alt }) {
   return (
     <div style={{ width: 160, aspectRatio: "9 / 18", background: "#000", borderRadius: 20, padding: 6, position: "relative" }}>
       <div style={{ width: "100%", height: "100%", background: "#0c0a09", borderRadius: 15, position: "relative", overflow: "hidden" }}>
+        <img src={src} alt={alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         <div style={{ position: "absolute", top: 6, left: "50%", transform: "translateX(-50%)", width: 32, height: 8, background: "#000", borderRadius: 4 }} />
-        <div style={{ position: "absolute", top: 22, left: 10, fontFamily: FP.display, fontSize: 10, fontWeight: 700, color: "#fff" }}>STAGE</div>
-        <div style={{ position: "absolute", top: 40, left: 10, right: 10, aspectRatio: ratio, background: state === "motion" ? "radial-gradient(120% 80% at 30% 40%, #8a3a26, #1a0c0a)" : "linear-gradient(180deg, #4d2218, #1a0c0a)", borderRadius: 4, transition: "aspect-ratio 0.4s", position: "relative" }}>
-          <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%,-50%)", width: 28, height: 28, borderRadius: "50%", background: "radial-gradient(circle, #c8856a, #6a2c1c)" }} />
-          {state === "motion" && <div style={{ position: "absolute", top: 4, right: 4, width: 5, height: 5, borderRadius: "50%", background: PL.accent }} />}
-          {state === "tap" && (
-            <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ width: 24, height: 24, borderRadius: "50%", background: PL.accent, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10 }}>▶</div>
-            </div>
-          )}
-        </div>
-        <div style={{ position: "absolute", bottom: 30, left: 10, right: 10, display: "flex", justifyContent: "center" }}>
-          <div style={{ background: state === "tap" ? PL.accent : "rgba(255,255,255,0.95)", color: state === "tap" ? "#fff" : "#111", padding: "4px 16px", fontSize: 8, fontWeight: 600, borderRadius: 3 }}>Watch</div>
-        </div>
       </div>
     </div>
   );
@@ -694,7 +681,7 @@ function StoryFrame({ frame }) {
         <span>{frame.title.toUpperCase()}</span>
       </div>
       <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 18, display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <StoryPhone state={frame.state} />
+        <StoryPhone src={frame.src} alt={`STAGE platter — ${frame.title.toLowerCase()} state`} />
       </div>
       <div>
         <div style={{ fontFamily: FP.display, fontSize: 14, letterSpacing: "0.12em", textTransform: "uppercase", color: PL.accent, marginBottom: 8 }}>{frame.principle}</div>
@@ -706,9 +693,9 @@ function StoryFrame({ frame }) {
 
 function PrinciplesSection() {
   const frames = [
-    { n: "01", title: "Scrolling", principle: "Poster earns attention first", caption: "The static frame still does the heavy lifting for first impressions. Motion is additive, not a replacement.", state: "static" },
-    { n: "02", title: "Pause", principle: "Movement becomes the preview", caption: 'A 2-3s clip answers "is this for me?" passively. The content comes to the user, not the other way around.', state: "motion" },
-    { n: "03", title: "Tap", principle: "Reward, not interruption", caption: "Motion only triggers when behavior suggests interest. It respects the browsing flow instead of hijacking it.", state: "tap" },
+    { n: "01", title: "Scrolling", principle: "Poster earns attention first", caption: "The static frame still does the heavy lifting for first impressions. Motion is additive, not a replacement.", src: "/2_default.png" },
+    { n: "02", title: "Pause", principle: "Movement becomes the preview", caption: 'A 2-3s clip answers "is this for me?" passively. The content comes to the user, not the other way around.', src: "/2_transition.png" },
+    { n: "03", title: "Tap", principle: "Reward, not interruption", caption: "Motion only triggers when behavior suggests interest. It respects the browsing flow instead of hijacking it.", src: "/2_with_video.png" },
   ];
   return (
     <section className="py-16 md:py-[100px]" style={{background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
