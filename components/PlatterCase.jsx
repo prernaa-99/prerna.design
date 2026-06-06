@@ -798,82 +798,6 @@ function ImpactSection() {
   );
 }
 
-function ProfileBlob({ name, tags }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-      <div style={{ width: 56, height: 56, borderRadius: "50%", border: `1.5px dashed ${PL.ink}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FP.mono, fontSize: 12, color: PL.ink }}>{name.split(" ")[2]}</div>
-      <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.muted }}>{name}</div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-        {tags.map((t) => <span key={t} style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.1em", padding: "3px 7px", border: `1px solid ${PL.rule}`, color: PL.ink2 }}>{t}</span>)}
-      </div>
-    </div>
-  );
-}
-
-function SketchClip({ kind, label }) {
-  const isA = kind === "A";
-  return (
-    <div>
-      <div style={{ aspectRatio: "1 / 1", background: isA ? "linear-gradient(180deg, #6a2c1c, #1a0c0a)" : "linear-gradient(180deg, #3a4a3a, #14201a)", borderRadius: 6, border: `1.5px dashed ${PL.ink}`, position: "relative", overflow: "hidden" }}>
-        {isA ? (
-          <div style={{ position: "absolute", top: "35%", left: "50%", transform: "translate(-50%,-50%)", width: 60, height: 60, borderRadius: "50%", background: "radial-gradient(circle, #d99478, #6a2c1c)" }} />
-        ) : (
-          <>
-            <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 6px, transparent 6px 12px)" }} />
-            <div style={{ position: "absolute", top: "55%", left: 10, right: 10, height: 1, background: "#8aa68a" }} />
-            <div style={{ position: "absolute", top: "45%", left: "30%", width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderBottom: "14px solid #5a7a5a" }} />
-            <div style={{ position: "absolute", top: "50%", left: "55%", width: 0, height: 0, borderLeft: "14px solid transparent", borderRight: "14px solid transparent", borderBottom: "18px solid #4a6a4a" }} />
-          </>
-        )}
-        <div style={{ position: "absolute", bottom: 6, left: 6, fontFamily: FP.mono, fontSize: 8, letterSpacing: "0.15em", color: "#fff", opacity: 0.7 }}>0:00 / 0:03</div>
-        <div style={{ position: "absolute", top: 6, right: 6, width: 5, height: 5, borderRadius: "50%", background: PL.accent }} />
-      </div>
-      <div style={{ marginTop: 8, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.accent, textAlign: "center" }}>{label}</div>
-    </div>
-  );
-}
-
-function FutureSection() {
-  return (
-    <section className="py-16 md:py-[100px]" style={{background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
-      <Container>
-        <SectionMark num="08" label="What I'd do differently" />
-        <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
-          Already thinking <span style={{ fontStyle: "italic" }}>ahead</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{gap: 56, marginTop: 32, alignItems: "start" }}>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>If I had more time, I'd explore <strong>personalization in the preview layer</strong> — showing different clips to different user segments based on watch history. The current system is one-size-fits-all, which limits how far the conversion gains can scale.</p>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I'd also want to <strong>stress-test the motion on lower-end devices</strong> and slower connections. A preview that buffers is worse than no preview at all.</p>
-        </div>
-        <div style={{ marginTop: 64 }}>
-          <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>SKETCH · PERSONALIZED PREVIEW (CONCEPT)</div>
-          <div style={{ background: PL.paper, border: `1px dashed ${PL.rule}`, padding: 36 }}>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{gap: 32, alignItems: "center" }}>
-              <ProfileBlob name="USER · A" tags={["Drama", "Family", "Hindi"]} />
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-                <div style={{ fontFamily: FP.mono, fontSize: 22, color: PL.accent, lineHeight: 1 }}>→</div>
-                <div style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>SEES</div>
-              </div>
-              <SketchClip kind="A" label="EMOTIONAL CUT" />
-              <div style={{ gridColumn: "1 / -1", height: 1, borderTop: `1px dashed ${PL.rule}`, margin: "8px 0" }} />
-              <ProfileBlob name="USER · B" tags={["Action", "Thriller", "Punjabi"]} />
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-                <div style={{ fontFamily: FP.mono, fontSize: 22, color: PL.accent, lineHeight: 1 }}>→</div>
-                <div style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>SEES</div>
-              </div>
-              <SketchClip kind="B" label="ACTION CUT" />
-            </div>
-            <div style={{ marginTop: 24, paddingTop: 16, borderTop: `1px dashed ${PL.rule}`, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.18em", color: PL.muted, display: "flex", justifyContent: "space-between" }}>
-              <span>↳ ONE SLOT · MULTIPLE CUTS · SEGMENT-AWARE</span>
-              <span style={{ color: PL.accent }}>EXPLORATORY · NOT BUILT</span>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 function CaseFooter() {
   return (
     <section className="pt-16 pb-12 md:pt-[100px] md:pb-[60px]" style={{background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
@@ -910,7 +834,6 @@ export default function PlatterCase() {
       <SolutionSection />
       <PrinciplesSection />
       <ImpactSection />
-      <FutureSection />
       <CaseFooter />
     </div>
   );
