@@ -1,5 +1,6 @@
+'use client';
 import { useState, useEffect } from 'react';
-import { SPRING } from '../data';
+import { SPRING } from '@/lib/data';
 
 function PixelChar({ size = 84, mouse }) {
   const ref = useRef(null);

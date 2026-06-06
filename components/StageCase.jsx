@@ -1,4 +1,6 @@
+'use client';
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 const SC = {
   bg: "#f0eee9",
@@ -25,7 +27,7 @@ const SC_MAX = 1180;
 
 function Container({ children, style = {} }) {
   return (
-    <div style={{ maxWidth: SC_MAX, margin: "0 auto", padding: "0 32px", width: "100%", ...style }}>
+    <div className="mx-auto w-full px-5 md:px-8" style={{ maxWidth: SC_MAX, ...style }}>
       {children}
     </div>
   );
@@ -71,14 +73,14 @@ function CaseNav() {
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 10, background: `${SC.bg}ee`, backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", borderBottom: `1px solid ${SC.ruleSoft}` }}>
       <Container style={{ padding: "16px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: SC.ink, fontFamily: "inherit" }} data-cursor="hover">
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: SC.ink, fontFamily: "inherit" }} data-cursor="hover">
           <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 28, height: 28, background: SC.ink, color: SC.bg, fontFamily: FP.display, fontSize: 16, fontWeight: 600, borderRadius: 4 }}>P</span>
           <span style={{ display: "flex", flexDirection: "column", lineHeight: 1, alignItems: "flex-start" }}>
             <span style={{ fontFamily: FP.display, fontSize: 15, fontWeight: 600 }}>Prerna</span>
             <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.18em", color: SC.muted, marginTop: 3 }}>PRODUCT DESIGNER</span>
           </span>
-        </a>
-        <a href="#" style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.18em", color: SC.ink2, textDecoration: "none" }} data-cursor="hover">← INDEX</a>
+        </Link>
+        <Link href="/" style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.18em", color: SC.ink2, textDecoration: "none" }} data-cursor="hover">← INDEX</Link>
       </Container>
     </div>
   );
@@ -86,7 +88,7 @@ function CaseNav() {
 
 function CaseHero() {
   return (
-    <section style={{ padding: "80px 0 60px", borderBottom: `1px solid ${SC.rule}` }}>
+    <section className="pt-12 pb-10 md:pt-20 md:pb-[60px]" style={{ borderBottom: `1px solid ${SC.rule}` }}>
       <Container>
         <div style={{ display: "flex", gap: 16, alignItems: "center", fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, marginBottom: 32 }}>
           <span style={{ width: 24, height: 1, background: SC.rule }} />
@@ -94,22 +96,22 @@ function CaseHero() {
           <span style={{ width: 24, height: 1, background: SC.rule }} />
           <span>JUNE 2024</span>
         </div>
-        <h1 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 5.4vw, 84px)", fontWeight: 500, lineHeight: 1, letterSpacing: -2, margin: 0, color: SC.ink }}>
-          <span style={{ whiteSpace: "nowrap" }}>Scaling discovery for the</span><br />
+        <h1 style={{ fontFamily: FP.display, fontSize: "clamp(32px, 5.4vw, 84px)", fontWeight: 500, lineHeight: 1, letterSpacing: -2, margin: 0, color: SC.ink }}>
+          <span className="whitespace-normal md:whitespace-nowrap">Scaling discovery for the</span>{" "}<br className="hidden md:inline" />
           <span style={{ color: SC.accent }}>next million users.</span>
         </h1>
-        <p style={{ fontSize: 19, lineHeight: 1.5, color: SC.ink2, maxWidth: 720, marginTop: 32 }}>
+        <p className="text-base md:text-[19px]" style={{ lineHeight: 1.5, color: SC.ink2, maxWidth: 720, marginTop: 32 }}>
           A redesign of STAGE's content categorization framework, moving from generic genres to a culturally-rooted tagging system that speaks the language of regional audiences.
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, marginTop: 56, borderTop: `1px solid ${SC.rule}`, borderBottom: `1px solid ${SC.rule}` }}>
+        <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: 0, marginTop: 56, borderTop: `1px solid ${SC.rule}`, borderBottom: `1px solid ${SC.rule}` }}>
           {[
             ["ROLE", "Product Designer"],
             ["TEAM", "1 PM · 2 Eng · Me"],
             ["TIMELINE", "4 weeks"],
             ["IMPACT", "+30% viewing growth"],
           ].map(([k, v], i) => (
-            <div key={k} style={{ padding: "20px 24px", borderRight: i < 3 ? `1px solid ${SC.rule}` : "none" }}>
+            <div key={k} className={`border-solid border-[#d4d2cc] px-6 py-5 ${["border-r", "md:border-r", "border-r border-t md:border-t-0", "border-t md:border-t-0"][i]}`}>
               <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, marginBottom: 8 }}>{k}</div>
               <div style={{ fontSize: 15, color: SC.ink, fontWeight: 500 }}>{v}</div>
             </div>
@@ -171,8 +173,8 @@ function PhoneFrame({ src, alt, caption }) {
 function HeroVisual() {
   return (
     <section
+      className="py-16 md:py-[100px]"
       style={{
-        padding: "100px 0",
         background: SC.bgDeep,
         borderBottom: `1px solid ${SC.rule}`,
         position: "relative",
@@ -206,14 +208,7 @@ function HeroVisual() {
           <span>HOME → CATEGORIES → FILTERED</span>
         </div>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 32,
-            alignItems: "end",
-            maxWidth: 900,
-            margin: "0 auto",
-          }}
+          className="grid grid-cols-1 gap-10 items-end mx-auto max-w-[900px] md:grid-cols-3 md:gap-8"
         >
           <PhoneFrame
             src="/images/stage/home-1.png"
@@ -459,7 +454,7 @@ function BeforeAfterCompare() {
 
 function ProblemSection() {
   return (
-    <section style={{ padding: "100px 0", background: SC.bg }}>
+    <section className="py-16 md:py-[100px]" style={{ background: SC.bg }}>
       <Container>
         {/* Full-width section label + heading */}
         <SectionMark num="01" label="The problem" />
@@ -478,7 +473,7 @@ function ProblemSection() {
         </h2>
 
         {/* Two-column row below heading: paragraphs left, card right */}
-        <div className="problem-grid" style={{ marginTop: 48 }}>
+        <div className="grid grid-cols-1 gap-8 items-start md:grid-cols-2 md:gap-12" style={{ marginTop: 48 }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <p style={{ fontSize: 17, lineHeight: 1.65, color: SC.ink2, margin: 0 }}>
               Standard OTT platforms rely on basic genres like "Drama" or "Crime", but for STAGE, these labels were too rigid. Users searched in cultural and emotional terms that the system simply couldn't parse.
@@ -614,10 +609,12 @@ function CollageImageTile({ src, index }) {
 
 function FieldCollage() {
   return (
-    <div style={{ display: "flex", gap: 20, alignItems: "center", justifyContent: "center" }}>
-      <CollageVideoTile src="/2_video_1.MP4" index="01" />
-      <CollageVideoTile src="/2_video_2.MP4" index="02" />
-      <div style={{ flex: 1.3, minWidth: 0, display: "flex", flexDirection: "column", gap: 20 }}>
+    <div className="flex flex-col gap-3 md:flex-row md:gap-5 md:items-center md:justify-center">
+      <div className="flex gap-3 md:contents">
+        <CollageVideoTile src="/2_video_1.MP4" index="01" />
+        <CollageVideoTile src="/2_video_2.MP4" index="02" />
+      </div>
+      <div className="flex flex-col gap-3 md:gap-5 md:flex-[1.3] min-w-0">
         <CollageImageTile src="/2_image_1.JPG" index="03" />
         <CollageImageTile src="/2_image_2.JPG" index="04" />
       </div>
@@ -627,7 +624,7 @@ function FieldCollage() {
 
 function ResearchSection() {
   return (
-    <section style={{ padding: "100px 0", background: SC.bgDeep, borderTop: `1px solid ${SC.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{ background: SC.bgDeep, borderTop: `1px solid ${SC.rule}` }}>
       <Container>
         <SectionMark num="02" label="The research" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: SC.ink, maxWidth: 880 }}>
@@ -637,7 +634,7 @@ function ResearchSection() {
           We didn't just guess, we went to the field. Two parallel research tracks gave us a foundation.
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginTop: 56 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 24, marginTop: 56 }}>
           <ResearchCard
             num="A"
             kind="Secondary research"
@@ -713,7 +710,7 @@ function InsightsSection() {
   ];
 
   return (
-    <section style={{ padding: "100px 0", background: SC.bg, borderTop: `1px solid ${SC.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{ background: SC.bg, borderTop: `1px solid ${SC.rule}` }}>
       <Container>
         <SectionMark num="03" label="The aha moment" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: SC.ink, maxWidth: 880 }}>
@@ -723,7 +720,7 @@ function InsightsSection() {
           Card sorting revealed three massive gaps in how we'd been thinking about content.
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 56 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 16, marginTop: 56 }}>
           {insights.map((it) => <InsightCard key={it.n} {...it} />)}
         </div>
       </Container>
@@ -816,7 +813,7 @@ function FilterDemo() {
 
 function SolutionSection() {
   return (
-    <section style={{ padding: "100px 0", background: SC.bgDeep, borderTop: `1px solid ${SC.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{ background: SC.bgDeep, borderTop: `1px solid ${SC.rule}` }}>
       <Container>
         <SectionMark num="04" label="The solution" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: SC.ink, maxWidth: 980 }}>
@@ -826,7 +823,7 @@ function SolutionSection() {
           We moved away from single-label systems. Home-screen filters let users browse content by mood, theme, and regional preference, combining as many dimensions as they wanted.
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, marginTop: 56, alignItems: "stretch" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 32, marginTop: 56, alignItems: "stretch" }}>
           <FilterDemo />
 
           {/* Phone preview — wrapped in a matching paper card */}
@@ -931,7 +928,7 @@ function ImpactBar({ label, value, caption }) {
 
 function ImpactSection() {
   return (
-    <section style={{ padding: "100px 0", background: SC.ink, color: SC.bg, borderTop: `1px solid ${SC.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{ background: SC.ink, color: SC.bg, borderTop: `1px solid ${SC.rule}` }}>
       <Container>
         <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: SC.muted, marginBottom: 24 }}>
           <span style={{ display: "inline-block", width: 32, height: 1, background: "#444" }} />
@@ -942,7 +939,7 @@ function ImpactSection() {
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, maxWidth: 880 }}>
           Data-backed <span style={{ color: SC.accent }}>success</span>
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginTop: 64 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 24, marginTop: 64 }}>
           <ImpactBar label="CONTENT CONSUMPTION" value={20} caption="Driven by users engaging with the new home-screen filters." />
           <ImpactBar label="VIEWING GROWTH" value={30} caption="Linked to more accurate search results powered by the new tagging framework." />
         </div>
@@ -953,7 +950,7 @@ function ImpactSection() {
 
 function CaseFooter() {
   return (
-    <section style={{ padding: "100px 0 60px", background: SC.bg, borderTop: `1px solid ${SC.rule}` }}>
+    <section className="pt-16 pb-12 md:pt-[100px] md:pb-[60px]" style={{ background: SC.bg, borderTop: `1px solid ${SC.rule}` }}>
       <Container>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 24 }}>
           <div>
@@ -963,8 +960,8 @@ function CaseFooter() {
             </div>
           </div>
           <div style={{ display: "flex", gap: 12 }}>
-            <a href="#" data-cursor="hover" style={{ padding: "12px 20px", border: `1px solid ${SC.ink}`, color: SC.ink, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 500 }}>← All work</a>
-            <a href="#contact" data-cursor="hover" style={{ padding: "12px 20px", background: SC.accent, color: SC.paper, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 600 }}>Get in touch →</a>
+            <Link href="/" data-cursor="hover" style={{ padding: "12px 20px", border: `1px solid ${SC.ink}`, color: SC.ink, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 500 }}>← All work</Link>
+            <Link href="/#contact" data-cursor="hover" style={{ padding: "12px 20px", background: SC.accent, color: SC.paper, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 600 }}>Get in touch →</Link>
           </div>
         </div>
       </Container>

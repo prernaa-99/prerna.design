@@ -1,5 +1,6 @@
+'use client';
 import { useRef, useState, useEffect } from 'react';
-import { SPRING } from '../data';
+import { SPRING } from '@/lib/data';
 
 export default function Reveal({ children, delay = 0, y = 24 }) {
   const ref = useRef(null);

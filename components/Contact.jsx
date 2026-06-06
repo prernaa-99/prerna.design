@@ -1,5 +1,6 @@
+'use client';
 import { useRef, useState, useEffect } from 'react';
-import { V2, FP, SPRING } from '../data';
+import { V2, FP, SPRING } from '@/lib/data';
 
 export default function Contact() {
   const cvs = useRef(null);
@@ -54,8 +55,8 @@ export default function Contact() {
   const sizes = [{ s: 2, l: "Fine" }, { s: 4, l: "Medium" }, { s: 8, l: "Bold" }, { s: 16, l: "Chunky" }];
 
   return (
-    <section id="contact" style={{ padding: "120px 32px 60px", background: V2.dark, color: V2.paper, borderTop: `1px solid ${V2.rule}` }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto" }}>
+    <section id="contact" className="px-5 pt-[72px] pb-12 md:px-8 md:pt-[120px] md:pb-[60px]" style={{ background: V2.dark, color: V2.paper, borderTop: `1px solid ${V2.rule}` }}>
+      <div className="mx-auto max-w-[1320px]">
         <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 24 }}>§05 ──── GET·IN·TOUCH</div>
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(72px,12vw,200px)", fontWeight: 500, lineHeight: 0.85, letterSpacing: -5, margin: 0 }}>
           DRAW<br /><span style={{ color: V2.accent }}>SOMETHING</span><br />TOGETHER.
@@ -82,11 +83,12 @@ export default function Contact() {
           onMouseDown={start} onMouseMove={move} onMouseUp={end} onMouseLeave={end}
           onTouchStart={start} onTouchMove={move} onTouchEnd={end}
           data-cursor="crosshair"
-          style={{ display: "block", width: "100%", height: 460, marginTop: 24, background: "#2a2a28", border: "1px solid #333", touchAction: "none" }} />
+          className="block w-full h-80 mt-6 md:h-[460px]"
+          style={{ background: "#2a2a28", border: "1px solid #333", touchAction: "none" }} />
 
-        <div style={{ marginTop: 60, display: "grid", gridTemplateColumns: "repeat(4,1fr)", borderTop: "1px solid rgba(255,255,255,0.2)", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em" }}>
+        <div className="mt-10 md:mt-[60px] grid grid-cols-2 md:grid-cols-4" style={{ borderTop: "1px solid rgba(255,255,255,0.2)", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em" }}>
           {[["EMAIL", "hello@prerna.studio"], ["INSTAGRAM", "@prerna.studio"], ["READ.CV", "read.cv/prerna"], ["LINKEDIN", "in/prerna-studio"]].map(([k, v], i) => (
-            <div key={k} style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.2)" : "none", padding: "24px 16px" }}>
+            <div key={k} className={`border-solid border-white/20 px-4 py-6 ${["border-r", "md:border-r", "border-r border-t md:border-t-0", "border-t md:border-t-0"][i]}`}>
               <div style={{ opacity: 0.5, marginBottom: 12 }}>{k}</div>
               <div style={{ fontFamily: FP.body, fontSize: 16, letterSpacing: 0, fontWeight: 500 }}>{v}</div>
             </div>

@@ -1,4 +1,6 @@
+'use client';
 import { useState, useEffect, useRef, Fragment } from 'react';
+import Link from 'next/link';
 
 const PL = {
   bg: "#f0eee9",
@@ -22,7 +24,7 @@ const FP = {
 
 const PL_MAX = 1180;
 function Container({ children, style = {} }) {
-  return <div style={{ maxWidth: PL_MAX, margin: "0 auto", padding: "0 32px", width: "100%", ...style }}>{children}</div>;
+  return <div className="mx-auto w-full px-5 md:px-8" style={{ maxWidth: PL_MAX, ...style }}>{children}</div>;
 }
 
 function SectionMark({ num, label, light = false }) {
@@ -42,17 +44,17 @@ function CaseNav() {
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 10, background: `${PL.bg}ee`, backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", borderBottom: `1px solid ${PL.ruleSoft}` }}>
       <Container style={{ padding: "16px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: PL.ink, fontFamily: "inherit" }} data-cursor="hover">
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: PL.ink, fontFamily: "inherit" }} data-cursor="hover">
           <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 28, height: 28, background: PL.ink, color: PL.bg, fontFamily: FP.display, fontSize: 16, fontWeight: 600, borderRadius: 4 }}>P</span>
           <span style={{ display: "flex", flexDirection: "column", lineHeight: 1, alignItems: "flex-start" }}>
             <span style={{ fontFamily: FP.display, fontSize: 15, fontWeight: 600 }}>Prerna</span>
             <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.18em", color: PL.muted, marginTop: 3 }}>PRODUCT DESIGNER</span>
           </span>
-        </a>
+        </Link>
         <div style={{ display: "flex", alignItems: "center", gap: 20, fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.18em" }}>
-          <a href="#case-stage" style={{ color: PL.muted, textDecoration: "none" }} data-cursor="hover">← PREV · DISCOVERY</a>
+          <Link href="/case-stage" style={{ color: PL.muted, textDecoration: "none" }} data-cursor="hover">← PREV · DISCOVERY</Link>
           <span style={{ color: PL.rule }}>|</span>
-          <a href="#" style={{ color: PL.ink2, textDecoration: "none" }} data-cursor="hover">INDEX</a>
+          <Link href="/" style={{ color: PL.ink2, textDecoration: "none" }} data-cursor="hover">INDEX</Link>
         </div>
       </Container>
     </div>
@@ -61,7 +63,7 @@ function CaseNav() {
 
 function CaseHero() {
   return (
-    <section style={{ padding: "80px 0 60px", borderBottom: `1px solid ${PL.rule}` }}>
+    <section className="pt-12 pb-10 md:pt-20 md:pb-[60px]" style={{borderBottom: `1px solid ${PL.rule}` }}>
       <Container>
         <div style={{ display: "flex", gap: 16, alignItems: "center", fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 32 }}>
           <span style={{ width: 24, height: 1, background: PL.rule }} />
@@ -69,21 +71,21 @@ function CaseHero() {
           <span style={{ width: 24, height: 1, background: PL.rule }} />
           <span>2024 · CASE 02</span>
         </div>
-        <h1 style={{ fontFamily: FP.display, fontSize: "clamp(44px, 6.4vw, 96px)", fontWeight: 500, lineHeight: 0.95, letterSpacing: -2.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
+        <h1 style={{ fontFamily: FP.display, fontSize: "clamp(40px, 6.4vw, 96px)", fontWeight: 500, lineHeight: 0.95, letterSpacing: -2.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           Turning <span style={{ fontStyle: "italic" }}>static</span> into<br />
           <span style={{ color: PL.accent }}>intent.</span>
         </h1>
-        <p style={{ fontSize: 19, lineHeight: 1.5, color: PL.ink2, maxWidth: 720, marginTop: 32 }}>
+        <p className="text-base md:text-[19px]" style={{lineHeight: 1.5, color: PL.ink2, maxWidth: 720, marginTop: 32 }}>
           Redesigning STAGE's homepage poster from a passive visual into an interactive preview experience that drives content discovery.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, marginTop: 56, borderTop: `1px solid ${PL.rule}`, borderBottom: `1px solid ${PL.rule}` }}>
+        <div className="grid grid-cols-2 md:grid-cols-4" style={{gap: 0, marginTop: 56, borderTop: `1px solid ${PL.rule}`, borderBottom: `1px solid ${PL.rule}` }}>
           {[
             ["ROLE", "Product Designer"],
             ["TEAM", "2 PM · 1 Eng · Me"],
             ["TIMELINE", "1d design · 7d test"],
             ["IMPACT", "+19.6% preview→content"],
           ].map(([k, v], i) => (
-            <div key={k} style={{ padding: "20px 24px", borderRight: i < 3 ? `1px solid ${PL.rule}` : "none" }}>
+            <div key={k} className={`border-solid border-[#d4d2cc] px-6 py-5 ${["border-r", "md:border-r", "border-r border-t md:border-t-0", "border-t md:border-t-0"][i]}`}>
               <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 8 }}>{k}</div>
               <div style={{ fontSize: 15, color: PL.ink, fontWeight: 500 }}>{v}</div>
             </div>
@@ -97,7 +99,7 @@ function CaseHero() {
 function SplitPhoneHero() {
   return (
     <div style={{ position: "relative" }}>
-      <div style={{ width: 288, aspectRatio: "9 / 19", background: "#000", borderRadius: 36, padding: 7, position: "relative", boxShadow: "0 60px 120px rgba(0,0,0,0.6), 0 20px 40px rgba(0,0,0,0.4)" }}>
+      <div style={{ width: 288, maxWidth: "100%", aspectRatio: "9 / 19", background: "#000", borderRadius: 36, padding: 7, position: "relative", boxShadow: "0 60px 120px rgba(0,0,0,0.6), 0 20px 40px rgba(0,0,0,0.4)" }}>
         <div style={{ width: "100%", height: "100%", background: "#0c0a09", borderRadius: 30, position: "relative", overflow: "hidden", color: "#fff" }}>
           <img src="/platter_image_1.jpg" alt="STAGE app — static poster morphing into motion preview" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           <div style={{
@@ -122,13 +124,13 @@ function SplitPhoneHero() {
 
 function HeroVisual() {
   return (
-    <section style={{ padding: "72px 0", background: "#0c0a09", borderBottom: `1px solid ${PL.ink}` }}>
+    <section className="py-12 md:py-[72px]" style={{background: "#0c0a09", borderBottom: `1px solid ${PL.ink}` }}>
       <Container>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 32 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 32, gap: 12, flexWrap: "wrap" }}>
           <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: "#888" }}>FIG. 00 · BEFORE / AFTER · ONE FRAME, TWO STATES</div>
           <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#666" }}>STATIC ─────→ MOTION</div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 64, alignItems: "center" }}>
+        <div className="grid grid-cols-1 gap-9 items-center justify-items-center md:grid-cols-[auto_1fr] md:gap-16 md:justify-items-stretch">
           <SplitPhoneHero />
           <div style={{ display: "flex", flexDirection: "column", gap: 36, color: "#ddd" }}>
             <div>
@@ -221,7 +223,7 @@ function OldPlatterAnnotated() {
         </div>
         <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#c97c7c" }}>CAPTURE · STAGE · v3.4</div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 0 }}>
+      <div className="grid grid-cols-1 md:grid-cols-[auto_1fr]" style={{gap: 0 }}>
         <div style={{ padding: "32px 36px", background: "#fafaf6", borderRight: `1px solid ${PL.rule}`, position: "relative" }}>
           <AnnotatedPhone />
         </div>
@@ -238,7 +240,7 @@ function OldPlatterAnnotated() {
           ))}
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", borderTop: `1px solid ${PL.rule}`, background: "#fbf8f3" }}>
+      <div className="grid grid-cols-1 md:grid-cols-3" style={{borderTop: `1px solid ${PL.rule}`, background: "#fbf8f3" }}>
         {[["HOMEPAGE PIXELS", "~38%", PL.ink], ["CONSUMPTION STARTS", "19.6%", PL.bad], ["GAP (PIXELS − STARTS)", "−18.4 pts", PL.bad]].map(([k, v, c], i) => (
           <div key={k} style={{ padding: "16px 24px", borderRight: i < 2 ? `1px solid ${PL.rule}` : "none", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted }}>{k}</span>
@@ -264,8 +266,8 @@ function ConversionFunnel() {
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         {steps.map((s, i) => (
-          <div key={s.label} style={{ display: "grid", gridTemplateColumns: "180px 1fr 90px", gap: 16, alignItems: "center" }}>
-            <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", color: PL.ink, textTransform: "uppercase" }}>{String(i + 1).padStart(2, "0")} · {s.label}</div>
+          <div key={s.label} className="grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-1.5 md:grid-cols-[180px_1fr_90px] md:gap-4">
+            <div className="col-span-2 md:col-auto" style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", color: PL.ink, textTransform: "uppercase" }}>{String(i + 1).padStart(2, "0")} · {s.label}</div>
             <div style={{ position: "relative", height: 30, background: PL.bg, border: `1px solid ${PL.ruleSoft}` }}>
               <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${s.value}%`, background: s.color, transition: "width 1.2s cubic-bezier(0.22,1,0.36,1)" }} />
               {i > 0 && <div style={{ position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)", fontFamily: FP.mono, fontSize: 10, color: PL.bad, letterSpacing: "0.15em" }}>−{(steps[i - 1].value - s.value).toFixed(1)} pts</div>}
@@ -289,13 +291,13 @@ function ProblemSection() {
     { n: "C", k: "Dead-end experience", body: "No preview layer. Users had to commit to a full page before knowing if content was worth their time." },
   ];
   return (
-    <section style={{ padding: "100px 0", background: PL.bg }}>
+    <section className="py-16 md:py-[100px]" style={{background: PL.bg }}>
       <Container>
         <SectionMark num="01" label="The problem" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 880 }}>
           The <span style={{ background: PL.highlight, padding: "0 8px" }}>19.6%</span> problem
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56, marginTop: 40, alignItems: "start" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 40, alignItems: "start" }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>STAGE's homepage poster looked good but wasn't doing its job. Only a fraction of users who saw it actually tapped through to content. The data told a clear story: the poster was <em>wallpaper</em>, not a doorway.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Three things were broken. None of them flashy on their own — together, they explained the leak.</p>
         </div>
@@ -307,7 +309,7 @@ function ProblemSection() {
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>FIG. 02 · PLATTER CONVERSION FUNNEL · BASELINE</div>
           <ConversionFunnel />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 56 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{gap: 16, marginTop: 56 }}>
           {issues.map((it) => (
             <div key={it.n} style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 28 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.muted, marginBottom: 24 }}>
@@ -356,18 +358,18 @@ function BenchmarkSection() {
     { hue: "#4a3a5a" }, { hue: "#5a3a3a" }, { hue: "#3a5a5a" }, { hue: "#5a5a3a" },
   ];
   return (
-    <section style={{ padding: "100px 0", background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
       <Container>
         <SectionMark num="02" label="The benchmark" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           What everyone <span style={{ fontStyle: "italic" }}>else</span> missed
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56, marginTop: 32 }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32 }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I audited eight major streaming and content platforms. Every single one treated homepage posters the same way — big image, text overlay, CTA button. The pattern was so universal that nobody was questioning whether it worked.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The gap wasn't visual quality. It was <strong>interaction cost</strong>. Users were being asked to make a decision with almost no information. The poster gave them a mood, not a reason.</p>
         </div>
         <div style={{ marginTop: 56, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>FIG. 03 · COMPETITOR AUDIT · TOP-OF-HOMEPAGE TREATMENT</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+        <div className="grid grid-cols-2 md:grid-cols-4" style={{gap: 12 }}>
           {peers.map((p, i) => <PeerCard key={i} idx={i} {...p} />)}
         </div>
         <div style={{ marginTop: 32, padding: "20px 24px", background: PL.paper, border: `1px solid ${PL.rule}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -454,20 +456,20 @@ function HypothesisSection() {
     { label: "INTENT", sub: "Tap · commit", glyph: "intent" },
   ];
   return (
-    <section style={{ padding: "100px 0", background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
       <Container>
         <SectionMark num="03" label="The hypothesis" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           What if the poster wasn't a <span style={{ fontStyle: "italic" }}>poster</span> — but a <span style={{ color: PL.accent }}>preview?</span>
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56, marginTop: 32, alignItems: "start" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32, alignItems: "start" }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Instead of a static frame, I explored turning the platter into a short, motion-driven preview — giving users a taste of the content before they committed. The goal was to reduce the decision cost to near zero.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Research on the <strong>Mere Exposure Effect</strong> suggests that even brief, passive exposure increases familiarity and preference. A 2-3 second motion preview could do two things at once: inform the decision <em>and</em> build subconscious interest.</p>
         </div>
         <div style={{ marginTop: 64 }}>
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 24 }}>FIG. 04 · THE BET</div>
-          <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr auto 1fr", gap: 0, alignItems: "center" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 40, gap: 56, alignItems: "center" }}>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr]" style={{gap: 0, alignItems: "center" }}>
               {nodes.map((n, i) => (
                 <Fragment key={n.label}>
                   <ChainNode {...n} highlight={i === 2} />
@@ -482,7 +484,7 @@ function HypothesisSection() {
             <ExposureMini />
           </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 48 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{gap: 16, marginTop: 48 }}>
           <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 28, borderLeft: `3px solid ${PL.accent}` }}>
             <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.accent, marginBottom: 12 }}>↳ THE BET</div>
             <div style={{ fontFamily: FP.display, fontSize: 22, fontWeight: 500, lineHeight: 1.2, letterSpacing: -0.4, color: PL.ink }}>Static → Motion → Intent.</div>
@@ -624,7 +626,7 @@ function ConstraintCard({ n, title, body, vis }) {
         </div>
       </div>
       <div style={{ fontSize: 13.5, lineHeight: 1.55, color: PL.ink2, marginBottom: 18, maxWidth: 480 }}>{body}</div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, border: `1px solid ${PL.ruleSoft}`, background: PL.bg }}>
+      <div className="grid grid-cols-1 md:grid-cols-2" style={{gap: 10, border: `1px solid ${PL.ruleSoft}`, background: PL.bg }}>
         <DoDontCell kind={vis} side="dont" />
         <DoDontCell kind={vis} side="do" />
       </div>
@@ -640,14 +642,14 @@ function ConstraintsSection() {
     { n: "04", title: "Browsing speed", body: "Users scroll fast. A preview has to register in 1-2s or it's wasted effort. Long animations are a liability.", vis: "speed" },
   ];
   return (
-    <section style={{ padding: "100px 0", background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
       <Container>
         <SectionMark num="04" label="The constraints" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           Designing around <span style={{ fontStyle: "italic" }}>real</span> constraints
         </h2>
         <p style={{ fontSize: 17, lineHeight: 1.6, color: PL.ink2, maxWidth: 720, marginTop: 24 }}>This wasn't a blank canvas. The homepage has rules, and the poster has to survive them all.</p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 56 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{gap: 16, marginTop: 56 }}>
           {constraints.map((c) => <ConstraintCard key={c.n} {...c} />)}
         </div>
       </Container>
@@ -711,7 +713,7 @@ function ContentRun({ kind, label, detail }) {
         <span>{label.toUpperCase()}</span>
         <span>{detail.toUpperCase()}</span>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+      <div className="grid grid-cols-1 md:grid-cols-2" style={{gap: 8 }}>
         <ContentMiniFrame ratio="2 / 3" kind={kind} state="static" />
         <ContentMiniFrame ratio="1 / 1" kind={kind} state="motion" />
       </div>
@@ -724,19 +726,19 @@ function ContentRun({ kind, label, detail }) {
 
 function SolutionSection() {
   return (
-    <section style={{ padding: "100px 0", background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
       <Container>
         <SectionMark num="05" label="The solution" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           A <span style={{ color: PL.accent }}>two-ratio</span> system
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56, marginTop: 32, alignItems: "start" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32, alignItems: "start" }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I designed a system that adapts the poster into two states — a <strong>static ratio</strong> for the default view and a <strong>motion ratio</strong> for the preview — and transitions between them seamlessly.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The static state works exactly like the current poster: clean, art-directed, optimized for the hero slot. The motion state activates on pause, expanding the aspect ratio to accommodate a video preview without disrupting layout.</p>
         </div>
         <div style={{ marginTop: 64 }}>
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 24 }}>FIG. 05 · TWO-RATIO SPEC · 2:3 → 1:1</div>
-          <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 48, display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 40, alignItems: "center" }}>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 48, gap: 40, alignItems: "center" }}>
             <SpecFrame ratio="2 / 3" label="STATE 01 · STATIC" dims="2 : 3" detail="DEFAULT · POSTER" />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
               <span style={{ fontFamily: FP.mono, fontSize: 32, color: PL.accent, lineHeight: 1 }}>→</span>
@@ -748,7 +750,7 @@ function SolutionSection() {
         </div>
         <div style={{ marginTop: 56 }}>
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>FIG. 06 · SYSTEM ACROSS CONTENT TYPES · 3 RUNS</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{gap: 16 }}>
             <ContentRun kind="face" label="Face-heavy" detail="Romance · drama" />
             <ContentRun kind="landscape" label="Landscape-heavy" detail="Action · scenic" />
             <ContentRun kind="text" label="Text-heavy" detail="News · title card" />
@@ -808,14 +810,14 @@ function PrinciplesSection() {
     { n: "03", title: "Tap", principle: "Reward, not interruption", caption: "Motion only triggers when behavior suggests interest. It respects the browsing flow instead of hijacking it.", state: "tap" },
   ];
   return (
-    <section style={{ padding: "100px 0", background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
       <Container>
         <SectionMark num="06" label="Why this works" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 880 }}>
           Three frames of an interaction
         </h2>
         <p style={{ fontSize: 17, lineHeight: 1.6, color: PL.ink2, maxWidth: 720, marginTop: 24 }}>The principles guiding the design, read as a storyboard rather than a list.</p>
-        <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "1fr auto 1fr auto 1fr", gap: 0, alignItems: "stretch" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr]" style={{ marginTop: 48, gap: 0, alignItems: "stretch" }}>
           {frames.map((f, i) => (
             <Fragment key={f.n}>
               <StoryFrame frame={f} />
@@ -886,18 +888,18 @@ function ImpactSection() {
     { value: 15, label: "BOUNCE REDUCTION", caption: "Users stayed on the homepage longer and explored more before leaving.", before: 38, after: 23 },
   ];
   return (
-    <section style={{ padding: "100px 0", background: PL.ink, color: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{background: PL.ink, color: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
       <Container>
         <SectionMark num="07" label="Results" light />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, maxWidth: 880 }}>
           The directional <span style={{ color: PL.accent }}>signal</span>
         </h2>
         <p style={{ fontSize: 17, lineHeight: 1.6, color: "#aaa", maxWidth: 720, marginTop: 24 }}>I tested the redesigned poster against the original across a 7-day A/B test on the STAGE platform.</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 64 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{gap: 16, marginTop: 64 }}>
           {metrics.map((m) => <MetricCard key={m.label} {...m} />)}
         </div>
         <div style={{ marginTop: 32, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#666", textAlign: "right" }}>↳ 7-DAY A/B TEST · ~12K USERS · STAGE PLATFORM</div>
-        <div style={{ marginTop: 56, padding: "32px 0 0", borderTop: "1px solid #2a2a2a", display: "grid", gridTemplateColumns: "auto 1fr", gap: 32 }}>
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr]" style={{ marginTop: 56, padding: "32px 0 0", borderTop: "1px solid #2a2a2a", gap: 32 }}>
           <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: "#777" }}>HONEST · NOTE</div>
           <div style={{ fontSize: 15, lineHeight: 1.55, color: "#bbb", maxWidth: 820 }}>
             These are early numbers from a single test cycle. The sample is meaningful but not conclusive — I'd want to run this across content categories and geographies before calling it proven. But the directional signal is strong: <span style={{ color: PL.bg }}>reducing decision cost works.</span>
@@ -945,20 +947,20 @@ function SketchClip({ kind, label }) {
 
 function FutureSection() {
   return (
-    <section style={{ padding: "100px 0", background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
+    <section className="py-16 md:py-[100px]" style={{background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
       <Container>
         <SectionMark num="08" label="What I'd do differently" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           Already thinking <span style={{ fontStyle: "italic" }}>ahead</span>
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, marginTop: 32, alignItems: "start" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{gap: 56, marginTop: 32, alignItems: "start" }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>If I had more time, I'd explore <strong>personalization in the preview layer</strong> — showing different clips to different user segments based on watch history. The current system is one-size-fits-all, which limits how far the conversion gains can scale.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I'd also want to <strong>stress-test the motion on lower-end devices</strong> and slower connections. A preview that buffers is worse than no preview at all.</p>
         </div>
         <div style={{ marginTop: 64 }}>
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>SKETCH · PERSONALIZED PREVIEW (CONCEPT)</div>
           <div style={{ background: PL.paper, border: `1px dashed ${PL.rule}`, padding: 36 }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 32, alignItems: "center" }}>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{gap: 32, alignItems: "center" }}>
               <ProfileBlob name="USER · A" tags={["Drama", "Family", "Hindi"]} />
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
                 <div style={{ fontFamily: FP.mono, fontSize: 22, color: PL.accent, lineHeight: 1 }}>→</div>
@@ -986,7 +988,7 @@ function FutureSection() {
 
 function CaseFooter() {
   return (
-    <section style={{ padding: "100px 0 60px", background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
+    <section className="pt-16 pb-12 md:pt-[100px] md:pb-[60px]" style={{background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
       <Container>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 24 }}>
           <div>
@@ -994,13 +996,13 @@ function CaseFooter() {
             <div style={{ fontFamily: FP.display, fontSize: 36, fontWeight: 500, letterSpacing: -1, color: PL.ink }}>Thanks for reading.</div>
           </div>
           <div style={{ display: "flex", gap: 12 }}>
-            <a href="#" data-cursor="hover" style={{ padding: "12px 20px", border: `1px solid ${PL.ink}`, color: PL.ink, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 500 }}>← All work</a>
-            <a href="#contact" data-cursor="hover" style={{ padding: "12px 20px", background: PL.accent, color: PL.paper, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 600 }}>Get in touch →</a>
+            <Link href="/" data-cursor="hover" style={{ padding: "12px 20px", border: `1px solid ${PL.ink}`, color: PL.ink, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 500 }}>← All work</Link>
+            <Link href="/#contact" data-cursor="hover" style={{ padding: "12px 20px", background: PL.accent, color: PL.paper, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 600 }}>Get in touch →</Link>
           </div>
         </div>
         <div style={{ marginTop: 56, paddingTop: 24, borderTop: `1px solid ${PL.ruleSoft}`, display: "flex", justifyContent: "space-between", fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted }}>
           <span>PRERNA · 2024</span>
-          <a href="#case-stage" style={{ color: PL.ink2, textDecoration: "none" }} data-cursor="hover">← PREV · STAGE · DISCOVERY</a>
+          <Link href="/case-stage" style={{ color: PL.ink2, textDecoration: "none" }} data-cursor="hover">← PREV · STAGE · DISCOVERY</Link>
         </div>
       </Container>
     </section>

@@ -1,5 +1,7 @@
+'use client';
 import { useRef, useState } from 'react';
-import { V2, FP, SPRING, PROJECTS } from '../data';
+import Link from 'next/link';
+import { V2, FP, SPRING, PROJECTS } from '@/lib/data';
 import Reveal from './Reveal';
 
 function GenerativeVisual({ i, accent }) {
@@ -50,15 +52,15 @@ function WorkCard({ p, i }) {
   const onLeave = () => { setTilt({ rx: 0, ry: 0, mx: 50, my: 50 }); setHover(false); };
 
   return (
-    <a href={p.href || "#"} onClick={(e) => !p.href && e.preventDefault()}
+    <Link href={p.href || "#"} onClick={(e) => !p.href && e.preventDefault()}
       ref={ref} onMouseMove={onMove} onMouseEnter={() => setHover(true)} onMouseLeave={onLeave}
       style={{ display: "block", textDecoration: "none", color: "inherit", perspective: 1500, position: "relative" }} data-cursor="hover">
-      <div style={{ background: V2.paper, border: `1px solid ${V2.rule}`, display: "grid", gridTemplateColumns: "56px 1.1fr 1fr", minHeight: 280, transformStyle: "preserve-3d", transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)${hover ? " translateY(-6px)" : ""}`, transition: `transform 0.35s ${SPRING}, box-shadow 0.35s`, boxShadow: hover ? "0 24px 48px rgba(0,0,0,0.18)" : "0 2px 4px rgba(0,0,0,0.04)", position: "relative", overflow: "hidden" }}>
+      <div className="grid grid-cols-1 min-h-0 relative overflow-hidden md:grid-cols-[56px_1.1fr_1fr] md:min-h-[280px]" style={{ background: V2.paper, border: `1px solid ${V2.rule}`, transformStyle: "preserve-3d", transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)${hover ? " translateY(-6px)" : ""}`, transition: `transform 0.35s ${SPRING}, box-shadow 0.35s`, boxShadow: hover ? "0 24px 48px rgba(0,0,0,0.18)" : "0 2px 4px rgba(0,0,0,0.04)" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at ${tilt.mx}% ${tilt.my}%, ${p.accent}22, transparent 50%)`, pointerEvents: "none", opacity: hover ? 1 : 0, transition: "opacity 0.3s" }} />
-        <div style={{ borderRight: `1px solid ${V2.rule}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", padding: "24px 0", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", color: V2.muted }}>
-          <span style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>{p.n} · {p.year}</span>
+        <div className="flex items-center justify-start flex-row md:flex-col border-solid border-[#1a1816] border-b md:border-b-0 md:border-r px-5 py-3.5 md:px-0 md:py-6" style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", color: V2.muted }}>
+          <span className="rotate-0 [writing-mode:horizontal-tb] md:rotate-180 md:[writing-mode:vertical-rl]">{p.n} · {p.year}</span>
         </div>
-        <div style={{ padding: 32, borderRight: `1px solid ${V2.rule}`, display: "flex", flexDirection: "column", gap: 24, position: "relative", zIndex: 2 }}>
+        <div className="flex flex-col gap-6 relative z-[2] px-5 py-6 md:p-8 md:border-r md:border-solid md:border-[#1a1816]">
           <div>
             <div style={{ fontFamily: FP.display, fontSize: "clamp(36px,3vw,52px)", fontWeight: 500, lineHeight: 0.95, letterSpacing: -1.5, color: V2.ink }}>{p.title.toUpperCase()}</div>
             <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: p.accent, marginTop: 14 }}>{p.tags.map(t => t.toUpperCase()).join(" · ")}</div>
@@ -66,20 +68,20 @@ function WorkCard({ p, i }) {
           <div style={{ borderTop: `1px solid ${V2.ruleSoft}`, paddingTop: 16, fontSize: 14, lineHeight: 1.55, color: V2.ink2 }}>{p.subtitle}</div>
           <div style={{ marginTop: "auto", fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted }}>ROLE — {p.role.toUpperCase()}</div>
         </div>
-        <div style={{ position: "relative", overflow: "hidden", background: V2.bg }}>
+        <div className="relative overflow-hidden min-h-[200px] md:min-h-0 border-t border-solid border-[#1a1816] md:border-t-0" style={{ background: V2.bg }}>
           <GenerativeVisual i={i} accent={p.accent} />
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
 export default function WorkSection() {
   return (
-    <section id="work" style={{ padding: "120px 32px", background: V2.bgDeep, borderTop: `1px solid ${V2.rule}` }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto" }}>
+    <section id="work" className="px-5 py-[72px] md:px-8 md:py-[120px]" style={{ background: V2.bgDeep, borderTop: `1px solid ${V2.rule}` }}>
+      <div className="mx-auto max-w-[1320px]">
         <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: V2.muted, marginBottom: 32 }}>§01 ──── SELECTED WORK</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 80 }}>
+        <div className="flex flex-col gap-12 md:gap-20">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.n} delay={i * 80}><WorkCard p={p} i={i} /></Reveal>
           ))}

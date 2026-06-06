@@ -1,5 +1,6 @@
+'use client';
 import { useState, useEffect, useRef } from 'react';
-import { V2, FP, SPRING } from '../data';
+import { V2, FP, SPRING } from '@/lib/data';
 
 const PAIRS = [
   { action: "understand users", method: "research & interviews" },
@@ -113,24 +114,19 @@ export default function Stack() {
   return (
     <section
       id="skills"
+      className="min-h-screen flex items-center justify-center px-5 py-[100px] md:px-8 md:py-40"
       style={{
         background: "#1a1a18",
         color: "#e8e6e0",
         borderTop: `1px solid ${V2.rule}`,
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "160px 32px",
       }}
     >
-      <div style={{ maxWidth: 1320, margin: "0 auto", width: "100%", textAlign: "center" }}>
-        <div style={{
+      <div className="mx-auto w-full max-w-[1320px] text-center">
+        <div className="mb-12 md:mb-20" style={{
           fontFamily: FP.mono,
           fontSize: 11,
           letterSpacing: "0.25em",
           color: "rgba(232, 230, 224, 0.45)",
-          marginBottom: 80,
           textTransform: "uppercase",
         }}>
           §03 ──── How I work
@@ -140,7 +136,7 @@ export default function Stack() {
           style={{
             fontFamily: SYNE,
             fontWeight: 700,
-            fontSize: "clamp(2rem, 6vw, 4rem)",
+            fontSize: "clamp(1.5rem, 5.5vw, 4rem)",
             lineHeight: 1.25,
             letterSpacing: "-0.01em",
             margin: 0,

@@ -1,5 +1,6 @@
+'use client';
 import { useRef } from 'react';
-import { SPRING } from '../data';
+import { SPRING } from '@/lib/data';
 
 export default function MagneticWord({ children, strength = 0.3, color }) {
   const ref = useRef(null);

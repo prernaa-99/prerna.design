@@ -1,5 +1,6 @@
+'use client';
 import { useRef, useEffect } from 'react';
-import { V2, FP } from '../data';
+import { V2, FP } from '@/lib/data';
 import DesignerCharacter from './DesignerCharacter';
 
 function DeskScene() {
@@ -67,13 +68,13 @@ export default function About() {
   return (
     <section
       id="about"
+      className="px-5 py-16 md:px-8 md:py-24"
       style={{
-        padding: "6rem 32px",
         background: V2.bg,
         borderTop: `1px solid ${V2.rule}`,
       }}
     >
-      <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+      <div className="mx-auto max-w-[1180px]">
         <div
           style={{
             fontFamily: FP.mono,
@@ -86,7 +87,7 @@ export default function About() {
           §02 ──── ABOUT
         </div>
 
-        <div className="about-grid">
+        <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2 md:gap-12">
           <div>
             <h2
               style={{

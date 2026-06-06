@@ -1,5 +1,6 @@
+'use client';
 import { useRef, useState, useEffect } from 'react';
-import { V2, SPRING } from '../data';
+import { V2, SPRING } from '@/lib/data';
 
 export default function CustomCursor() {
   const dotRef = useRef(null);

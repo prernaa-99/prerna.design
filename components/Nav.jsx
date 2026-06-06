@@ -1,5 +1,6 @@
+'use client';
 import { useState, useEffect } from 'react';
-import { V2, FP, SPRING } from '../data';
+import { V2, FP, SPRING } from '@/lib/data';
 
 export default function Nav() {
   const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -43,7 +44,7 @@ export default function Nav() {
 
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 50, background: `${V2.bg}ee`, backdropFilter: "blur(10px)", borderBottom: `1px solid ${V2.ruleSoft}` }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "16px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div className="mx-auto max-w-[1320px] flex justify-between items-center px-5 py-3 md:px-8 md:py-4">
         <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
           <a
             href="#hero"
@@ -55,7 +56,7 @@ export default function Nav() {
             <span style={{ fontFamily: FP.display, fontSize: 15, fontWeight: 600 }}>Prerna</span>
           </a>
 
-          <nav style={{ display: "flex", gap: 4 }}>
+          <nav className="hidden md:flex" style={{ gap: 4 }}>
             {items.map(([id, l]) => {
               const lit = isLit(id);
               return (
