@@ -759,16 +759,16 @@ function FilterRow({ label, value, options, onChange }) {
 }
 
 function FilterDemo() {
-  const [filters, setFilters] = useState({ mood: "Romance", lang: "Hindi", theme: "Family" });
+  const [filters, setFilters] = useState({ mood: "Romance", lang: "Rajasthani", format: "Movies" });
   const moods = ["Romance", "Action", "Emotional", "Comedy", "Drama"];
-  const langs = ["Hindi", "Bhojpuri", "Punjabi", "Haryanvi"];
-  const themes = ["Family", "Friendship", "Revenge", "Devotion"];
+  const langs = ["Rajasthani", "Haryanvi", "Bhojpuri"];
+  const formats = ["Movies", "Webseries"];
 
   const content = {
-    "Romance·Hindi": ["Pyaar Ke Liye", "Dil Se Dil Tak", "Suhaag Raat", "Mehndi Raat"],
+    "Romance·Rajasthani": ["Pyaar Ke Liye", "Dil Se Dil Tak", "Suhaag Raat", "Mehndi Raat"],
     "Romance·Bhojpuri": ["Bhojpuri Pyaar", "Saiyan Ji", "Lal Ghaghra", "Gaon Ki Gori"],
-    "Action·Hindi": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don", "Khoon Ka Badla"],
-    "Emotional·Hindi": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah", "Maati Ke Laal"],
+    "Action·Rajasthani": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don", "Khoon Ka Badla"],
+    "Emotional·Rajasthani": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah", "Maati Ke Laal"],
   };
   const key = `${filters.mood}·${filters.lang}`;
   const results = content[key] || ["Aakhri Vidaai", "Sher Aur Sava Sher", "Maati Ke Laal", "Gaon Ki Beti"];
@@ -781,7 +781,7 @@ function FilterDemo() {
       </div>
       <FilterRow label="MOOD" value={filters.mood} options={moods} onChange={(v) => setFilters({ ...filters, mood: v })} />
       <FilterRow label="LANGUAGE" value={filters.lang} options={langs} onChange={(v) => setFilters({ ...filters, lang: v })} />
-      <FilterRow label="THEME" value={filters.theme} options={themes} onChange={(v) => setFilters({ ...filters, theme: v })} />
+      <FilterRow label="FORMAT" value={filters.format} options={formats} onChange={(v) => setFilters({ ...filters, format: v })} />
 
       <div style={{ borderTop: `1px solid ${SC.ruleSoft}`, marginTop: 16, paddingTop: 16 }}>
         <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, marginBottom: 12 }}>
