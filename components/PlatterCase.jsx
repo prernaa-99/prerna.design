@@ -162,46 +162,15 @@ function HeroVisual() {
   );
 }
 
-function Marker({ letter, top, left }) {
-  return (
-    <div style={{ position: "absolute", top, left, transform: "translate(-50%, -50%)", zIndex: 3 }}>
-      <div style={{ width: 28, height: 28, borderRadius: "50%", background: PL.bad, color: "#fff", fontFamily: FP.mono, fontSize: 13, fontWeight: 500, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(196,69,69,0.4)" }}>{letter}</div>
-    </div>
-  );
-}
-
 function AnnotatedPhone() {
   return (
     <div style={{ position: "relative", width: 220 }}>
-      <div style={{ width: 220, aspectRatio: "9 / 19", background: "#000", borderRadius: 26, padding: 6, opacity: 0.85, filter: "saturate(0.55) contrast(1.05)" }}>
+      <div style={{ width: 220, aspectRatio: "9 / 19", background: "#000", borderRadius: 26, padding: 6 }}>
         <div style={{ width: "100%", height: "100%", background: "#0c0a09", borderRadius: 21, position: "relative", overflow: "hidden" }}>
+          <img src="/2_home_old.png" alt="STAGE old homepage — static poster with no preview layer" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 60, height: 14, background: "#000", borderRadius: 8 }} />
-          <div style={{ position: "absolute", top: 30, left: 12, right: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <div style={{ fontFamily: FP.display, color: "#fff", fontSize: 13, fontWeight: 700 }}>STAGE</div>
-            <div style={{ color: "#bbb", fontSize: 10 }}>⌕</div>
-          </div>
-          <div style={{ position: "absolute", top: 54, left: 10, right: 10, display: "flex", gap: 9, fontSize: 8, color: "#888" }}>
-            <span style={{ color: "#fff", borderBottom: `1.5px solid ${PL.accent}`, paddingBottom: 3 }}>Home</span>
-            <span>Movies</span>
-            <span>Serials</span>
-            <span>Live</span>
-          </div>
-          <div style={{ position: "absolute", top: 76, left: 10, right: 10, aspectRatio: "2 / 3", background: "linear-gradient(180deg, #4d2218, #1a0c0a)", borderRadius: 5 }}>
-            <div style={{ position: "absolute", top: "32%", left: "50%", transform: "translate(-50%,-50%)", width: 44, height: 44, borderRadius: "50%", background: "radial-gradient(circle, #c8856a, #6a2c1c)" }} />
-            <div style={{ position: "absolute", bottom: 8, left: 8, fontFamily: FP.display, fontSize: 11, fontWeight: 700, color: "#fff" }}>Aakhri</div>
-          </div>
-          <div style={{ position: "absolute", top: "61.5%", left: 10, right: 10, height: 18, background: "rgba(255,255,255,0.92)", borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 8, fontWeight: 600, color: "#111" }}>Watch now</div>
-          <div style={{ position: "absolute", top: "72%", left: 10, fontFamily: FP.body, fontSize: 8, color: "#aaa" }}>Continue watching</div>
-          <div style={{ position: "absolute", top: "75%", left: 10, right: 10, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 4 }}>
-            {[0, 1, 2].map((i) => (
-              <div key={i} style={{ aspectRatio: "3 / 4", background: "linear-gradient(135deg, #2a2a2a, #1a1a1a)", borderRadius: 2 }} />
-            ))}
-          </div>
         </div>
       </div>
-      <Marker letter="A" top="22%" left="35%" />
-      <Marker letter="B" top="59%" left="62%" />
-      <Marker letter="C" top="66%" left="22%" />
     </div>
   );
 }
@@ -326,27 +295,15 @@ function ProblemSection() {
   );
 }
 
-function PeerCard({ idx, hue }) {
+function PeerCard({ idx, name, src }) {
   return (
-    <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 10, filter: "saturate(0.4)" }}>
+    <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 10 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8, fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>
-        <span>0{idx + 1}</span>
+        <span>0{idx + 1} · {name}</span>
         <span>STATIC</span>
       </div>
       <div style={{ aspectRatio: "9 / 16", background: "#0c0a09", borderRadius: 3, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: 6, left: 6, right: 6, display: "flex", justifyContent: "space-between" }}>
-          <div style={{ width: 24, height: 4, background: "rgba(255,255,255,0.3)", borderRadius: 2 }} />
-          <div style={{ width: 10, height: 4, background: "rgba(255,255,255,0.3)", borderRadius: 2 }} />
-        </div>
-        <div style={{ position: "absolute", top: 18, left: 5, right: 5, aspectRatio: "2 / 3", background: `linear-gradient(180deg, ${hue}, #181818)`, borderRadius: 2 }}>
-          <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%,-50%)", width: "45%", aspectRatio: "1/1", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%)" }} />
-          <div style={{ position: "absolute", bottom: 8, left: 6, right: 6, height: 5, background: "rgba(255,255,255,0.7)", borderRadius: 1 }} />
-          <div style={{ position: "absolute", bottom: 18, left: 6, width: "55%", height: 4, background: "rgba(255,255,255,0.5)", borderRadius: 1 }} />
-        </div>
-        <div style={{ position: "absolute", bottom: 18, left: 5, right: 5, height: 9, background: "rgba(255,255,255,0.85)", borderRadius: 2 }} />
-        <div style={{ position: "absolute", bottom: 6, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 2 }}>
-          {[0, 1, 2].map((j) => <div key={j} style={{ width: j === 0 ? 6 : 2, height: 2, borderRadius: 1, background: j === 0 ? "#fff" : "rgba(255,255,255,0.4)" }} />)}
-        </div>
+        <img src={src} alt={`${name} homepage — static poster treatment`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
       </div>
     </div>
   );
@@ -354,8 +311,10 @@ function PeerCard({ idx, hue }) {
 
 function BenchmarkSection() {
   const peers = [
-    { hue: "#3a4a6a" }, { hue: "#6a3a4a" }, { hue: "#5a4a3a" }, { hue: "#3a5a4a" },
-    { hue: "#4a3a5a" }, { hue: "#5a3a3a" }, { hue: "#3a5a5a" }, { hue: "#5a5a3a" },
+    { name: "Hotstar", src: "/hotstar.png" },
+    { name: "JioCinema", src: "/jiocenima.png" },
+    { name: "Netflix", src: "/netflix.png" },
+    { name: "SonyLIV", src: "/sonyliv.png" },
   ];
   return (
     <section className="py-16 md:py-[100px]" style={{background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
@@ -365,16 +324,12 @@ function BenchmarkSection() {
           What everyone <span style={{ fontStyle: "italic" }}>else</span> missed
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32 }}>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I audited eight major streaming and content platforms. Every single one treated homepage posters the same way — big image, text overlay, CTA button. The pattern was so universal that nobody was questioning whether it worked.</p>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I audited four major streaming and content platforms. Every single one treated homepage posters the same way — big image, text overlay, CTA button. The pattern was so universal that nobody was questioning whether it worked.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The gap wasn't visual quality. It was <strong>interaction cost</strong>. Users were being asked to make a decision with almost no information. The poster gave them a mood, not a reason.</p>
         </div>
         <div style={{ marginTop: 56, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>FIG. 03 · COMPETITOR AUDIT · TOP-OF-HOMEPAGE TREATMENT</div>
         <div className="grid grid-cols-2 md:grid-cols-4" style={{gap: 12 }}>
           {peers.map((p, i) => <PeerCard key={i} idx={i} {...p} />)}
-        </div>
-        <div style={{ marginTop: 32, padding: "20px 24px", background: PL.paper, border: `1px solid ${PL.rule}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ fontFamily: FP.display, fontSize: 24, fontWeight: 500, letterSpacing: -0.5, color: PL.ink }}>8 platforms. Same pattern. Same problem.</div>
-          <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted }}>↳ NOBODY WAS QUESTIONING IT</div>
         </div>
       </Container>
     </section>
@@ -675,55 +630,6 @@ function SpecFrame({ ratio, label, dims, detail, highlight = false }) {
   );
 }
 
-function ContentMiniFrame({ ratio, kind, state }) {
-  const bg = kind === "face"
-    ? "linear-gradient(180deg, #4d2218, #1a0c0a)"
-    : kind === "landscape"
-      ? "linear-gradient(180deg, #3a4a3a, #142018)"
-      : "linear-gradient(180deg, #2a2a4a, #14142a)";
-  return (
-    <div style={{ width: "100%", aspectRatio: ratio, background: bg, borderRadius: 4, position: "relative", overflow: "hidden", border: state === "motion" ? `1px solid ${PL.accent}` : "none" }}>
-      {kind === "face" && (
-        <div style={{ position: "absolute", top: state === "motion" ? "32%" : "26%", left: "50%", transform: "translate(-50%,-50%)", width: 36, height: 36, borderRadius: "50%", background: "radial-gradient(circle, #c8856a, #6a2c1c)" }} />
-      )}
-      {kind === "landscape" && (
-        <div>
-          <div style={{ position: "absolute", left: 0, right: 0, top: state === "motion" ? "55%" : "60%", height: 1, background: "#8aa68a" }} />
-          <div style={{ position: "absolute", left: "20%", top: state === "motion" ? "40%" : "45%", width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderBottom: "12px solid #5a7a5a" }} />
-          <div style={{ position: "absolute", left: "55%", top: state === "motion" ? "45%" : "50%", width: 0, height: 0, borderLeft: "14px solid transparent", borderRight: "14px solid transparent", borderBottom: "16px solid #4a6a4a" }} />
-        </div>
-      )}
-      {kind === "text" && (
-        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: 4, padding: 6 }}>
-          <div style={{ width: "70%", height: 5, background: "rgba(255,255,255,0.85)", borderRadius: 1 }} />
-          <div style={{ width: "50%", height: 4, background: "rgba(255,255,255,0.5)", borderRadius: 1 }} />
-          <div style={{ width: "60%", height: 4, background: "rgba(255,255,255,0.5)", borderRadius: 1 }} />
-        </div>
-      )}
-      {state === "motion" && <div style={{ position: "absolute", top: 4, right: 4, width: 6, height: 6, borderRadius: "50%", background: PL.accent }} />}
-      <div style={{ position: "absolute", bottom: 4, left: 4, fontFamily: FP.mono, fontSize: 7, letterSpacing: "0.15em", color: "rgba(255,255,255,0.6)" }}>{state === "motion" ? "1:1" : "2:3"}</div>
-    </div>
-  );
-}
-
-function ContentRun({ kind, label, detail }) {
-  return (
-    <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 18 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted }}>
-        <span>{label.toUpperCase()}</span>
-        <span>{detail.toUpperCase()}</span>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2" style={{gap: 8 }}>
-        <ContentMiniFrame ratio="2 / 3" kind={kind} state="static" />
-        <ContentMiniFrame ratio="1 / 1" kind={kind} state="motion" />
-      </div>
-      <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.18em", color: PL.muted }}>
-        <span>2:3</span><span style={{ color: PL.accent }}>→ 1:1</span>
-      </div>
-    </div>
-  );
-}
-
 function SolutionSection() {
   return (
     <section className="py-16 md:py-[100px]" style={{background: PL.bg, borderTop: `1px solid ${PL.rule}` }}>
@@ -746,14 +652,6 @@ function SolutionSection() {
               <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>≈ 2.5s</span>
             </div>
             <SpecFrame ratio="1 / 1" label="STATE 02 · MOTION" dims="1 : 1" detail="ACTIVE · PREVIEW" highlight />
-          </div>
-        </div>
-        <div style={{ marginTop: 56 }}>
-          <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>FIG. 06 · SYSTEM ACROSS CONTENT TYPES · 3 RUNS</div>
-          <div className="grid grid-cols-1 md:grid-cols-3" style={{gap: 16 }}>
-            <ContentRun kind="face" label="Face-heavy" detail="Romance · drama" />
-            <ContentRun kind="landscape" label="Landscape-heavy" detail="Action · scenic" />
-            <ContentRun kind="text" label="Text-heavy" detail="News · title card" />
           </div>
         </div>
       </Container>
