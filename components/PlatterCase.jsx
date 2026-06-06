@@ -612,11 +612,11 @@ function ConstraintsSection() {
   );
 }
 
-function SpecFrame({ ratio, label, dims, detail, highlight = false }) {
+function SpecFrame({ ratio, label, dims, detail, src, highlight = false }) {
   return (
     <div style={{ position: "relative", padding: "32px 56px 32px 32px" }}>
-      <div style={{ width: "100%", aspectRatio: ratio, background: highlight ? "radial-gradient(120% 80% at 30% 40%, #8a3a26 0%, #2b1410 60%, #0e0908 100%)" : "linear-gradient(180deg, #4d2218, #1a0c0a)", borderRadius: 6, position: "relative", overflow: "hidden", border: highlight ? `2px solid ${PL.accent}` : "none" }}>
-        <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%,-50%)", width: 70, height: 70, borderRadius: "50%", background: "radial-gradient(circle, #c8856a, #6a2c1c)" }} />
+      <div style={{ width: "100%", aspectRatio: ratio, background: "#0e0908", borderRadius: 6, position: "relative", overflow: "hidden", border: highlight ? `2px solid ${PL.accent}` : "none" }}>
+        <img src={src} alt={`${label} — ${detail}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         {highlight && <div style={{ position: "absolute", top: 8, right: 8, width: 8, height: 8, borderRadius: "50%", background: PL.accent }} />}
       </div>
       <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -645,13 +645,16 @@ function SolutionSection() {
         <div style={{ marginTop: 64 }}>
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 24 }}>FIG. 05 · TWO-RATIO SPEC · 2:3 → 1:1</div>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 48, gap: 40, alignItems: "center" }}>
-            <SpecFrame ratio="2 / 3" label="STATE 01 · STATIC" dims="2 : 3" detail="DEFAULT · POSTER" />
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-              <span style={{ fontFamily: FP.mono, fontSize: 32, color: PL.accent, lineHeight: 1 }}>→</span>
+            <SpecFrame ratio="2 / 3" label="STATE 01 · STATIC" dims="2 : 3" detail="DEFAULT · POSTER" src="/2_poster_preview.png" />
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+              <svg width="32" height="14" viewBox="0 0 32 14" fill="none" stroke={PL.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="2" y1="7" x2="28" y2="7" />
+                <polyline points="23 2 29 7 23 12" />
+              </svg>
               <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>ON DWELL</span>
               <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>≈ 2.5s</span>
             </div>
-            <SpecFrame ratio="1 / 1" label="STATE 02 · MOTION" dims="1 : 1" detail="ACTIVE · PREVIEW" highlight />
+            <SpecFrame ratio="2 / 3" label="STATE 02 · MOTION" dims="1 : 1" detail="ACTIVE · PREVIEW" src="/2_video_preview.png" highlight />
           </div>
         </div>
       </Container>
