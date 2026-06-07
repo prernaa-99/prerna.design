@@ -772,6 +772,8 @@ function FilterDemo() {
     "Mystery·Haryanvi·Movies": ["Khoon Ki Holi", "Raat Ka Raaz"],
     "Thriller·Haryanvi·Movies": ["Jaat Ka Badla", "Khaap", "Aakhri Daav"],
     "Mystery·Bhojpuri·Movies": ["Raaz Ki Baat", "Andheri Raat", "Khoji"],
+    "Mystery·Bhojpuri·Webseries": ["Raaz", "Kaala Sach", "Gawah"],
+    "Romance·Bhojpuri·Webseries": ["Pyaar Ki Dor", "Saajan", "Ishq Bhojpuri"],
   };
   const key = `${filters.mood}·${filters.lang}·${filters.format}`;
   const results = content[key] || ["Aakhri Vidaai", "Sher Aur Sava Sher", "Maati Ke Laal", "Gaon Ki Beti"];
