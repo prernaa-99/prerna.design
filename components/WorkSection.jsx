@@ -38,6 +38,27 @@ function GenerativeVisual({ i, accent }) {
   );
 }
 
+function CoverVisual({ src, title, hover, accent }) {
+  return (
+    <>
+      {/* ambient backdrop — same shot, blurred + darkened so the cell glows the app's own colors */}
+      <img src={src} alt="" aria-hidden="true"
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(34px) brightness(0.5) saturate(1.2)", transform: "scale(1.25)" }} />
+      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(130% 110% at 50% -10%, ${accent}30, rgba(12,10,9,0.82))` }} />
+      {/* the screen as a framed device, anchored high and bleeding off the bottom edge */}
+      <img src={src} alt={`${title} — product preview`} loading="lazy"
+        style={{
+          position: "absolute", left: "50%", top: "8%",
+          transform: `translateX(-50%) rotate(-1.5deg)${hover ? " translateY(-8px) scale(1.025)" : ""}`,
+          width: "clamp(168px, 36%, 240px)", height: "auto",
+          borderRadius: 20, border: "5px solid #0a0a0a",
+          boxShadow: "0 34px 70px rgba(0,0,0,0.55), 0 10px 24px rgba(0,0,0,0.4)",
+          transition: `transform 0.5s ${SPRING}`,
+        }} />
+    </>
+  );
+}
+
 function WorkCard({ p, i }) {
   const ref = useRef(null);
   const [tilt, setTilt] = useState({ rx: 0, ry: 0, mx: 50, my: 50 });
@@ -69,7 +90,18 @@ function WorkCard({ p, i }) {
           <div style={{ marginTop: "auto", fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted }}>ROLE — {p.role.toUpperCase()}</div>
         </div>
         <div className="relative overflow-hidden min-h-[200px] md:min-h-0 border-t border-solid border-[#1a1816] md:border-t-0" style={{ background: V2.bg }}>
-          <GenerativeVisual i={i} accent={p.accent} />
+          {p.cover ? (
+            <>
+              <CoverVisual src={p.cover} title={p.title} hover={hover} accent={p.accent} />
+              {p.href && (
+                <div style={{ position: "absolute", left: 16, bottom: 16, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#fff", display: "flex", alignItems: "center", gap: 8, opacity: hover ? 1 : 0.75, transition: "opacity 0.3s", pointerEvents: "none", zIndex: 2 }}>
+                  VIEW CASE <span style={{ transition: "transform 0.3s", transform: hover ? "translateX(4px)" : "none" }}>→</span>
+                </div>
+              )}
+            </>
+          ) : (
+            <GenerativeVisual i={i} accent={p.accent} />
+          )}
         </div>
       </div>
     </Link>
@@ -80,7 +112,7 @@ export default function WorkSection() {
   return (
     <section id="work" className="px-5 py-[72px] md:px-8 md:py-[120px]" style={{ background: V2.bgDeep, borderTop: `1px solid ${V2.rule}` }}>
       <div className="mx-auto max-w-[1320px]">
-        <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: V2.muted, marginBottom: 32 }}>§01 ──── SELECTED WORK</div>
+        <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: V2.muted, marginBottom: 32 }}>──── SELECTED WORK</div>
         <div className="flex flex-col gap-12 md:gap-20">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.n} delay={i * 80}><WorkCard p={p} i={i} /></Reveal>
