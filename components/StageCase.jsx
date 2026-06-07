@@ -771,6 +771,7 @@ function FilterDemo() {
     "Thriller·Rajasthani·Movies": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah", "Maati Ke Laal"],
     "Mystery·Haryanvi·Movies": ["Khoon Ki Holi", "Raat Ka Raaz"],
     "Thriller·Haryanvi·Movies": ["Jaat Ka Badla", "Khaap", "Aakhri Daav"],
+    "Mystery·Bhojpuri·Movies": ["Raaz Ki Baat", "Andheri Raat", "Khoji"],
   };
   const key = `${filters.mood}·${filters.lang}·${filters.format}`;
   const results = content[key] || ["Aakhri Vidaai", "Sher Aur Sava Sher", "Maati Ke Laal", "Gaon Ki Beti"];
