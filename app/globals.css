@@ -6,6 +6,15 @@
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 
+/* Border reset borrowed from Tailwind preflight (which we otherwise skip).
+   Without this, `border-solid` sets a solid style on all four sides while only
+   the side with an explicit width utility (e.g. `border-r`) gets 1px — the
+   remaining sides fall back to the browser default `medium` (~3px), producing
+   thick lines. Scoped to @layer base so border-width utilities still win. */
+@layer base {
+  *, *::before, *::after { border-width: 0; border-style: solid; }
+}
+
 /* ===========================================================================
    Site base & reset (migrated verbatim from src/index.css)
    =========================================================================== */

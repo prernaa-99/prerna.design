@@ -62,8 +62,6 @@ function SectionMark({ num, label }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: SC.muted, marginBottom: 24 }}>
       <span style={{ display: "inline-block", width: 32, height: 1, background: SC.rule }} />
-      <span>§{num}</span>
-      <span>·</span>
       <span>{label.toUpperCase()}</span>
     </div>
   );
@@ -560,7 +558,6 @@ function CollageVideoTile({ src, index }) {
         playsInline
         style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
       />
-      <div style={{ position: "absolute", top: 12, left: 12, fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.18em", color: "#fff", mixBlendMode: "difference", pointerEvents: "none" }}>{index} · VIDEO</div>
       <button
         onClick={toggle}
         aria-label={playing ? "Pause video" : "Play video"}
@@ -602,7 +599,6 @@ function CollageImageTile({ src, index }) {
       boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
     }}>
       <img src={src} alt="Field research — card sorting" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-      <div style={{ position: "absolute", top: 12, left: 12, fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.18em", color: "#fff", mixBlendMode: "difference", pointerEvents: "none" }}>{index} · PHOTO</div>
     </div>
   );
 }
@@ -937,8 +933,6 @@ function ImpactSection() {
       <Container>
         <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: SC.muted, marginBottom: 24 }}>
           <span style={{ display: "inline-block", width: 32, height: 1, background: "#444" }} />
-          <span>§05</span>
-          <span>·</span>
           <span>THE IMPACT</span>
         </div>
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, maxWidth: 880 }}>

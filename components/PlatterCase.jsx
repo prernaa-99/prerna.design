@@ -33,8 +33,6 @@ function SectionMark({ num, label, light = false }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: c, marginBottom: 24 }}>
       <span style={{ display: "inline-block", width: 32, height: 1, background: r }} />
-      <span>§{num}</span>
-      <span>·</span>
       <span>{label.toUpperCase()}</span>
     </div>
   );
@@ -69,7 +67,7 @@ function CaseHero() {
           <span style={{ width: 24, height: 1, background: PL.rule }} />
           <span>STAGE · OTT PLATFORM</span>
           <span style={{ width: 24, height: 1, background: PL.rule }} />
-          <span>2024 · CASE 02</span>
+          <span>2024</span>
         </div>
         <h1 style={{ fontFamily: FP.display, fontSize: "clamp(40px, 6.4vw, 96px)", fontWeight: 500, lineHeight: 0.95, letterSpacing: -2.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           Turning <span style={{ fontStyle: "italic" }}>static</span> into<br />
@@ -127,7 +125,7 @@ function HeroVisual() {
     <section className="py-12 md:py-[72px]" style={{background: "#0c0a09", borderBottom: `1px solid ${PL.ink}` }}>
       <Container>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 32, gap: 12, flexWrap: "wrap" }}>
-          <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: "#888" }}>FIG. 00 · BEFORE / AFTER · ONE FRAME, TWO STATES</div>
+          <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: "#888" }}>BEFORE / AFTER · ONE FRAME, TWO STATES</div>
           <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#666" }}>STATIC ─────→ MOTION</div>
         </div>
         <div className="grid grid-cols-1 gap-9 items-center justify-items-center md:grid-cols-[auto_1fr] md:gap-16 md:justify-items-stretch">
@@ -223,7 +221,7 @@ function OldPlatterAnnotated() {
 
 function ConversionFunnel() {
   const steps = [
-    { label: "Saw platter", value: 100, color: PL.ink2 },
+    { label: "Saw platter", value: 98, color: PL.ink2 },
     { label: "Tapped poster", value: 19.6, color: PL.bad },
     { label: "Reached content", value: 11.4, color: PL.bad },
   ];
@@ -246,8 +244,8 @@ function ConversionFunnel() {
         ))}
       </div>
       <div style={{ marginTop: 20, paddingTop: 16, borderTop: `1px dashed ${PL.rule}`, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.18em", color: PL.muted, display: "flex", justifyContent: "space-between" }}>
-        <span>↳ ~80% OF VIEWERS NEVER TAPPED THE HERO SLOT</span>
-        <span>SOURCE · INTERNAL ANALYTICS · 30D</span>
+        <span>↳ ~78% OF VIEWERS NEVER TAPPED THE HERO SLOT</span>
+        <span>SOURCE · INTERNAL ANALYTICS</span>
       </div>
     </div>
   );
@@ -271,11 +269,9 @@ function ProblemSection() {
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Three things were broken. None of them flashy on their own — together, they explained the leak.</p>
         </div>
         <div style={{ marginTop: 64 }}>
-          <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>FIG. 01 · OLD HOMEPAGE · ANNOTATED</div>
           <OldPlatterAnnotated />
         </div>
         <div style={{ marginTop: 56 }}>
-          <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>FIG. 02 · PLATTER CONVERSION FUNNEL · BASELINE</div>
           <ConversionFunnel />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3" style={{gap: 16, marginTop: 56 }}>
@@ -283,7 +279,6 @@ function ProblemSection() {
             <div key={it.n} style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 28 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.muted, marginBottom: 24 }}>
                 <span>ISSUE · {it.n}</span>
-                <span style={{ color: PL.bad }}>✕</span>
               </div>
               <div style={{ fontFamily: FP.display, fontSize: 22, fontWeight: 500, lineHeight: 1.15, letterSpacing: -0.4, color: PL.ink, marginBottom: 12 }}>{it.k}</div>
               <div style={{ fontSize: 14, lineHeight: 1.6, color: PL.ink2 }}>{it.body}</div>
@@ -300,7 +295,6 @@ function PeerCard({ idx, name, src }) {
     <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 10 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8, fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>
         <span>0{idx + 1} · {name}</span>
-        <span>STATIC</span>
       </div>
       <div style={{ aspectRatio: "9 / 16", background: "#0c0a09", borderRadius: 3, position: "relative", overflow: "hidden" }}>
         <img src={src} alt={`${name} homepage — static poster treatment`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
@@ -327,7 +321,7 @@ function BenchmarkSection() {
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I audited four major streaming and content platforms. Every single one treated homepage posters the same way — big image, text overlay, CTA button. The pattern was so universal that nobody was questioning whether it worked.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The gap wasn't visual quality. It was <strong>interaction cost</strong>. Users were being asked to make a decision with almost no information. The poster gave them a mood, not a reason.</p>
         </div>
-        <div style={{ marginTop: 56, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>FIG. 03 · COMPETITOR AUDIT · TOP-OF-HOMEPAGE TREATMENT</div>
+        <div style={{ marginTop: 56, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>COMPETITOR AUDIT · TOP-OF-HOMEPAGE TREATMENT</div>
         <div className="grid grid-cols-2 md:grid-cols-4" style={{gap: 12 }}>
           {peers.map((p, i) => <PeerCard key={i} idx={i} {...p} />)}
         </div>
@@ -422,7 +416,6 @@ function HypothesisSection() {
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Research on the <strong>Mere Exposure Effect</strong> suggests that even brief, passive exposure increases familiarity and preference. A 2-3 second motion preview could do two things at once: inform the decision <em>and</em> build subconscious interest.</p>
         </div>
         <div style={{ marginTop: 64 }}>
-          <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 24 }}>FIG. 04 · THE BET</div>
           <div className="grid grid-cols-1 md:grid-cols-2" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 40, gap: 56, alignItems: "center" }}>
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr]" style={{gap: 0, alignItems: "center" }}>
               {nodes.map((n, i) => (
@@ -576,7 +569,6 @@ function ConstraintCard({ n, title, body, vis }) {
     <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 24 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.muted, padding: "3px 7px", border: `1px solid ${PL.rule}` }}>C · {n}</span>
           <span style={{ fontFamily: FP.display, fontSize: 18, fontWeight: 500, letterSpacing: -0.3, color: PL.ink }}>{title}</span>
         </div>
       </div>
@@ -643,7 +635,6 @@ function SolutionSection() {
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The static state works exactly like the current poster: clean, art-directed, optimized for the hero slot. The motion state activates on pause, expanding the aspect ratio to accommodate a video preview without disrupting layout.</p>
         </div>
         <div style={{ marginTop: 64 }}>
-          <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: PL.muted, marginBottom: 24 }}>FIG. 05 · TWO-RATIO SPEC · 2:3 → 1:1</div>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 48, gap: 40, alignItems: "center" }}>
             <SpecFrame ratio="2 / 3" label="STATE 01 · STATIC" dims="2 : 3" detail="DEFAULT · POSTER" src="/2_poster_preview.png" />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
