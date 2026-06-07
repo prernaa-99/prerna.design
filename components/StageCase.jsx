@@ -769,6 +769,8 @@ function FilterDemo() {
     "Romance·Bhojpuri·Movies": ["Bhojpuri Pyaar", "Saiyan Ji", "Lal Ghaghra", "Gaon Ki Gori"],
     "Mystery·Rajasthani·Movies": ["Sher Ka Dil", "Dabangg Returns", "Mafia Don"],
     "Thriller·Rajasthani·Movies": ["Maa Ki Mamta", "Aakhri Vidaai", "Beti Ka Vivah", "Maati Ke Laal"],
+    "Mystery·Haryanvi·Movies": ["Khoon Ki Holi", "Raat Ka Raaz"],
+    "Thriller·Haryanvi·Movies": ["Jaat Ka Badla", "Khaap", "Aakhri Daav"],
   };
   const key = `${filters.mood}·${filters.lang}·${filters.format}`;
   const results = content[key] || ["Aakhri Vidaai", "Sher Aur Sava Sher", "Maati Ke Laal", "Gaon Ki Beti"];
