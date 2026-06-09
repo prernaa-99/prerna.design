@@ -30,12 +30,14 @@ export default function Hero() {
             style={{ aspectRatio: '1280 / 840', maxWidth: '1280px', width: 'auto', containerType: 'inline-size' }}
           >
         {/* faint PRERNA watermark band along the top */}
+        {/* watermark breaks out to the full viewport width while the
+            foreground composition stays at the 1280 canvas proportions */}
         <img
           src="/hero/watermark.svg"
           alt=""
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
-          style={{ width: '99.8%', height: '24.4%', zIndex: 1 }}
+          style={{ width: '100vw', height: 'auto', zIndex: 1 }}
         />
 
         {/* giant PRERNA wordmark */}
@@ -85,7 +87,7 @@ export default function Hero() {
             top: '56.4%',
             width: '24%',
             fontFamily: FP.body,
-            fontWeight: 700,
+            fontWeight: 500,
             fontSize: '1.25cqw',
             lineHeight: 1.3,
             color: NAVY,
@@ -117,7 +119,7 @@ export default function Hero() {
         {/* capabilities list (bottom-right) */}
         <div
           className="absolute flex flex-col items-start"
-          style={{ left: '80.4%', top: '52.7%', gap: '1.56cqw', zIndex: 5 }}
+          style={{ left: '80.4%', top: '52.7%', gap: '1.15cqw', zIndex: 5 }}
         >
           {CAPABILITIES.map((c) => (
             <span
@@ -125,8 +127,9 @@ export default function Hero() {
               className="whitespace-nowrap"
               style={{
                 fontFamily: FP.body,
-                fontWeight: c.active ? 600 : 400,
+                fontWeight: c.active ? 700 : 400,
                 fontSize: '1.5625cqw',
+                lineHeight: 1.15,
                 color: c.active ? NAVY : NAVY_MUTED,
               }}
             >
@@ -163,7 +166,7 @@ export default function Hero() {
 
         <p
           className="mt-4 m-0 max-w-[320px]"
-          style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 15, lineHeight: 1.4, color: NAVY }}
+          style={{ fontFamily: FP.body, fontWeight: 500, fontSize: 15, lineHeight: 1.4, color: NAVY }}
         >
           I turn user insights into intuitive digital products that drive engagement, conversion, and growth.
         </p>
@@ -184,7 +187,7 @@ export default function Hero() {
               key={c.label}
               style={{
                 fontFamily: FP.body,
-                fontWeight: c.active ? 600 : 400,
+                fontWeight: c.active ? 700 : 400,
                 fontSize: 15,
                 color: c.active ? NAVY : NAVY_MUTED,
               }}
