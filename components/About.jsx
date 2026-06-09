@@ -14,7 +14,7 @@ function DeskScene() {
       const dt = (t - t0) / 1000;
       ctx.fillStyle = "#2a2826"; ctx.fillRect(0, 0, W, H);
       const grad = ctx.createRadialGradient(W/2, H/2, 50, W/2, H/2, 350);
-      grad.addColorStop(0, "rgba(207,58,31,0.12)"); grad.addColorStop(1, "rgba(0,0,0,0)");
+      grad.addColorStop(0, "rgba(46,92,138,0.14)"); grad.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
       ctx.fillStyle = "#5c4438"; ctx.fillRect(0, 280, W, 100);
       ctx.fillStyle = "#3a2a22"; ctx.fillRect(0, 280, W, 4);
@@ -24,12 +24,12 @@ function DeskScene() {
       ctx.font = "11px monospace";
       ["const design = (problem) => {", "  return clarity + craft;", "};", "design(everything);", "// ship it"].forEach((line, i) => {
         const reveal = Math.min(line.length, Math.max(0, (dt * 12) % 60 - i * 8));
-        ctx.fillStyle = i === 3 ? "#cf3a1f" : "#a8d8a8";
+        ctx.fillStyle = i === 3 ? "#7ea8d6" : "#a8d8a8";
         ctx.fillText(line.slice(0, reveal), 200, 130 + i * 20);
       });
-      if (Math.floor(dt * 2) % 2 === 0) { ctx.fillStyle = "#cf3a1f"; ctx.fillRect(200, 222, 6, 12); }
+      if (Math.floor(dt * 2) % 2 === 0) { ctx.fillStyle = "#7ea8d6"; ctx.fillRect(200, 222, 6, 12); }
       ctx.fillStyle = "#e8dcc4"; ctx.fillRect(80, 240, 50, 50);
-      ctx.strokeStyle = "#cf3a1f"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(140, 265, 12, -Math.PI/2, Math.PI/2); ctx.stroke();
+      ctx.strokeStyle = "#7ea8d6"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(140, 265, 12, -Math.PI/2, Math.PI/2); ctx.stroke();
       ctx.strokeStyle = "rgba(255,255,255,0.4)"; ctx.lineWidth = 2;
       [0, 1, 2].forEach(i => {
         ctx.beginPath();

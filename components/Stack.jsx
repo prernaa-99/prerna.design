@@ -11,8 +11,8 @@ const PAIRS = [
   { action: "build confidence", method: "competitive analysis" },
 ];
 
-const ACCENT = "#c4462a";
-const STATIC_COLOR = "rgba(232, 230, 224, 0.85)";
+const ACCENT = "#7ea8d6"; // light steel blue — highlighted words on the dark navy panel
+const STATIC_COLOR = "rgba(238, 242, 247, 0.9)";
 const SYNE = "'Syne', 'Space Grotesk', sans-serif";
 
 // One animated slot — reserves width for its longest possible value
@@ -116,8 +116,8 @@ export default function Stack() {
       id="skills"
       className="min-h-screen flex items-center justify-center px-5 py-[100px] md:px-8 md:py-40"
       style={{
-        background: "#1a1a18",
-        color: "#e8e6e0",
+        background: V2.dark,
+        color: "#eef2f7",
         borderTop: `1px solid ${V2.rule}`,
       }}
     >
@@ -126,7 +126,7 @@ export default function Stack() {
           fontFamily: FP.mono,
           fontSize: 11,
           letterSpacing: "0.25em",
-          color: "rgba(232, 230, 224, 0.45)",
+          color: "rgba(238, 242, 247, 0.45)",
           textTransform: "uppercase",
         }}>
           §03 ──── How I work

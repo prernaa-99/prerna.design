@@ -1,83 +1,238 @@
 'use client';
-import { useState } from 'react';
-import { V2, FP, PRERNA_BIO } from '@/lib/data';
-import MagneticWord from './MagneticWord';
-import DesignerCharacter from './DesignerCharacter';
-import { useIsMobile } from '@/lib/useMediaQuery';
+import { FP } from '@/lib/data';
+
+// Hero palette — taken straight from the Figma design (portfoluo_2026, node 1:2).
+const HERO_BG = '#fcfcfc';
+const NAVY = '#1d2f46';
+const NAVY_MUTED = 'rgba(29,47,70,0.7)';
+
+const CAPABILITIES = [
+  { label: 'User Research', active: false },
+  { label: 'Product Design', active: true },
+  { label: 'Product Strategy', active: false },
+  { label: 'Experimentation', active: false },
+];
+
+const TOOLS = [
+  { name: 'Figma', icon: '/hero/tool-figma.png' },
+  { name: 'Procreate', icon: '/hero/tool-procreate.png' },
+  { name: 'Framer', icon: '/hero/tool-framer.png' },
+  { name: 'Adobe Suite', icon: '/hero/tool-adobe.png' },
+  { name: 'Rive', icon: '/hero/tool-rive.png' },
+  { name: 'LottieFiles', icon: '/hero/tool-lottie.png' },
+];
+
+function Ticker() {
+  return (
+    <div className="mx-auto max-w-[1280px] px-5 md:px-8 py-2">
+      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:justify-between md:flex-nowrap">
+        {TOOLS.map((t) => (
+          <div key={t.name} className="flex items-center gap-2 shrink-0">
+            <img
+              src={t.icon}
+              alt=""
+              aria-hidden
+              className="h-[22px] w-auto md:h-[26px] object-contain"
+            />
+            <span
+              style={{ fontFamily: FP.body, fontWeight: 600, color: NAVY }}
+              className="text-[16px] md:text-[20px] whitespace-nowrap"
+            >
+              {t.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
-  const isMobile = useIsMobile();
-  const [clicks, setClicks] = useState(0);
-  const [waving, setWaving] = useState(false);
-  const [flash, setFlash] = useState(false);
-
-  const onCharClick = () => {
-    const n = clicks + 1;
-    setClicks(n);
-    if (n >= 5) {
-      setWaving(true); setFlash(true);
-      setTimeout(() => setFlash(false), 300);
-      setTimeout(() => { setWaving(false); setClicks(0); }, 1600);
-    }
-  };
-
-  const lines = ["DESIGN", "FOR THE", "EDGES", "OF A", "PRODUCT."];
+  const goContact = () =>
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section
-      id="hero"
-      className="relative px-5 py-10 md:px-8 md:py-20"
-    >
-      {flash && <div style={{ position: "fixed", inset: 0, background: V2.accent, opacity: 0.4, zIndex: 9990, pointerEvents: "none", animation: "v2-flash 0.3s" }} />}
-
-      <div className="grid grid-cols-1 gap-10 items-center md:grid-cols-[1.2fr_1fr] md:gap-8 mx-auto max-w-[1320px]">
-        <div>
-          <h1
-            className="text-[clamp(2.5rem,10vw,4rem)] md:text-[clamp(3.5rem,7vw,6rem)] leading-[0.95] font-medium tracking-[-0.03em] m-0"
-            style={{
-              fontFamily: FP.display,
-              color: V2.ink,
-            }}
-          >
-            {lines.map((line, i) => (
-              <span key={i}>
-                {line.split(" ").map((w, j) => (
-                  <span key={j}>
-                    <MagneticWord color={line === "EDGES" ? V2.accent : V2.ink}>{w}</MagneticWord>
-                    {j < line.split(" ").length - 1 && " "}
-                  </span>
-                ))}
-                {i < lines.length - 1 && <br />}
-              </span>
-            ))}
-          </h1>
-
+    <section id="hero" className="relative overflow-hidden" style={{ background: HERO_BG }}>
+      {/* ===================== DESKTOP STAGE (md+) ===================== */}
+      {/* A 1280×840 art-directed canvas. Children are positioned by % of the
+          canvas; type sizes use cqw (container-query width) so the whole
+          composition scales proportionally and caps at the 1280 max-width. */}
+      <div className="hidden md:flex md:flex-col" style={{ height: 'calc(100svh - 61px)' }}>
+        <div className="flex-1 min-h-0 w-full flex items-center justify-center">
           <div
-            className="flex flex-col gap-2 mt-6 pt-4 max-w-[560px] md:flex-row md:gap-6 md:items-start"
-            style={{
-              borderTop: `1px solid ${V2.rule}`,
-            }}
+            className="relative h-full"
+            style={{ aspectRatio: '1280 / 840', maxWidth: '1280px', width: 'auto', containerType: 'inline-size' }}
           >
-            <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted, minWidth: 56, lineHeight: 1.6 }}>BIO ↗</div>
-            <div style={{ fontSize: 14, lineHeight: 1.6, color: V2.ink2 }}>{PRERNA_BIO}</div>
+        {/* faint PRERNA watermark band along the top */}
+        <img
+          src="/hero/watermark.svg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
+          style={{ width: '99.8%', height: '24.4%', zIndex: 1 }}
+        />
+
+        {/* giant PRERNA wordmark */}
+        <p
+          aria-label="Prerna"
+          className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap m-0"
+          style={{
+            top: '8.7%',
+            fontFamily: FP.heroDisplay,
+            fontWeight: 700,
+            fontSize: '15.78cqw',
+            color: NAVY,
+            zIndex: 2,
+          }}
+        >
+          PRERNA
+        </p>
+
+        {/* portrait — crops to the top of the source image and fades out below */}
+        <div
+          className="absolute overflow-hidden"
+          style={{ left: '26.17%', top: '22.14%', width: '47.42%', height: '78.57%', zIndex: 3 }}
+        >
+          <img
+            src="/hero/portrait.png"
+            alt="Prerna"
+            className="block w-full h-auto"
+          />
+        </div>
+
+        {/* gradient that fades the portrait into the background */}
+        <div
+          className="pointer-events-none absolute left-0 w-full"
+          style={{
+            top: '51.2%',
+            height: '49.5%',
+            background: 'linear-gradient(to bottom, rgba(252,252,252,0) 0%, #fcfcfc 100%)',
+            zIndex: 4,
+          }}
+        />
+
+        {/* tagline */}
+        <p
+          className="absolute m-0"
+          style={{
+            left: '7.81%',
+            top: '56.4%',
+            width: '24%',
+            fontFamily: FP.body,
+            fontWeight: 700,
+            fontSize: '1.25cqw',
+            lineHeight: 1.3,
+            color: NAVY,
+            zIndex: 5,
+          }}
+        >
+          I turn user insights into intuitive digital products that drive engagement, conversion, and growth.
+        </p>
+
+        {/* // HIRE ME → */}
+        <button
+          onClick={goContact}
+          data-cursor="hover"
+          className="absolute flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer"
+          style={{
+            left: '7.81%',
+            top: '69.2%',
+            fontFamily: FP.body,
+            fontWeight: 700,
+            fontSize: '1.5625cqw',
+            color: NAVY,
+            zIndex: 5,
+          }}
+        >
+          <span className="whitespace-nowrap">{'// HIRE ME'}</span>
+          <span aria-hidden>→</span>
+        </button>
+
+        {/* capabilities list (bottom-right) */}
+        <div
+          className="absolute flex flex-col items-start"
+          style={{ left: '80.4%', top: '52.7%', gap: '1.56cqw', zIndex: 5 }}
+        >
+          {CAPABILITIES.map((c) => (
+            <span
+              key={c.label}
+              className="whitespace-nowrap"
+              style={{
+                fontFamily: FP.body,
+                fontWeight: c.active ? 600 : 400,
+                fontSize: '1.5625cqw',
+                color: c.active ? NAVY : NAVY_MUTED,
+              }}
+            >
+              {c.label}
+            </span>
+          ))}
+            </div>
           </div>
         </div>
+        <Ticker />
+      </div>
 
-        <div
-          className="flex items-center justify-center relative"
-          onClick={onCharClick}
-          data-cursor="hover"
+      {/* ===================== MOBILE STACK (< md) ===================== */}
+      <div className="md:hidden px-5 pt-12 pb-4">
+        <p
+          aria-label="Prerna"
+          className="text-center m-0 leading-none"
+          style={{
+            fontFamily: FP.heroDisplay,
+            fontWeight: 700,
+            fontSize: 'clamp(2.75rem, 18vw, 5rem)',
+            color: NAVY,
+          }}
         >
-          <DesignerCharacter size={isMobile ? 240 : 360} intensity={1} />
-          {clicks > 0 && clicks < 5 && (
-            <div style={{ position: "absolute", bottom: 0, fontFamily: FP.mono, fontSize: 10, color: V2.muted, letterSpacing: "0.2em" }}>
-              {"●".repeat(clicks)}{"○".repeat(5 - clicks)}
-            </div>
-          )}
-          {waving && (
-            <div style={{ position: "absolute", top: 8, right: 8, fontFamily: FP.mono, fontSize: 10, color: V2.accent, letterSpacing: "0.2em" }}>↳ HI!</div>
-          )}
+          PRERNA
+        </p>
+
+        <div className="relative mt-2 mx-auto max-w-[420px] overflow-hidden" style={{ height: '46vh' }}>
+          <img src="/hero/portrait.png" alt="Prerna" className="block w-full h-auto" />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
+            style={{ background: 'linear-gradient(to bottom, rgba(252,252,252,0) 0%, #fcfcfc 100%)' }}
+          />
         </div>
+
+        <p
+          className="mt-4 m-0 max-w-[320px]"
+          style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 15, lineHeight: 1.4, color: NAVY }}
+        >
+          I turn user insights into intuitive digital products that drive engagement, conversion, and growth.
+        </p>
+
+        <button
+          onClick={goContact}
+          data-cursor="hover"
+          className="mt-4 flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer"
+          style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 18, color: NAVY }}
+        >
+          <span className="whitespace-nowrap">{'// HIRE ME'}</span>
+          <span aria-hidden>→</span>
+        </button>
+
+        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1">
+          {CAPABILITIES.map((c) => (
+            <span
+              key={c.label}
+              style={{
+                fontFamily: FP.body,
+                fontWeight: c.active ? 600 : 400,
+                fontSize: 15,
+                color: c.active ? NAVY : NAVY_MUTED,
+              }}
+            >
+              {c.label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* mobile ticker */}
+      <div className="md:hidden">
+        <Ticker />
       </div>
     </section>
   );

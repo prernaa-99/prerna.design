@@ -4,7 +4,7 @@ import { V2, FP, SPRING } from '@/lib/data';
 
 export default function Contact() {
   const cvs = useRef(null);
-  const [color, setColor] = useState("#cf3a1f");
+  const [color, setColor] = useState("#2e5c8a");
   const [size, setSize] = useState(4);
   const drawing = useRef(false);
   const last = useRef({ x: 0, y: 0 });
@@ -51,7 +51,7 @@ export default function Contact() {
     const a = document.createElement("a"); a.href = cvs.current.toDataURL("image/png"); a.download = "draw-with-prerna.png"; a.click();
   };
 
-  const colors = ["#cf3a1f", "#f3f1ea", "#e89642", "#3a9b5c", "#4a7fb8"];
+  const colors = ["#2e5c8a", "#7ea8d6", "#f3f1ea", "#3a9b5c", "#1d2f46"];
   const sizes = [{ s: 2, l: "Fine" }, { s: 4, l: "Medium" }, { s: 8, l: "Bold" }, { s: 16, l: "Chunky" }];
 
   return (

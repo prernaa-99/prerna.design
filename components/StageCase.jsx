@@ -3,15 +3,15 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const SC = {
-  bg: "#f0eee9",
-  bgDeep: "#e8e6e0",
+  bg: "#fcfcfc",
+  bgDeep: "#f1f4f8",
   paper: "#ffffff",
-  ink: "#1a1a1a",
-  ink2: "#3d3d3d",
-  muted: "#8a8a85",
-  rule: "#d4d2cc",
-  ruleSoft: "#e0ddd6",
-  accent: "#C8553D",
+  ink: "#1d2f46",
+  ink2: "#34496a",
+  muted: "#6b7a91",
+  rule: "#d4dbe5",
+  ruleSoft: "#e6ebf1",
+  accent: "#2e5c8a",
   good: "#3a9b5c",
   bad: "#c44545",
   highlight: "#fdf3a8",
@@ -109,7 +109,7 @@ function CaseHero() {
             ["TIMELINE", "4 weeks"],
             ["IMPACT", "+30% viewing growth"],
           ].map(([k, v], i) => (
-            <div key={k} className={`border-solid border-[#d4d2cc] px-6 py-5 ${["border-r", "md:border-r", "border-r border-t md:border-t-0", "border-t md:border-t-0"][i]}`}>
+            <div key={k} className={`border-solid border-[#d4dbe5] px-6 py-5 ${["border-r", "md:border-r", "border-r border-t md:border-t-0", "border-t md:border-t-0"][i]}`}>
               <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, marginBottom: 8 }}>{k}</div>
               <div style={{ fontSize: 15, color: SC.ink, fontWeight: 500 }}>{v}</div>
             </div>
@@ -128,7 +128,7 @@ function PhoneFrame({ src, alt, caption }) {
           width: "100%",
           maxWidth: 240,
           aspectRatio: "9 / 19.5",
-          background: "#0a0a0a",
+          background: "#0c1320",
           borderRadius: 36,
           padding: 6,
           boxShadow:
@@ -298,7 +298,7 @@ function BeforeAfterCompare() {
             alignItems: "center",
             gap: 8,
             padding: "6px 12px",
-            background: "#F4F2EE",
+            background: "#f1f4f8",
             borderRadius: 999,
             fontSize: 13,
             color: SC.ink,
@@ -900,7 +900,7 @@ function ImpactBar({ label, value, caption }) {
   }, [value]);
 
   return (
-    <div ref={ref} style={{ background: "#0e0e0e", border: "1px solid #2a2a2a", padding: 32 }}>
+    <div ref={ref} style={{ background: "#0e1622", border: "1px solid #27323f", padding: 32 }}>
       <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: SC.muted, marginBottom: 28 }}>{label}</div>
       <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 32 }}>
         <span style={{ fontFamily: FP.display, fontSize: 96, fontWeight: 500, lineHeight: 0.9, letterSpacing: -3, color: SC.accent }}>
@@ -909,7 +909,7 @@ function ImpactBar({ label, value, caption }) {
         <span style={{ fontFamily: FP.display, fontSize: 48, fontWeight: 500, color: SC.accent }}>%</span>
         <span style={{ fontFamily: FP.mono, fontSize: 12, letterSpacing: "0.2em", color: SC.muted, marginLeft: 8 }}>↑</span>
       </div>
-      <div style={{ height: 8, background: "#2a2a2a", position: "relative", marginBottom: 12 }}>
+      <div style={{ height: 8, background: "#27323f", position: "relative", marginBottom: 12 }}>
         <div style={{
           position: "absolute", left: 0, top: 0, bottom: 0,
           width: `${v / 50 * 100}%`,

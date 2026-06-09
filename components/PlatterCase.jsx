@@ -3,15 +3,15 @@ import { useState, useEffect, useRef, Fragment } from 'react';
 import Link from 'next/link';
 
 const PL = {
-  bg: "#f0eee9",
-  bgDeep: "#e8e6e0",
+  bg: "#fcfcfc",
+  bgDeep: "#f1f4f8",
   paper: "#ffffff",
-  ink: "#1a1a1a",
-  ink2: "#3d3d3d",
-  muted: "#8a8a85",
-  rule: "#d4d2cc",
-  ruleSoft: "#e0ddd6",
-  accent: "#C8553D",
+  ink: "#1d2f46",
+  ink2: "#34496a",
+  muted: "#6b7a91",
+  rule: "#d4dbe5",
+  ruleSoft: "#e6ebf1",
+  accent: "#2e5c8a",
   good: "#3a9b5c",
   bad: "#c44545",
   highlight: "#fdf3a8",
@@ -28,8 +28,8 @@ function Container({ children, style = {} }) {
 }
 
 function SectionMark({ num, label, light = false }) {
-  const c = light ? "#9c9c97" : PL.muted;
-  const r = light ? "#3a3a38" : PL.rule;
+  const c = light ? "#8595a8" : PL.muted;
+  const r = light ? "#2a3a52" : PL.rule;
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: c, marginBottom: 24 }}>
       <span style={{ display: "inline-block", width: 32, height: 1, background: r }} />
@@ -83,7 +83,7 @@ function CaseHero() {
             ["TIMELINE", "1d design · 7d test"],
             ["IMPACT", "+19.6% preview→content"],
           ].map(([k, v], i) => (
-            <div key={k} className={`border-solid border-[#d4d2cc] px-6 py-5 ${["border-r", "md:border-r", "border-r border-t md:border-t-0", "border-t md:border-t-0"][i]}`}>
+            <div key={k} className={`border-solid border-[#d4dbe5] px-6 py-5 ${["border-r", "md:border-r", "border-r border-t md:border-t-0", "border-t md:border-t-0"][i]}`}>
               <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 8 }}>{k}</div>
               <div style={{ fontSize: 15, color: PL.ink, fontWeight: 500 }}>{v}</div>
             </div>
@@ -98,7 +98,7 @@ function SplitPhoneHero() {
   return (
     <div style={{ position: "relative" }}>
       <div style={{ width: 288, maxWidth: "100%", aspectRatio: "9 / 19", background: "#000", borderRadius: 36, padding: 7, position: "relative", boxShadow: "0 60px 120px rgba(0,0,0,0.6), 0 20px 40px rgba(0,0,0,0.4)" }}>
-        <div style={{ width: "100%", height: "100%", background: "#0c0a09", borderRadius: 30, position: "relative", overflow: "hidden", color: "#fff" }}>
+        <div style={{ width: "100%", height: "100%", background: "#0c1320", borderRadius: 30, position: "relative", overflow: "hidden", color: "#fff" }}>
           <img src="/platter_image_1.jpg" alt="STAGE app — static poster morphing into motion preview" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           <div style={{
             position: "absolute", top: "46.5%", left: "50%", transform: "translate(-50%, -50%)",
@@ -122,7 +122,7 @@ function SplitPhoneHero() {
 
 function HeroVisual() {
   return (
-    <section className="py-12 md:py-[72px]" style={{background: "#0c0a09", borderBottom: `1px solid ${PL.ink}` }}>
+    <section className="py-12 md:py-[72px]" style={{background: "#0c1320", borderBottom: `1px solid ${PL.ink}` }}>
       <Container>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 32, gap: 12, flexWrap: "wrap" }}>
           <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: "#888" }}>BEFORE / AFTER · ONE FRAME, TWO STATES</div>
@@ -134,23 +134,23 @@ function HeroVisual() {
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
                 <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: "#777" }}>LEFT · STATE 01</span>
-                <span style={{ flex: 1, height: 1, background: "#2a2a2a" }} />
+                <span style={{ flex: 1, height: 1, background: "#27323f" }} />
                 <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#555" }}>2:3</span>
               </div>
               <div style={{ fontFamily: FP.display, fontSize: 30, fontWeight: 500, letterSpacing: -0.6, marginBottom: 10, color: "#fff" }}>Static poster</div>
               <div style={{ fontSize: 15, lineHeight: 1.55, color: "#999", maxWidth: 460 }}>Wallpaper. Familiar. Earns the first glance, then asks the user to commit blind.</div>
             </div>
-            <div style={{ height: 1, background: "#2a2a2a" }} />
+            <div style={{ height: 1, background: "#27323f" }} />
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
                 <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.accent }}>RIGHT · STATE 02</span>
-                <span style={{ flex: 1, height: 1, background: "#2a2a2a" }} />
+                <span style={{ flex: 1, height: 1, background: "#27323f" }} />
                 <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.accent }}>1:1</span>
               </div>
               <div style={{ fontFamily: FP.display, fontSize: 30, fontWeight: 500, letterSpacing: -0.6, marginBottom: 10, color: "#fff" }}>Motion preview</div>
               <div style={{ fontSize: 15, lineHeight: 1.55, color: "#999", maxWidth: 460 }}>The decision cost drops to near zero — a 2-3s clip answers "is this for me?"</div>
             </div>
-            <div style={{ marginTop: 8, padding: "16px 20px", border: "1px solid #2a2a2a", background: "#161311", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", color: "#aaa", lineHeight: 1.5 }}>
+            <div style={{ marginTop: 8, padding: "16px 20px", border: "1px solid #27323f", background: "#141d2b", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", color: "#aaa", lineHeight: 1.5 }}>
               <span style={{ color: PL.accent }}>↳</span> ONE SLOT · ONE MORPH · ZERO ADDED TAPS
             </div>
           </div>
@@ -164,7 +164,7 @@ function AnnotatedPhone() {
   return (
     <div style={{ position: "relative", width: 220 }}>
       <div style={{ width: 220, aspectRatio: "9 / 19", background: "#000", borderRadius: 26, padding: 6 }}>
-        <div style={{ width: "100%", height: "100%", background: "#0c0a09", borderRadius: 21, position: "relative", overflow: "hidden" }}>
+        <div style={{ width: "100%", height: "100%", background: "#0c1320", borderRadius: 21, position: "relative", overflow: "hidden" }}>
           <img src="/2_home_old.png" alt="STAGE old homepage — static poster with no preview layer" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 60, height: 14, background: "#000", borderRadius: 8 }} />
         </div>
@@ -191,7 +191,7 @@ function OldPlatterAnnotated() {
         <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#c97c7c" }}>CAPTURE · STAGE · v3.4</div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-[auto_1fr]" style={{gap: 0 }}>
-        <div style={{ padding: "32px 36px", background: "#fafaf6", borderRight: `1px solid ${PL.rule}`, position: "relative" }}>
+        <div style={{ padding: "32px 36px", background: "#fafbfc", borderRight: `1px solid ${PL.rule}`, position: "relative" }}>
           <AnnotatedPhone />
         </div>
         <div style={{ padding: "28px 32px", display: "flex", flexDirection: "column", gap: 0 }}>
@@ -207,7 +207,7 @@ function OldPlatterAnnotated() {
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3" style={{borderTop: `1px solid ${PL.rule}`, background: "#fbf8f3" }}>
+      <div className="grid grid-cols-1 md:grid-cols-3" style={{borderTop: `1px solid ${PL.rule}`, background: "#f7f9fc" }}>
         {[["HOMEPAGE PIXELS", "~38%", PL.ink], ["CONSUMPTION STARTS", "19.6%", PL.bad], ["GAP (PIXELS − STARTS)", "−18.4 pts", PL.bad]].map(([k, v, c], i) => (
           <div key={k} style={{ padding: "16px 24px", borderRight: i < 2 ? `1px solid ${PL.rule}` : "none", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted }}>{k}</span>
@@ -296,7 +296,7 @@ function PeerCard({ idx, name, src }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8, fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>
         <span>0{idx + 1} · {name}</span>
       </div>
-      <div style={{ aspectRatio: "9 / 16", background: "#0c0a09", borderRadius: 3, position: "relative", overflow: "hidden" }}>
+      <div style={{ aspectRatio: "9 / 16", background: "#0c1320", borderRadius: 3, position: "relative", overflow: "hidden" }}>
         <img src={src} alt={`${name} homepage — static poster treatment`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
       </div>
     </div>
@@ -607,7 +607,7 @@ function ConstraintsSection() {
 function SpecFrame({ ratio, label, dims, detail, src, highlight = false }) {
   return (
     <div style={{ position: "relative", padding: "32px 56px 32px 32px" }}>
-      <div style={{ width: "100%", aspectRatio: ratio, background: "#0e0908", borderRadius: 6, position: "relative", overflow: "hidden", border: highlight ? `2px solid ${PL.accent}` : "none" }}>
+      <div style={{ width: "100%", aspectRatio: ratio, background: "#0c1320", borderRadius: 6, position: "relative", overflow: "hidden", border: highlight ? `2px solid ${PL.accent}` : "none" }}>
         <img src={src} alt={`${label} — ${detail}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         {highlight && <div style={{ position: "absolute", top: 8, right: 8, width: 8, height: 8, borderRadius: "50%", background: PL.accent }} />}
       </div>
@@ -656,7 +656,7 @@ function SolutionSection() {
 function StoryPhone({ src, alt }) {
   return (
     <div style={{ width: 160, aspectRatio: "9 / 18", background: "#000", borderRadius: 20, padding: 6, position: "relative" }}>
-      <div style={{ width: "100%", height: "100%", background: "#0c0a09", borderRadius: 15, position: "relative", overflow: "hidden" }}>
+      <div style={{ width: "100%", height: "100%", background: "#0c1320", borderRadius: 15, position: "relative", overflow: "hidden" }}>
         <img src={src} alt={alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         <div style={{ position: "absolute", top: 6, left: "50%", transform: "translateX(-50%)", width: 32, height: 8, background: "#000", borderRadius: 4 }} />
       </div>
@@ -730,7 +730,7 @@ function MetricCard({ value, label, caption, before, after }) {
   const afterW = (after / maxBar) * 100;
 
   return (
-    <div ref={ref} style={{ background: "#0e0e0e", border: "1px solid #2a2a2a", padding: 28, display: "flex", flexDirection: "column", gap: 18 }}>
+    <div ref={ref} style={{ background: "#0e1622", border: "1px solid #27323f", padding: 28, display: "flex", flexDirection: "column", gap: 18 }}>
       <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.muted }}>{label}</div>
       <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
         <span style={{ fontFamily: FP.display, fontSize: 88, fontWeight: 500, lineHeight: 0.85, letterSpacing: -3, color: PL.accent }}>{Math.round(v)}</span>
@@ -742,7 +742,7 @@ function MetricCard({ value, label, caption, before, after }) {
           <div style={{ display: "flex", justifyContent: "space-between", fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: "#666", marginBottom: 4 }}>
             <span>BEFORE</span><span>{before}%</span>
           </div>
-          <div style={{ height: 6, background: "#1a1a1a" }}>
+          <div style={{ height: 6, background: "#1d2f46" }}>
             <div style={{ width: `${bA * beforeW}%`, height: "100%", background: "#555", transition: "width 1.2s cubic-bezier(0.22,1,0.36,1)" }} />
           </div>
         </div>
@@ -750,7 +750,7 @@ function MetricCard({ value, label, caption, before, after }) {
           <div style={{ display: "flex", justifyContent: "space-between", fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.accent, marginBottom: 4 }}>
             <span>AFTER</span><span>{after}%</span>
           </div>
-          <div style={{ height: 6, background: "#1a1a1a" }}>
+          <div style={{ height: 6, background: "#1d2f46" }}>
             <div style={{ width: `${bA * afterW}%`, height: "100%", background: PL.accent, transition: "width 1.4s cubic-bezier(0.22,1,0.36,1)" }} />
           </div>
         </div>
@@ -778,7 +778,7 @@ function ImpactSection() {
           {metrics.map((m) => <MetricCard key={m.label} {...m} />)}
         </div>
         <div style={{ marginTop: 32, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#666", textAlign: "right" }}>↳ 7-DAY A/B TEST · ~12K USERS · STAGE PLATFORM</div>
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr]" style={{ marginTop: 56, padding: "32px 0 0", borderTop: "1px solid #2a2a2a", gap: 32 }}>
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr]" style={{ marginTop: 56, padding: "32px 0 0", borderTop: "1px solid #27323f", gap: 32 }}>
           <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: "#777" }}>HONEST · NOTE</div>
           <div style={{ fontSize: 15, lineHeight: 1.55, color: "#bbb", maxWidth: 820 }}>
             These are early numbers from a single test cycle. The sample is meaningful but not conclusive — I'd want to run this across content categories and geographies before calling it proven. But the directional signal is strong: <span style={{ color: PL.bg }}>reducing decision cost works.</span>

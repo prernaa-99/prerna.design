@@ -19,14 +19,14 @@
    Site base & reset (migrated verbatim from src/index.css)
    =========================================================================== */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: #e8e6e0; }
+html, body { margin: 0; padding: 0; background: #fcfcfc; }
 /* Prevent decorative absolutely-positioned elements (e.g. the hero character's
    floating heart/sketch) from creating horizontal scroll on narrow screens.
    `clip` (not `hidden`) avoids establishing a scroll container, so position: sticky still works. */
 html, body { overflow-x: clip; max-width: 100%; }
 html { scroll-behavior: smooth; }
 body { font-family: 'IBM Plex Sans', system-ui, sans-serif; }
-::selection { background: #cf3a1f; color: #fff; }
+::selection { background: #2e5c8a; color: #fff; }
 body, body * { cursor: none !important; }
 
 @keyframes v2-wave {
