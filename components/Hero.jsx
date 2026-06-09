@@ -45,7 +45,7 @@ export default function Hero() {
           aria-label="Prerna"
           className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap m-0"
           style={{
-            top: '8.7%',
+            top: '12.5%',
             fontFamily: FP.heroDisplay,
             fontWeight: 700,
             fontSize: '15.78cqw',
@@ -72,9 +72,9 @@ export default function Hero() {
         <div
           className="pointer-events-none absolute left-0 w-full"
           style={{
-            top: '51.2%',
-            height: '49.5%',
-            background: 'linear-gradient(to bottom, rgba(252,252,252,0) 0%, #fcfcfc 100%)',
+            top: '62%',
+            height: '38%',
+            background: 'linear-gradient(to bottom, rgba(252,252,252,0) 0%, rgba(252,252,252,0.5) 70%, #fcfcfc 100%)',
             zIndex: 4,
           }}
         />
@@ -159,8 +159,8 @@ export default function Hero() {
         <div className="relative mt-2 mx-auto max-w-[420px] overflow-hidden" style={{ height: '46vh' }}>
           <img src="/hero/portrait.png" alt="Prerna" className="block w-full h-auto" />
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
-            style={{ background: 'linear-gradient(to bottom, rgba(252,252,252,0) 0%, #fcfcfc 100%)' }}
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5"
+            style={{ background: 'linear-gradient(to bottom, rgba(252,252,252,0) 0%, rgba(252,252,252,0.5) 70%, #fcfcfc 100%)' }}
           />
         </div>
 
