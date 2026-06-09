@@ -13,40 +13,6 @@ const CAPABILITIES = [
   { label: 'Experimentation', active: false },
 ];
 
-const TOOLS = [
-  { name: 'Figma', icon: '/hero/tool-figma.png' },
-  { name: 'Procreate', icon: '/hero/tool-procreate.png' },
-  { name: 'Framer', icon: '/hero/tool-framer.png' },
-  { name: 'Adobe Suite', icon: '/hero/tool-adobe.png' },
-  { name: 'Rive', icon: '/hero/tool-rive.png' },
-  { name: 'LottieFiles', icon: '/hero/tool-lottie.png' },
-];
-
-function Ticker() {
-  return (
-    <div className="mx-auto max-w-[1280px] px-5 md:px-8 py-2">
-      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:justify-between md:flex-nowrap">
-        {TOOLS.map((t) => (
-          <div key={t.name} className="flex items-center gap-2 shrink-0">
-            <img
-              src={t.icon}
-              alt=""
-              aria-hidden
-              className="h-[22px] w-auto md:h-[26px] object-contain"
-            />
-            <span
-              style={{ fontFamily: FP.body, fontWeight: 600, color: NAVY }}
-              className="text-[16px] md:text-[20px] whitespace-nowrap"
-            >
-              {t.name}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function Hero() {
   const goContact = () =>
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -57,7 +23,7 @@ export default function Hero() {
       {/* A 1280×840 art-directed canvas. Children are positioned by % of the
           canvas; type sizes use cqw (container-query width) so the whole
           composition scales proportionally and caps at the 1280 max-width. */}
-      <div className="hidden md:flex md:flex-col" style={{ height: 'calc(100svh - 61px)' }}>
+      <div className="hidden md:flex md:flex-col" style={{ height: '100svh' }}>
         <div className="flex-1 min-h-0 w-full flex items-center justify-center">
           <div
             className="relative h-full"
@@ -170,7 +136,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <Ticker />
       </div>
 
       {/* ===================== MOBILE STACK (< md) ===================== */}
@@ -228,11 +193,6 @@ export default function Hero() {
             </span>
           ))}
         </div>
-      </div>
-
-      {/* mobile ticker */}
-      <div className="md:hidden">
-        <Ticker />
       </div>
     </section>
   );

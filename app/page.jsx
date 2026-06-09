@@ -1,5 +1,5 @@
 import { V2 } from '@/lib/data';
-import Nav from '@/components/Nav';
+import FloatingNav from '@/components/FloatingNav';
 import Hero from '@/components/Hero';
 import WorkSection from '@/components/WorkSection';
 import About from '@/components/About';
@@ -17,7 +17,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <div style={{ background: V2.bg, color: V2.ink, fontFamily: "'IBM Plex Sans', sans-serif" }}>
-      <Nav />
+      <FloatingNav />
       <Hero />
       <WorkSection />
       <Reveal><About /></Reveal>
