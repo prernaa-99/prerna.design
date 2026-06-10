@@ -2,6 +2,7 @@ import { V2 } from '@/lib/data';
 import FloatingNav from '@/components/FloatingNav';
 import Hero from '@/components/Hero';
 import WorkSection from '@/components/WorkSection';
+import Story from '@/components/Story';
 import About from '@/components/About';
 import Stack from '@/components/Stack';
 // import Experience from '@/components/Experience'; // CV LOG — hidden for now, re-add in phase 2
@@ -20,6 +21,7 @@ export default function HomePage() {
       <FloatingNav />
       <Hero />
       <WorkSection />
+      <Reveal><Story /></Reveal>
       <Reveal><About /></Reveal>
       <Reveal><Stack /></Reveal>
       {/* CV LOG (Experience) — hidden for now, re-add in phase 2 */}
