@@ -7,8 +7,8 @@ export default function Experience() {
   return (
     <section id="experience" className="px-5 py-[72px] md:px-8 md:py-[120px]" style={{ background: V2.bg, borderTop: `1px solid ${V2.rule}` }}>
       <div className="mx-auto max-w-[1320px]">
-        <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: V2.muted, marginBottom: 32 }}>§04 ──── CV·LOG</div>
-        <h2 style={{ fontFamily: FP.display, fontSize: "clamp(48px,6vw,96px)", fontWeight: 500, lineHeight: 0.95, letterSpacing: -2.5, margin: "0 0 64px", color: V2.ink }}>Eight years.</h2>
+        <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: V2.muted, marginBottom: 32 }}>CV LOG</div>
+        <h2 style={{ fontFamily: FP.display, fontSize: "clamp(48px,6vw,96px)", fontWeight: 500, lineHeight: 0.95, letterSpacing: -2.5, margin: "0 0 64px", color: V2.ink }}>3 years.</h2>
         <div style={{ position: "relative", paddingLeft: 40 }}>
           <div style={{ position: "absolute", left: 12, top: 0, bottom: 0, width: 1, background: V2.rule }} />
           {EXPERIENCE.map((e, i) => {

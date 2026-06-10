@@ -4,7 +4,7 @@ import Hero from '@/components/Hero';
 import WorkSection from '@/components/WorkSection';
 import About from '@/components/About';
 import Stack from '@/components/Stack';
-import Experience from '@/components/Experience';
+// import Experience from '@/components/Experience'; // CV LOG — hidden for now, re-add in phase 2
 import Contact from '@/components/Contact';
 import Reveal from '@/components/Reveal';
 
@@ -22,7 +22,7 @@ export default function HomePage() {
       <WorkSection />
       <Reveal><About /></Reveal>
       <Reveal><Stack /></Reveal>
-      <Reveal><Experience /></Reveal>
+      {/* CV LOG (Experience) — hidden for now, re-add in phase 2 */}
       <Contact />
     </div>
   );

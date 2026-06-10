@@ -84,7 +84,7 @@ export default function About() {
             marginBottom: 24,
           }}
         >
-          §02 ──── ABOUT
+          ABOUT
         </div>
 
         <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2 md:gap-12">
@@ -117,20 +117,8 @@ export default function About() {
             </p>
           </div>
 
-          <div style={{ border: `1px solid ${V2.rule}`, padding: 12, background: V2.paper }}>
+          <div style={{ border: `1px solid ${V2.rule}`, padding: 12, background: V2.paper, lineHeight: 0 }}>
             <DeskScene />
-            <div
-              style={{
-                fontFamily: FP.mono,
-                fontSize: 9,
-                letterSpacing: "0.2em",
-                color: V2.muted,
-                marginTop: 8,
-                textAlign: "center",
-              }}
-            >
-              FIG.02 / STUDIO
-            </div>
           </div>
         </div>
       </div>
