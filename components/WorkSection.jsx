@@ -62,7 +62,7 @@ function WorkCard({ p, i }) {
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at ${tilt.mx}% ${tilt.my}%, ${p.accent}18, transparent 50%)`, pointerEvents: "none", opacity: hover ? 1 : 0, transition: "opacity 0.3s" }} />
 
         {/* LEFT RAIL — role, rotated up the side */}
-        <div className="flex items-center justify-center flex-row md:flex-col md:justify-center border-solid border-[#d4dbe5] border-b md:border-b-0 md:border-r px-5 py-3.5 md:px-0 md:py-7" style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted }}>
+        <div className="flex items-center justify-center flex-row md:flex-col md:justify-start border-solid border-[#d4dbe5] border-b md:border-b-0 md:border-r px-5 py-3.5 md:px-0 md:py-7" style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted }}>
           <span className="rotate-0 [writing-mode:horizontal-tb] md:rotate-180 md:[writing-mode:vertical-rl] whitespace-nowrap">ROLE — {p.role.toUpperCase()}</span>
         </div>
 
@@ -81,25 +81,29 @@ function WorkCard({ p, i }) {
           </div>
         </div>
 
-        {/* PREVIEW — full product composite */}
-        <div className="relative overflow-hidden min-h-[220px] md:min-h-0 border-t border-solid border-[#d4dbe5] md:border-t-0" style={{ background: "#efeeec" }}>
+        {/* PREVIEW — full product composite (bg matches the image's own backdrop) */}
+        <div className="relative overflow-hidden min-h-[220px] md:min-h-0 border-t border-solid border-[#d4dbe5] md:border-t-0" style={{ background: "#f4f3f1" }}>
           {p.cover ? (
-            <img
-              src={p.cover}
-              alt={`${p.title} — product preview`}
-              loading="lazy"
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center",
-                display: "block",
-                transform: hover ? "scale(1.03)" : "scale(1)",
-                transition: `transform 0.6s ${SPRING}`,
-              }}
-            />
+            <>
+              <img
+                src={p.cover}
+                alt={`${p.title} — product preview`}
+                loading="lazy"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  display: "block",
+                  transform: `scale(${(p.coverScale || 1) * (hover ? 1.03 : 1)})`,
+                  transition: `transform 0.6s ${SPRING}`,
+                }}
+              />
+              {/* soft fade so the phones blend into the panel instead of a hard clip */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0" style={{ height: "20%", background: "linear-gradient(to top, #f4f3f1 0%, rgba(244,243,241,0) 100%)" }} />
+            </>
           ) : (
             <GenerativeVisual i={i} accent={p.accent} />
           )}
