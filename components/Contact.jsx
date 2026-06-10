@@ -55,14 +55,14 @@ export default function Contact() {
   const sizes = [{ s: 2, l: "Fine" }, { s: 4, l: "Medium" }, { s: 8, l: "Bold" }, { s: 16, l: "Chunky" }];
 
   return (
-    <section id="contact" className="px-5 pt-[72px] pb-12 md:px-8 md:pt-[120px] md:pb-[60px]" style={{ background: V2.dark, color: V2.paper, borderTop: `1px solid ${V2.rule}` }}>
-      <div className="mx-auto max-w-[1320px]">
-        <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 24 }}>§05 ──── GET·IN·TOUCH</div>
-        <h2 style={{ fontFamily: FP.display, fontSize: "clamp(72px,12vw,200px)", fontWeight: 500, lineHeight: 0.85, letterSpacing: -5, margin: 0 }}>
-          DRAW<br /><span style={{ color: V2.accent }}>SOMETHING</span><br />TOGETHER.
+    <section id="contact" className="min-h-[100svh] flex flex-col px-5 pt-24 pb-8 md:px-8 md:pt-24 md:pb-10" style={{ background: V2.dark, color: V2.paper, borderTop: `1px solid ${V2.rule}` }}>
+      <div className="mx-auto w-full max-w-[1320px] flex flex-col flex-1 min-h-0">
+        <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 20 }}>GET IN TOUCH</div>
+        <h2 style={{ fontFamily: FP.display, fontSize: "clamp(40px,6vw,92px)", fontWeight: 500, lineHeight: 0.9, letterSpacing: -3, margin: 0 }}>
+          DRAW <span style={{ color: V2.accent }}>SOMETHING</span><br />TOGETHER.
         </h2>
 
-        <div style={{ marginTop: 48, display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
+        <div style={{ marginTop: 28, display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
           <div style={{ display: "flex", gap: 8 }}>
             {colors.map(c => (
               <button key={c} onClick={() => setColor(c)} data-cursor="hover" style={{ width: 32, height: 32, borderRadius: "50%", background: c, border: color === c ? `2px solid ${V2.paper}` : "2px solid transparent", cursor: "pointer", transition: `transform 0.3s ${SPRING}`, transform: color === c ? "scale(1.15)" : "scale(1)" }} />
@@ -83,12 +83,12 @@ export default function Contact() {
           onMouseDown={start} onMouseMove={move} onMouseUp={end} onMouseLeave={end}
           onTouchStart={start} onTouchMove={move} onTouchEnd={end}
           data-cursor="crosshair"
-          className="block w-full h-80 mt-6 md:h-[460px]"
+          className="block w-full flex-1 min-h-[160px] mt-5"
           style={{ background: "#2a2a28", border: "1px solid #333", touchAction: "none" }} />
 
-        <div className="mt-10 md:mt-[60px] grid grid-cols-2 md:grid-cols-4" style={{ borderTop: "1px solid rgba(255,255,255,0.2)", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em" }}>
-          {[["EMAIL", "hello@prerna.studio"], ["INSTAGRAM", "@prerna.studio"], ["READ.CV", "read.cv/prerna"], ["LINKEDIN", "in/prerna-studio"]].map(([k, v], i) => (
-            <div key={k} className={`border-solid border-white/20 px-4 py-6 ${["border-r", "md:border-r", "border-r border-t md:border-t-0", "border-t md:border-t-0"][i]}`}>
+        <div className="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-3" style={{ borderTop: "1px solid rgba(255,255,255,0.2)", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em" }}>
+          {[["EMAIL", "hello@prerna.studio"], ["READ.CV", "read.cv/prerna"], ["LINKEDIN", "in/prerna-studio"]].map(([k, v]) => (
+            <div key={k} className="border-solid border-white/20 px-4 py-6 border-b last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
               <div style={{ opacity: 0.5, marginBottom: 12 }}>{k}</div>
               <div style={{ fontFamily: FP.body, fontSize: 16, letterSpacing: 0, fontWeight: 500 }}>{v}</div>
             </div>
