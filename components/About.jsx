@@ -84,7 +84,7 @@ export default function About() {
             marginBottom: 24,
           }}
         >
-          ABOUT
+          APPROACH
         </div>
 
         <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2 md:gap-12">
@@ -113,7 +113,7 @@ export default function About() {
                 margin: "28px 0 0",
               }}
             >
-              Research, strategy, and the right questions help me uncover what users need, what businesses value, and where products can grow. I design across mobile, web, and TV experiences, turning insights into products that drive meaningful outcomes.
+              Great products aren't built by jumping to solutions. They emerge from understanding people, uncovering the right problems, and creating clarity around what matters most. I use research, strategy, and design to help teams build products that are useful, meaningful, and sustainable.
             </p>
           </div>
 
