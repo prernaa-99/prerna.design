@@ -92,32 +92,28 @@ export default function About() {
             <h2
               style={{
                 fontFamily: FP.display,
-                fontSize: "clamp(28px, 3vw, 36px)",
-                fontWeight: 400,
-                lineHeight: 1.15,
-                letterSpacing: -0.8,
+                fontSize: "clamp(40px, 5vw, 64px)",
+                fontWeight: 500,
+                lineHeight: 1.05,
+                letterSpacing: -1.8,
                 color: V2.ink,
                 margin: 0,
                 maxWidth: 540,
               }}
             >
-              I build systems that other people's good ideas can grow inside.
-              <br />
-              <span style={{ color: V2.accent }}>Type, structure, motion</span>
-              {" "}— in that order.
+              I start with <span style={{ color: V2.accent }}>why.</span>
             </h2>
 
             <p
               style={{
-                marginTop: 20,
-                fontSize: 14,
-                lineHeight: 1.65,
+                fontSize: 15,
+                lineHeight: 1.7,
                 color: V2.ink2,
-                maxWidth: 520,
-                margin: "20px 0 0",
+                maxWidth: 540,
+                margin: "28px 0 0",
               }}
             >
-              Eight years between studios and in-house teams. I tend to start with type and structure, then work outward into motion and detail. Most engagements run six to twelve weeks, in small teams — usually one founder, one engineer, me.
+              Research, strategy, and the right questions help me uncover what users need, what businesses value, and where products can grow. I design across mobile, web, and TV experiences, turning insights into products that drive meaningful outcomes.
             </p>
           </div>
 
