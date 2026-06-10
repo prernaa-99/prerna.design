@@ -50,10 +50,10 @@ const PARAS = [
 ];
 
 const PHOTOS = [
-  { rot: -3, src: null },
-  { rot: 2, src: null },
-  { rot: -2, src: null },
-  { rot: 3, src: null },
+  { rot: -3, src: "/images/about/photo-1.jpg", scale: 1.3 },
+  { rot: 2, src: "/images/about/photo-2.jpg" },
+  { rot: -2, src: "/images/about/photo-3.jpg" },
+  { rot: 3, src: "/images/about/photo-4.jpg" },
 ];
 
 function Tab({ active, onClick, icon, label }) {
@@ -124,7 +124,9 @@ export default function Story() {
             >
               <div style={{ background: V2.paper, padding: "10px 10px 34px", boxShadow: hov === i ? "0 26px 50px rgba(0,0,0,0.18)" : "0 16px 36px rgba(0,0,0,0.12)", borderRadius: 2, transition: "box-shadow 0.45s" }}>
                 {p.src ? (
-                  <img src={p.src} alt="" loading="lazy" style={{ display: "block", width: "100%", aspectRatio: "4 / 5", objectFit: "cover" }} />
+                  <div style={{ overflow: "hidden", aspectRatio: "4 / 5" }}>
+                    <img src={p.src} alt="" loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", transform: `scale(${p.scale || 1})` }} />
+                  </div>
                 ) : (
                   <div style={{ width: "100%", aspectRatio: "4 / 5", background: `linear-gradient(135deg, ${V2.ruleSoft}, ${V2.bgDeep})`, display: "flex", alignItems: "center", justifyContent: "center", color: V2.muted, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em" }}>
                     PHOTO {String(i + 1).padStart(2, "0")}
