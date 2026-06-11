@@ -14,7 +14,7 @@ export default function Nav() {
   useEffect(() => {
     const observers = [];
     const visibility = {};
-    // track hero separately — when it's visible, nothing is active
+    // track hero separately, when it's visible, nothing is active
     const allIds = ["hero", ...items.map(([id]) => id)];
 
     allIds.forEach((id) => {

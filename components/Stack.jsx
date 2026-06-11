@@ -9,8 +9,8 @@ const PAIRS = [
   { action: "turn insights into action", method: "product design" },
 ];
 
-const ACCENT = "#2e5c8a"; // steel blue — the changing phrases (on light bg)
-const STATIC_COLOR = V2.ink; // navy — the static sentence text
+const ACCENT = "#2e5c8a"; // steel blue, the changing phrases (on light bg)
+const STATIC_COLOR = V2.ink; // navy, the static sentence text
 const SYNE = "'Syne', 'Space Grotesk', sans-serif";
 
 export default function Stack() {
@@ -54,7 +54,7 @@ export default function Stack() {
 
         {/* Every sentence is stacked in ONE grid cell, so the area is fixed to
             the tallest sentence and never reflows the page. We only animate
-            opacity/translate, so the whole sentence cross-fades as a unit —
+            opacity/translate, so the whole sentence cross-fades as a unit, 
             no per-word width changes, no layout shift. */}
         <div className="mx-auto" style={{ display: "grid", maxWidth: 1240 }}>
           {PAIRS.map((p, i) => {

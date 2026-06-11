@@ -61,12 +61,12 @@ function WorkCard({ p, i }) {
       <div className="grid grid-cols-1 min-h-0 relative overflow-hidden md:grid-cols-[56px_1.1fr_1fr] md:h-[340px]" style={{ background: V2.paper, border: `1px solid ${V2.ruleSoft}`, transformStyle: "preserve-3d", transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)${hover ? " translateY(-6px)" : ""}`, transition: `transform 0.35s ${SPRING}, box-shadow 0.35s`, boxShadow: hover ? "0 24px 48px rgba(0,0,0,0.12)" : "0 2px 4px rgba(0,0,0,0.03)" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at ${tilt.mx}% ${tilt.my}%, ${p.accent}18, transparent 50%)`, pointerEvents: "none", opacity: hover ? 1 : 0, transition: "opacity 0.3s" }} />
 
-        {/* LEFT RAIL — role, rotated up the side */}
+        {/* LEFT RAIL, role, rotated up the side */}
         <div className="flex items-center justify-center flex-row md:flex-col md:justify-start border-solid border-[#d4dbe5] border-b md:border-b-0 md:border-r px-5 py-3.5 md:px-0 md:py-7" style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted }}>
-          <span className="rotate-0 [writing-mode:horizontal-tb] md:rotate-180 md:[writing-mode:vertical-rl] whitespace-nowrap">ROLE — {p.role.toUpperCase()}</span>
+          <span className="rotate-0 [writing-mode:horizontal-tb] md:rotate-180 md:[writing-mode:vertical-rl] whitespace-nowrap">ROLE, {p.role.toUpperCase()}</span>
         </div>
 
-        {/* CONTENT — headline, rule, body, view link */}
+        {/* CONTENT, headline, rule, body, view link */}
         <div className="flex flex-col relative z-[2] px-5 py-6 md:px-10 md:py-9">
           <div>
             <h3 style={{ fontFamily: FP.display, fontSize: "clamp(30px,3.4vw,48px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: -1, color: V2.ink, margin: 0 }}>
@@ -81,13 +81,13 @@ function WorkCard({ p, i }) {
           </div>
         </div>
 
-        {/* PREVIEW — full product composite (bg matches the image's own backdrop) */}
+        {/* PREVIEW, full product composite (bg matches the image's own backdrop) */}
         <div className="relative overflow-hidden min-h-[220px] md:min-h-0 border-t border-solid border-[#d4dbe5] md:border-t-0" style={{ background: "#f4f3f1" }}>
           {p.cover ? (
             <>
               <img
                 src={p.cover}
-                alt={`${p.title} — product preview`}
+                alt={`${p.title}, product preview`}
                 loading="lazy"
                 style={{
                   position: "absolute",

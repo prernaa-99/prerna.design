@@ -13,7 +13,7 @@ export default function Contact() {
     const c = cvs.current; if (!c) return;
     const ctx = c.getContext("2d");
     // Size the backing buffer to the element's CURRENT (flex-controlled)
-    // display size × 2 for sharpness. Do NOT set c.style — the canvas height
+    // display size × 2 for sharpness. Do NOT set c.style, the canvas height
     // stays driven by `flex-1` so the section always fits the viewport.
     const init = () => {
       const r = c.getBoundingClientRect();
@@ -63,7 +63,7 @@ export default function Contact() {
   return (
     <section id="contact" className="min-h-[100svh] flex flex-col px-5 pt-24 pb-10 md:px-8 md:pt-24" style={{ background: V2.dark, color: V2.paper, borderTop: `1px solid ${V2.rule}` }}>
       <div className="mx-auto w-full max-w-[1320px] flex flex-col flex-1 min-h-0 justify-between gap-6">
-        {/* top — label + headline */}
+        {/* top, label + headline */}
         <div>
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 20 }}>GET IN TOUCH</div>
           <h2 style={{ fontFamily: FP.display, fontSize: "clamp(40px,6vw,88px)", fontWeight: 500, lineHeight: 0.9, letterSpacing: -3, margin: 0 }}>
@@ -71,7 +71,7 @@ export default function Contact() {
           </h2>
         </div>
 
-        {/* middle — controls + a moderate canvas */}
+        {/* middle, controls + a moderate canvas */}
         <div>
           <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
             <div style={{ display: "flex", gap: 8 }}>
@@ -100,7 +100,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* bottom — contact links */}
+        {/* bottom, contact links */}
         <div className="grid grid-cols-1 sm:grid-cols-3" style={{ borderTop: "1px solid rgba(255,255,255,0.2)", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em" }}>
           {[["EMAIL", "hello@prerna.studio"], ["READ.CV", "read.cv/prerna"], ["LINKEDIN", "in/prerna-studio"]].map(([k, v]) => (
             <div key={k} className="border-solid border-white/20 px-4 py-5 border-b last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">

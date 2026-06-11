@@ -1,7 +1,7 @@
 'use client';
 import { FP } from '@/lib/data';
 
-// Hero palette — taken straight from the Figma design (portfoluo_2026, node 1:2).
+// Hero palette, taken straight from the Figma design (portfoluo_2026, node 1:2).
 const HERO_BG = '#fcfcfc';
 const NAVY = '#1d2f46';
 const NAVY_MUTED = 'rgba(29,47,70,0.7)';
@@ -56,7 +56,7 @@ export default function Hero() {
           PRERNA
         </p>
 
-        {/* portrait — crops to the top of the source image and fades out below */}
+        {/* portrait, crops to the top of the source image and fades out below */}
         <div
           className="absolute overflow-hidden"
           style={{ left: '26.17%', top: '22.14%', width: '47.42%', height: '78.57%', zIndex: 3 }}

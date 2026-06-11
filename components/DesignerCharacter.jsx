@@ -86,7 +86,7 @@ export default function DesignerCharacter({ size = 360, intensity = 1, still = f
           <Cuboid w={20} h={36} d={28} color={HAIR} faceColors={{ left: HAIR_D, right: HAIR_D, top: HAIR_D }} x={58} y={-12} z={20} radius={8} />
           <Cuboid w={70} h={14} d={10} color={HAIR_D} y={-30} z={48} radius={6} />
           <div style={{ position: "absolute", left: 4, top: 8, width: 14, height: 6, background: ACCENT, transform: "translateZ(50px)", borderRadius: 2 }} />
-          {/* EYES — flat SVG painted directly onto the head face (z=49) */}
+          {/* EYES, flat SVG painted directly onto the head face (z=49) */}
           <svg
             viewBox="0 0 110 100"
             style={{
@@ -104,7 +104,7 @@ export default function DesignerCharacter({ size = 360, intensity = 1, still = f
               { cx: 72 },
             ].map((e, i) => (
               <g key={i}>
-                {/* eye — tiny dark dot with a bright sparkle, chibi style */}
+                {/* eye, tiny dark dot with a bright sparkle, chibi style */}
                 <ellipse cx={e.cx + pupil.x} cy={56 + pupil.y} rx={4} ry={5} fill="#1a1310" style={{ transition: "cx 0.08s ease-out, cy 0.08s ease-out" }} />
                 {/* sparkle highlight */}
                 <circle cx={e.cx + 1.2 + pupil.x} cy={54 + pupil.y} r={1.4 * (0.85 + eyeShine * 0.2)} fill="#ffffff" style={{ transition: "cx 0.08s ease-out, cy 0.08s ease-out" }} />
@@ -157,7 +157,7 @@ export default function DesignerCharacter({ size = 360, intensity = 1, still = f
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 4, background: "#fff", transform: "translateZ(18.5px)" }} />
         </Cuboid>
 
-        {/* Floating elements — hidden in still mode */}
+        {/* Floating elements, hidden in still mode */}
         {!still && (
           <>
             <div style={{ position: "absolute", left: "50%", top: "50%", transform: `translate3d(-130px,${-150 + heartFloat}px,40px) rotateZ(-12deg)`, color: ACCENT, fontSize: 28, lineHeight: 1, textShadow: "0 2px 0 rgba(0,0,0,0.15)" }}>♥</div>

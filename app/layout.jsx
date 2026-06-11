@@ -4,7 +4,7 @@ import CustomCursor from '@/components/CustomCursor';
 export const metadata = {
   metadataBase: new URL('https://prerna.design'),
   title: {
-    default: 'Prerna — Product Designer',
+    default: 'Prerna, Product Designer',
     template: '%s · Prerna',
   },
   description:
@@ -13,7 +13,7 @@ export const metadata = {
   authors: [{ name: 'Prerna' }],
   icons: { icon: '/favicon.svg' },
   openGraph: {
-    title: 'Prerna — Product Designer',
+    title: 'Prerna, Product Designer',
     description:
       'Product designer working at the seam of brand, product, and motion. Selected case studies in research, interaction, and design systems.',
     type: 'website',

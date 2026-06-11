@@ -22,14 +22,14 @@ const TldrIcon = () => (
 // TL;DR view strikes the segments marked strike:true, keeping the essentials.
 const PARAS = [
   [
-    { t: "I wasn't the kid who spent hours sketching or calling myself an artist. What fascinated me was craft—the process of taking an idea and turning it into something useful, thoughtful, and real. " },
+    { t: "I wasn't the kid who spent hours sketching or calling myself an artist. What fascinated me was craft, the process of taking an idea and turning it into something useful, thoughtful, and real. " },
     { t: "I loved understanding how things worked, how they were made, and how small decisions could shape the final experience.", strike: true },
   ],
   [
     { t: "That curiosity led me to " },
     { t: "NIFT", hl: true },
     { t: ", where I studied Accessory Design. " },
-    { t: "I spent my time designing bags, furniture, and physical products, learning that good design isn't just about aesthetics—it's about balancing user needs, functionality, and constraints.", strike: true },
+    { t: "I spent my time designing bags, furniture, and physical products, learning that good design isn't just about aesthetics, it's about balancing user needs, functionality, and constraints.", strike: true },
   ],
   [
     { t: "Everything changed when I picked an elective on " },
@@ -40,7 +40,7 @@ const PARAS = [
   [
     { t: "During my graduation project, I joined ", strike: true },
     { t: "STAGE", hl: true, strike: true },
-    { t: " as a Product Designer and had the opportunity to work alongside experienced product leaders and engineers. The experience taught me that great products rarely come from assumptions—they come from understanding users, aligning with business goals, and asking better questions.", strike: true },
+    { t: " as a Product Designer and had the opportunity to work alongside experienced product leaders and engineers. The experience taught me that great products rarely come from assumptions, they come from understanding users, aligning with business goals, and asking better questions.", strike: true },
   ],
   [
     { t: "Today, I'm building products at " },
@@ -82,7 +82,7 @@ export default function Story() {
   return (
     <section id="about-story" className="min-h-[100svh] flex flex-col px-5 py-20 md:px-8 md:py-24" style={{ background: V2.bg, borderTop: `1px solid ${V2.rule}` }}>
       <div className="mx-auto w-full max-w-[1180px] flex flex-col flex-1 min-h-0 justify-between gap-8">
-        {/* header — label + tab switch */}
+        {/* header, label + tab switch */}
         <div className="flex items-center justify-between gap-4">
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: V2.muted }}>ABOUT</div>
           <div className="inline-flex items-center gap-1 rounded-full p-1" style={{ background: V2.bgDeep, border: `1px solid ${V2.ruleSoft}` }}>
@@ -91,7 +91,7 @@ export default function Story() {
           </div>
         </div>
 
-        {/* body — same paragraphs in both views; TL;DR strikes the filler */}
+        {/* body, same paragraphs in both views; TL;DR strikes the filler */}
         <div style={{ fontFamily: FP.body, fontSize: "clamp(15px,1.3vw,18px)", lineHeight: 1.65, color: V2.ink }}>
           {PARAS.map((segs, i) => (
             <p key={i} style={{ margin: i === 0 ? 0 : "1.1em 0 0" }}>
@@ -108,7 +108,7 @@ export default function Story() {
           ))}
         </div>
 
-        {/* polaroid gallery — drop real photos into PHOTOS[].src */}
+        {/* polaroid gallery, drop real photos into PHOTOS[].src */}
         <div className="grid grid-cols-2 gap-5 md:flex md:flex-wrap md:justify-center md:gap-8">
           {PHOTOS.map((p, i) => (
             <div

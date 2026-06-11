@@ -47,11 +47,11 @@ function DeskScene() {
   return (
     <div style={{ position: "relative", width: "100%", maxWidth: 600 }}>
       <canvas ref={cvs} style={{ width: "100%", height: "auto", display: "block" }} />
-      {/* Static 3D character — placed where the original pixel character sat,
+      {/* Static 3D character, placed where the original pixel character sat,
           beside the monitor on the right (canvas was 600×380; character at x≈440, y≈200) */}
       <div style={{
         position: "absolute",
-        // monitor base sits at canvas y≈292 (of 380) — that's ~23% from bottom
+        // monitor base sits at canvas y≈292 (of 380), that's ~23% from bottom
         left: "70%",
         bottom: "23%",
         pointerEvents: "none",

@@ -373,7 +373,7 @@ function BeforeAfterCompare() {
         <div style={{ paddingTop: 16 }}>
           {/* Before group */}
           <div style={{ ...labelStyle, fontSize: 10, marginBottom: 8 }}>
-            Before — irrelevant results
+            Before, irrelevant results
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 20 }}>
             {misses.map((r) => (
@@ -410,7 +410,7 @@ function BeforeAfterCompare() {
 
           {/* After group */}
           <div style={{ ...labelStyle, fontSize: 10, marginBottom: 8 }}>
-            After — relevant matches
+            After, relevant matches
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {hits.map((r) => (
@@ -598,7 +598,7 @@ function CollageImageTile({ src, index }) {
       background: SC.ink, border: `1px solid ${SC.rule}`, borderRadius: 10,
       boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
     }}>
-      <img src={src} alt="Field research — card sorting" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+      <img src={src} alt="Field research, card sorting" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
     </div>
   );
 }
@@ -650,7 +650,7 @@ function ResearchSection() {
         <div style={{ marginTop: 48 }}>
           <FieldCollage />
           <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.15em", color: SC.muted, lineHeight: 1.5, marginTop: 14 }}>
-            ↳ TESTING MENTAL MODELS IN THE FIELD — IN-PERSON CARD SORTING WITH PHYSICAL POSTERS
+            ↳ TESTING MENTAL MODELS IN THE FIELD, IN-PERSON CARD SORTING WITH PHYSICAL POSTERS
           </div>
         </div>
       </Container>
@@ -689,7 +689,7 @@ function InsightsSection() {
       n: "01",
       title: "Terminology matters",
       hook: 'STAGE users don\'t say "web series."',
-      detail: 'They say "serials" — the term carries decades of TV-watching context. Using "web series" felt foreign and aspirational, not native.',
+      detail: 'They say "serials", the term carries decades of TV-watching context. Using "web series" felt foreign and aspirational, not native.',
     },
     {
       n: "02",
@@ -801,11 +801,11 @@ function FilterDemo() {
         </div>
       </div>
 
-      {/* Footer caption — pushed to bottom of card so it aligns with right-card footer */}
+      {/* Footer caption, pushed to bottom of card so it aligns with right-card footer */}
       <div style={{ borderTop: `1px solid ${SC.ruleSoft}`, marginTop: "auto", paddingTop: 16, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted, lineHeight: 1.6 }}>
         <div style={{ marginTop: 16 }}>
           ↳ TRY · TWEAK · MATCH<br />
-          <span style={{ opacity: 0.75, textTransform: "none", letterSpacing: "0.05em", fontSize: 11 }}>Combine any mood, language, and theme — results update in real time.</span>
+          <span style={{ opacity: 0.75, textTransform: "none", letterSpacing: "0.05em", fontSize: 11 }}>Combine any mood, language, and theme, results update in real time.</span>
         </div>
       </div>
     </div>
@@ -827,7 +827,7 @@ function SolutionSection() {
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 32, marginTop: 56, alignItems: "stretch" }}>
           <FilterDemo />
 
-          {/* Phone preview — wrapped in a matching paper card */}
+          {/* Phone preview, wrapped in a matching paper card */}
           <div style={{ background: SC.paper, border: `1px solid ${SC.rule}`, padding: 24, display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: SC.muted }}>
               <span>↳ MVP PREVIEW</span>

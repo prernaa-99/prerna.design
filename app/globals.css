@@ -1,4 +1,4 @@
-/* Tailwind v4 — theme + utilities only.
+/* Tailwind v4, theme + utilities only.
    Preflight (Tailwind's CSS reset) is intentionally NOT imported: this site predates
    Tailwind and ships its own reset below. Importing preflight would re-style headings,
    buttons, lists and margins and change the existing desktop look. */
@@ -8,7 +8,7 @@
 
 /* Border reset borrowed from Tailwind preflight (which we otherwise skip).
    Without this, `border-solid` sets a solid style on all four sides while only
-   the side with an explicit width utility (e.g. `border-r`) gets 1px — the
+   the side with an explicit width utility (e.g. `border-r`) gets 1px, the
    remaining sides fall back to the browser default `medium` (~3px), producing
    thick lines. Scoped to @layer base so border-width utilities still win. */
 @layer base {

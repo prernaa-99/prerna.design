@@ -5,12 +5,12 @@ import WorkSection from '@/components/WorkSection';
 import Story from '@/components/Story';
 import About from '@/components/About';
 import Stack from '@/components/Stack';
-// import Experience from '@/components/Experience'; // CV LOG — hidden for now, re-add in phase 2
+// import Experience from '@/components/Experience'; // CV LOG, hidden for now, re-add in phase 2
 import Contact from '@/components/Contact';
 import Reveal from '@/components/Reveal';
 
 export const metadata = {
-  title: 'Prerna — Product Designer',
+  title: 'Prerna, Product Designer',
   description:
     'Product designer working at the seam of brand, product, and motion. Currently freelancing from Bangalore, taking on selective work for ambitious teams.',
 };
@@ -24,7 +24,7 @@ export default function HomePage() {
       <Reveal><Story /></Reveal>
       <Reveal><About /></Reveal>
       <Reveal><Stack /></Reveal>
-      {/* CV LOG (Experience) — hidden for now, re-add in phase 2 */}
+      {/* CV LOG (Experience), hidden for now, re-add in phase 2 */}
       <Contact />
     </div>
   );

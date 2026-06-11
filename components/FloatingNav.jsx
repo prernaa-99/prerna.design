@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
 /* ------------------------------------------------------------------ *
- * Tweak-me config — colors, links, and the two scroll states.
+ * Tweak-me config, colors, links, and the two scroll states.
  * ------------------------------------------------------------------ */
 const CONFIG = {
   ink: '#1d2f46',          // primary text / logo
@@ -160,7 +160,7 @@ export default function FloatingNav() {
 
   return (
     <div ref={root}>
-      {/* Animated header bar — fixed, centered, glass values driven by GSAP */}
+      {/* Animated header bar, fixed, centered, glass values driven by GSAP */}
       <header
         ref={barRef}
         className="fixed left-1/2 -translate-x-1/2 z-[60] flex items-center justify-between rounded-full"
@@ -175,8 +175,8 @@ export default function FloatingNav() {
           fontFamily: "'IBM Plex Sans', sans-serif",
         }}
       >
-        {/* LEFT — logo */}
-        <a href="#hero" className="flex items-center gap-2.5 shrink-0" data-cursor="hover" aria-label="Prerna — home">
+        {/* LEFT, logo */}
+        <a href="#hero" className="flex items-center gap-2.5 shrink-0" data-cursor="hover" aria-label="Prerna, home">
           {/* Swap this styled mark for <img src="/logo.png" .../> when ready */}
           <span
             className="flex items-center justify-center w-9 h-9 rounded-[10px] text-white font-semibold text-[17px]"
@@ -189,7 +189,7 @@ export default function FloatingNav() {
           </span>
         </a>
 
-        {/* CENTER — links (hidden on mobile) */}
+        {/* CENTER, links (hidden on mobile) */}
         <nav ref={navRef} className="hidden md:flex items-center" style={{ gap: HERO.gap }}>
           {LINKS.map((l) => (
             <a
@@ -207,7 +207,7 @@ export default function FloatingNav() {
           ))}
         </nav>
 
-        {/* RIGHT — avatar -> Let's Talk + mobile hamburger */}
+        {/* RIGHT, avatar -> Let's Talk + mobile hamburger */}
         <div className="flex items-center gap-3 shrink-0">
           <a
             ref={talkRef}

@@ -1,7 +1,7 @@
 import PlatterCase from '@/components/PlatterCase';
 
 export const metadata = {
-  title: 'STAGE · Platter — Turning static into intent',
+  title: 'STAGE · Platter, Turning static into intent',
   description:
     'Case study: redesigning STAGE\'s homepage poster from a passive visual into an interactive motion preview, driving a +19.6% preview-to-content lift.',
 };

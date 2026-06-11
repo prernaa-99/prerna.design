@@ -99,7 +99,7 @@ function SplitPhoneHero() {
     <div style={{ position: "relative" }}>
       <div style={{ width: 288, maxWidth: "100%", aspectRatio: "9 / 19", background: "#000", borderRadius: 36, padding: 7, position: "relative", boxShadow: "0 60px 120px rgba(0,0,0,0.6), 0 20px 40px rgba(0,0,0,0.4)" }}>
         <div style={{ width: "100%", height: "100%", background: "#0c1320", borderRadius: 30, position: "relative", overflow: "hidden", color: "#fff" }}>
-          <img src="/platter_image_1.jpg" alt="STAGE app — static poster morphing into motion preview" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src="/platter_image_1.jpg" alt="STAGE app, static poster morphing into motion preview" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           <div style={{
             position: "absolute", top: "46.5%", left: "50%", transform: "translate(-50%, -50%)",
             width: 46, height: 46, borderRadius: "50%",
@@ -148,7 +148,7 @@ function HeroVisual() {
                 <span style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.accent }}>1:1</span>
               </div>
               <div style={{ fontFamily: FP.display, fontSize: 30, fontWeight: 500, letterSpacing: -0.6, marginBottom: 10, color: "#fff" }}>Motion preview</div>
-              <div style={{ fontSize: 15, lineHeight: 1.55, color: "#999", maxWidth: 460 }}>The decision cost drops to near zero — a 2-3s clip answers "is this for me?"</div>
+              <div style={{ fontSize: 15, lineHeight: 1.55, color: "#999", maxWidth: 460 }}>The decision cost drops to near zero, a 2-3s clip answers "is this for me?"</div>
             </div>
             <div style={{ marginTop: 8, padding: "16px 20px", border: "1px solid #27323f", background: "#141d2b", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", color: "#aaa", lineHeight: 1.5 }}>
               <span style={{ color: PL.accent }}>↳</span> ONE SLOT · ONE MORPH · ZERO ADDED TAPS
@@ -165,7 +165,7 @@ function AnnotatedPhone() {
     <div style={{ position: "relative", width: 220 }}>
       <div style={{ width: 220, aspectRatio: "9 / 19", background: "#000", borderRadius: 26, padding: 6 }}>
         <div style={{ width: "100%", height: "100%", background: "#0c1320", borderRadius: 21, position: "relative", overflow: "hidden" }}>
-          <img src="/2_home_old.png" alt="STAGE old homepage — static poster with no preview layer" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src="/2_home_old.png" alt="STAGE old homepage, static poster with no preview layer" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 60, height: 14, background: "#000", borderRadius: 8 }} />
         </div>
       </div>
@@ -175,9 +175,9 @@ function AnnotatedPhone() {
 
 function OldPlatterAnnotated() {
   const annotations = [
-    { label: "Generic poster", note: "Same frame for everyone. No personalization signal — taste, history, language all ignored." },
+    { label: "Generic poster", note: "Same frame for everyone. No personalization signal, taste, history, language all ignored." },
     { label: "Cluttered hierarchy", note: "Poster fights with surrounding chrome. Nothing dominates; the eye has nowhere to land." },
-    { label: "Dead-end CTA", note: "Tap and commit. No way to preview the content first — decisions made blind." },
+    { label: "Dead-end CTA", note: "Tap and commit. No way to preview the content first, decisions made blind." },
   ];
   return (
     <div style={{ background: PL.paper, border: `1px solid ${PL.rule}` }}>
@@ -266,7 +266,7 @@ function ProblemSection() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 40, alignItems: "start" }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>STAGE's homepage poster looked good but wasn't doing its job. Only a fraction of users who saw it actually tapped through to content. The data told a clear story: the poster was <em>wallpaper</em>, not a doorway.</p>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Three things were broken. None of them flashy on their own — together, they explained the leak.</p>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Three things were broken. None of them flashy on their own, together, they explained the leak.</p>
         </div>
         <div style={{ marginTop: 64 }}>
           <OldPlatterAnnotated />
@@ -297,7 +297,7 @@ function PeerCard({ idx, name, src }) {
         <span>0{idx + 1} · {name}</span>
       </div>
       <div style={{ aspectRatio: "9 / 16", background: "#0c1320", borderRadius: 3, position: "relative", overflow: "hidden" }}>
-        <img src={src} alt={`${name} homepage — static poster treatment`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        <img src={src} alt={`${name} homepage, static poster treatment`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
       </div>
     </div>
   );
@@ -318,7 +318,7 @@ function BenchmarkSection() {
           What everyone <span style={{ fontStyle: "italic" }}>else</span> missed
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32 }}>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I audited four major streaming and content platforms. Every single one treated homepage posters the same way — big image, text overlay, CTA button. The pattern was so universal that nobody was questioning whether it worked.</p>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I audited four major streaming and content platforms. Every single one treated homepage posters the same way, big image, text overlay, CTA button. The pattern was so universal that nobody was questioning whether it worked.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The gap wasn't visual quality. It was <strong>interaction cost</strong>. Users were being asked to make a decision with almost no information. The poster gave them a mood, not a reason.</p>
         </div>
         <div style={{ marginTop: 56, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>COMPETITOR AUDIT · TOP-OF-HOMEPAGE TREATMENT</div>
@@ -409,10 +409,10 @@ function HypothesisSection() {
       <Container>
         <SectionMark num="03" label="The hypothesis" />
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
-          What if the poster wasn't a <span style={{ fontStyle: "italic" }}>poster</span> — but a <span style={{ color: PL.accent }}>preview?</span>
+          What if the poster wasn't a <span style={{ fontStyle: "italic" }}>poster</span>, but a <span style={{ color: PL.accent }}>preview?</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32, alignItems: "start" }}>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Instead of a static frame, I explored turning the platter into a short, motion-driven preview — giving users a taste of the content before they committed. The goal was to reduce the decision cost to near zero.</p>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Instead of a static frame, I explored turning the platter into a short, motion-driven preview, giving users a taste of the content before they committed. The goal was to reduce the decision cost to near zero.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Research on the <strong>Mere Exposure Effect</strong> suggests that even brief, passive exposure increases familiarity and preference. A 2-3 second motion preview could do two things at once: inform the decision <em>and</em> build subconscious interest.</p>
         </div>
         <div style={{ marginTop: 64 }}>
@@ -608,7 +608,7 @@ function SpecFrame({ ratio, label, dims, detail, src, highlight = false }) {
   return (
     <div style={{ position: "relative", padding: "32px 56px 32px 32px" }}>
       <div style={{ width: "100%", aspectRatio: ratio, background: "#0c1320", borderRadius: 6, position: "relative", overflow: "hidden", border: highlight ? `2px solid ${PL.accent}` : "none" }}>
-        <img src={src} alt={`${label} — ${detail}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        <img src={src} alt={`${label}, ${detail}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         {highlight && <div style={{ position: "absolute", top: 8, right: 8, width: 8, height: 8, borderRadius: "50%", background: PL.accent }} />}
       </div>
       <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -631,7 +631,7 @@ function SolutionSection() {
           A <span style={{ color: PL.accent }}>two-ratio</span> system
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32, alignItems: "start" }}>
-          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I designed a system that adapts the poster into two states — a <strong>static ratio</strong> for the default view and a <strong>motion ratio</strong> for the preview — and transitions between them seamlessly.</p>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I designed a system that adapts the poster into two states, a <strong>static ratio</strong> for the default view and a <strong>motion ratio</strong> for the preview, and transitions between them seamlessly.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The static state works exactly like the current poster: clean, art-directed, optimized for the hero slot. The motion state activates on pause, expanding the aspect ratio to accommodate a video preview without disrupting layout.</p>
         </div>
         <div style={{ marginTop: 64 }}>
@@ -672,7 +672,7 @@ function StoryFrame({ frame }) {
         <span>{frame.title.toUpperCase()}</span>
       </div>
       <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 18, display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <StoryPhone src={frame.src} alt={`STAGE platter — ${frame.title.toLowerCase()} state`} />
+        <StoryPhone src={frame.src} alt={`STAGE platter, ${frame.title.toLowerCase()} state`} />
       </div>
       <div>
         <div style={{ fontFamily: FP.display, fontSize: 14, letterSpacing: "0.12em", textTransform: "uppercase", color: PL.accent, marginBottom: 8 }}>{frame.principle}</div>
@@ -763,7 +763,7 @@ function MetricCard({ value, label, caption, before, after }) {
 function ImpactSection() {
   const metrics = [
     { value: 20, label: "PREVIEW ENGAGEMENT", caption: "More users interacted with the poster rather than scrolling past it.", before: 12, after: 32 },
-    { value: 60, label: "PREVIEW → TAP", caption: "Of users who saw the motion preview tapped into content — vs a much lower static rate.", before: 22, after: 60 },
+    { value: 60, label: "PREVIEW → TAP", caption: "Of users who saw the motion preview tapped into content, vs a much lower static rate.", before: 22, after: 60 },
     { value: 15, label: "BOUNCE REDUCTION", caption: "Users stayed on the homepage longer and explored more before leaving.", before: 38, after: 23 },
   ];
   return (
@@ -781,7 +781,7 @@ function ImpactSection() {
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr]" style={{ marginTop: 56, padding: "32px 0 0", borderTop: "1px solid #27323f", gap: 32 }}>
           <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: "#777" }}>HONEST · NOTE</div>
           <div style={{ fontSize: 15, lineHeight: 1.55, color: "#bbb", maxWidth: 820 }}>
-            These are early numbers from a single test cycle. The sample is meaningful but not conclusive — I'd want to run this across content categories and geographies before calling it proven. But the directional signal is strong: <span style={{ color: PL.bg }}>reducing decision cost works.</span>
+            These are early numbers from a single test cycle. The sample is meaningful but not conclusive, I'd want to run this across content categories and geographies before calling it proven. But the directional signal is strong: <span style={{ color: PL.bg }}>reducing decision cost works.</span>
           </div>
         </div>
       </Container>
