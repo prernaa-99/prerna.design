@@ -34,8 +34,8 @@ const EXIT = 70;   // scrolled above this -> hero state
 const HERO = { top: 10, maxWidth: 1280, padX: 26, padY: 16, gap: 40, bgA: 0, blur: 0, borderA: 0, shadowA: 0 };
 const PILL = { top: 16, maxWidth: 640, padX: 18, padY: 9, gap: 26, bgA: 0.65, blur: 16, borderA: 0.4, shadowA: 0.08 };
 
-const TALK_COLLAPSED = 44; // circle diameter
-const TALK_EXPANDED = 168; // expanded pill width
+const TALK_COLLAPSED = 44; // circle diameter (collapsed pill = just the avatar)
+// expanded width is measured from content at hover time (see expandTalk)
 
 export default function FloatingNav() {
   const root = useRef(null);
@@ -126,8 +126,12 @@ export default function FloatingNav() {
 
   /* ---- avatar hover: expand to dark "Let's Talk" pill ---- */
   const expandTalk = contextSafe(() => {
-    gsap.to(talkRef.current, {
-      width: TALK_EXPANDED,
+    const el = talkRef.current;
+    // Hug the content: scrollWidth = avatar + gap + text + right padding,
+    // measured even while the pill is clipped/collapsed (overflow-hidden).
+    const target = el ? el.scrollWidth : 160;
+    gsap.to(el, {
+      width: target,
       backgroundColor: CONFIG.talkBg,
       duration: 0.4,
       ease: 'power2.out',
@@ -163,7 +167,7 @@ export default function FloatingNav() {
       {/* Animated header bar, fixed, centered, glass values driven by GSAP */}
       <header
         ref={barRef}
-        className="fixed left-1/2 -translate-x-1/2 z-[60] flex items-center justify-between rounded-full"
+        className="fixed left-1/2 -translate-x-1/2 z-[60] flex md:grid md:grid-cols-[1fr_auto_1fr] items-center justify-between rounded-full"
         style={{
           top: HERO.top,
           width: 'calc(100% - 32px)',
@@ -176,7 +180,7 @@ export default function FloatingNav() {
         }}
       >
         {/* LEFT, logo */}
-        <a href="#hero" className="flex items-center gap-2.5 shrink-0" data-cursor="hover" aria-label="Prerna, home">
+        <a href="#hero" className="flex items-center gap-2.5 shrink-0 md:justify-self-start" data-cursor="hover" aria-label="Prerna, home">
           {/* Swap this styled mark for <img src="/logo.png" .../> when ready */}
           <span
             className="flex items-center justify-center w-9 h-9 rounded-[10px] text-white font-semibold text-[17px]"
@@ -189,60 +193,73 @@ export default function FloatingNav() {
           </span>
         </a>
 
-        {/* CENTER, links (hidden on mobile) */}
-        <nav ref={navRef} className="hidden md:flex items-center" style={{ gap: HERO.gap }}>
+        {/* CENTER, links — sit in the centered grid column; weight is constant
+            (only color + underline animate) so hover never changes link width. */}
+        <nav ref={navRef} className="hidden md:flex items-center md:justify-self-center" style={{ gap: HERO.gap }}>
           {LINKS.map((l) => (
             <a
               key={l.label}
               href={l.href}
               {...(l.external ? { target: '_blank', rel: 'noreferrer' } : {})}
               data-cursor="hover"
-              className="relative text-[14px] font-medium transition-colors duration-200 hover:opacity-100"
+              className="group relative text-[14px] font-medium transition-colors duration-200"
               style={{ color: CONFIG.inkMuted }}
               onMouseEnter={(e) => (e.currentTarget.style.color = CONFIG.ink)}
               onMouseLeave={(e) => (e.currentTarget.style.color = CONFIG.inkMuted)}
             >
               {l.label}
+              {/* underline reveal — absolutely positioned, never affects layout */}
+              <span
+                className="pointer-events-none absolute -bottom-1 left-0 right-0 h-[1.5px] origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
+                style={{ background: CONFIG.ink }}
+              />
             </a>
           ))}
         </nav>
 
-        {/* RIGHT, avatar -> Let's Talk + mobile hamburger */}
-        <div className="flex items-center gap-3 shrink-0">
-          <a
-            ref={talkRef}
-            href="#contact"
-            onMouseEnter={expandTalk}
-            onMouseLeave={collapseTalk}
-            data-cursor="hover"
-            aria-label="Let's talk"
-            className="relative flex items-center h-11 rounded-full overflow-hidden"
-            style={{ width: TALK_COLLAPSED, backgroundColor: 'rgba(0,0,0,0)' }}
-          >
-            {/* avatar pinned left */}
-            <span className="absolute left-0 top-0 w-11 h-11 flex items-center justify-center shrink-0">
-              <span
-                ref={ringRef}
-                className="absolute inset-[1px] rounded-full"
-                style={{ border: `2px solid ${CONFIG.ring}` }}
-              />
-              <span
-                className="absolute inset-[4px] rounded-full bg-cover bg-center"
-                style={{
-                  backgroundImage: 'url(/avatar.jpg)',
-                  backgroundColor: CONFIG.ink, // graceful fallback if image missing
-                }}
-              />
-            </span>
-            {/* revealing text */}
-            <span
-              ref={talkTextRef}
-              className="whitespace-nowrap text-[14px] font-medium pl-[52px] pr-5"
-              style={{ color: CONFIG.talkText }}
+        {/* RIGHT, avatar -> Let's Talk + mobile hamburger. Raised z-index so the
+            expanding pill sits above the links it overlays. */}
+        <div className="relative z-10 flex items-center gap-3 shrink-0 md:justify-self-end">
+          {/* Fixed circle-sized slot. The pill is absolutely anchored to the
+              RIGHT and animates its width leftward, so it overlays the layout
+              on expand without ever changing this slot's footprint — siblings
+              never move. */}
+          <div className="relative shrink-0 md:mr-3" style={{ width: TALK_COLLAPSED, height: TALK_COLLAPSED }}>
+            <a
+              ref={talkRef}
+              href="#contact"
+              onMouseEnter={expandTalk}
+              onMouseLeave={collapseTalk}
+              data-cursor="hover"
+              aria-label="Let's talk"
+              className="absolute right-0 top-0 flex items-center h-11 rounded-full overflow-hidden"
+              style={{ width: TALK_COLLAPSED, backgroundColor: 'rgba(0,0,0,0)' }}
             >
-              Let&apos;s Talk
-            </span>
-          </a>
+              {/* avatar pinned to the pill's left edge */}
+              <span className="absolute left-0 top-0 w-11 h-11 flex items-center justify-center shrink-0">
+                <span
+                  ref={ringRef}
+                  className="absolute inset-[1px] rounded-full"
+                  style={{ border: `2px solid ${CONFIG.ring}` }}
+                />
+                <span
+                  className="absolute inset-[4px] rounded-full bg-cover bg-center"
+                  style={{
+                    backgroundImage: 'url(/avatar.jpg)',
+                    backgroundColor: CONFIG.ink, // graceful fallback if image missing
+                  }}
+                />
+              </span>
+              {/* revealing text */}
+              <span
+                ref={talkTextRef}
+                className="whitespace-nowrap text-[14px] font-medium pl-[52px] pr-4"
+                style={{ color: CONFIG.talkText }}
+              >
+                Let&apos;s Talk
+              </span>
+            </a>
+          </div>
 
           {/* hamburger (mobile only) */}
           <button
