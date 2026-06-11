@@ -6,6 +6,9 @@ const HERO_BG = '#fcfcfc';
 const NAVY = '#1d2f46';
 const NAVY_MUTED = 'rgba(29,47,70,0.7)';
 
+// "HIRE ME" opens the default mail client with the address + subject pre-filled.
+const MAILTO = "mailto:prernaa99@icloud.com?subject=Let's%20work%20together";
+
 const CAPABILITIES = [
   { label: 'User Research', active: false },
   { label: 'Product Design', active: true },
@@ -14,9 +17,6 @@ const CAPABILITIES = [
 ];
 
 export default function Hero() {
-  const goContact = () =>
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-
   return (
     <section id="hero" className="relative overflow-hidden" style={{ background: HERO_BG }}>
       {/* ===================== DESKTOP STAGE (md+) ===================== */}
@@ -98,8 +98,8 @@ export default function Hero() {
         </p>
 
         {/* // HIRE ME → */}
-        <button
-          onClick={goContact}
+        <a
+          href={MAILTO}
           data-cursor="hover"
           className="absolute flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer"
           style={{
@@ -109,12 +109,13 @@ export default function Hero() {
             fontWeight: 700,
             fontSize: '1.5625cqw',
             color: NAVY,
+            textDecoration: 'none',
             zIndex: 5,
           }}
         >
           <span className="whitespace-nowrap">{'// HIRE ME'}</span>
           <span aria-hidden>→</span>
-        </button>
+        </a>
 
         {/* capabilities list (bottom-right) */}
         <div
@@ -171,15 +172,15 @@ export default function Hero() {
           I turn user insights into intuitive digital products that drive engagement, conversion, and growth.
         </p>
 
-        <button
-          onClick={goContact}
+        <a
+          href={MAILTO}
           data-cursor="hover"
           className="mt-4 flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer"
-          style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 18, color: NAVY }}
+          style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 18, color: NAVY, textDecoration: 'none' }}
         >
           <span className="whitespace-nowrap">{'// HIRE ME'}</span>
           <span aria-hidden>→</span>
-        </button>
+        </a>
 
         <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1">
           {CAPABILITIES.map((c) => (
