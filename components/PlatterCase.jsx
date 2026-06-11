@@ -464,7 +464,7 @@ function ConstraintSketch({ kind, dont }) {
   if (kind === "face") {
     return (
       <svg viewBox="0 0 160 90" preserveAspectRatio="none" style={{ width: "100%", height: "100%" }}>
-        <rect x="2" y="2" width="156" height="86" fill="#3a2520" />
+        <rect x="2" y="2" width="156" height="86" fill="#1d2f46" />
         {dont ? (
           <g>
             <circle cx="80" cy="-5" r="42" fill="#c8856a" />
