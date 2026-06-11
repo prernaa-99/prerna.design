@@ -720,7 +720,7 @@ function MetricCard({ value, label, caption, before, after }) {
   const afterW = (after / maxBar) * 100;
 
   return (
-    <div ref={ref} style={{ background: "#0e1622", border: "1px solid #27323f", padding: 28, display: "flex", flexDirection: "column", gap: 18 }}>
+    <div ref={ref} style={{ background: PL.paper, border: `1px solid ${PL.ruleSoft}`, boxShadow: "0 14px 34px rgba(0,0,0,0.28)", padding: 28, display: "flex", flexDirection: "column", gap: 18 }}>
       <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.muted }}>{label}</div>
       <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
         <span style={{ fontFamily: FP.display, fontSize: 88, fontWeight: 500, lineHeight: 0.85, letterSpacing: -3, color: PL.accent }}>{Math.round(v)}</span>
@@ -732,20 +732,20 @@ function MetricCard({ value, label, caption, before, after }) {
           <div style={{ display: "flex", justifyContent: "space-between", fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: "#666", marginBottom: 4 }}>
             <span>BEFORE</span><span>{before}%</span>
           </div>
-          <div style={{ height: 6, background: "#1d2f46" }}>
-            <div style={{ width: `${bA * beforeW}%`, height: "100%", background: "#555", transition: "width 1.2s cubic-bezier(0.22,1,0.36,1)" }} />
+          <div style={{ height: 6, background: "#e6ebf1" }}>
+            <div style={{ width: `${bA * beforeW}%`, height: "100%", background: "#9aa7b8", transition: "width 1.2s cubic-bezier(0.22,1,0.36,1)" }} />
           </div>
         </div>
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.accent, marginBottom: 4 }}>
             <span>AFTER</span><span>{after}%</span>
           </div>
-          <div style={{ height: 6, background: "#1d2f46" }}>
+          <div style={{ height: 6, background: "#e6ebf1" }}>
             <div style={{ width: `${bA * afterW}%`, height: "100%", background: PL.accent, transition: "width 1.4s cubic-bezier(0.22,1,0.36,1)" }} />
           </div>
         </div>
       </div>
-      <div style={{ fontSize: 13, lineHeight: 1.55, color: "#999" }}>{caption}</div>
+      <div style={{ fontSize: 13, lineHeight: 1.55, color: PL.ink2 }}>{caption}</div>
     </div>
   );
 }
