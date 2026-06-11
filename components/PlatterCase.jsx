@@ -40,28 +40,18 @@ function SectionMark({ num, label, light = false }) {
 
 function CaseNav() {
   return (
-    <div style={{ position: "sticky", top: 0, zIndex: 10, background: `${PL.bg}ee`, backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", borderBottom: `1px solid ${PL.ruleSoft}` }}>
-      <Container style={{ padding: "16px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: PL.ink, fontFamily: "inherit" }} data-cursor="hover">
-          <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 28, height: 28, background: PL.ink, color: PL.bg, fontFamily: FP.display, fontSize: 16, fontWeight: 600, borderRadius: 4 }}>P</span>
-          <span style={{ display: "flex", flexDirection: "column", lineHeight: 1, alignItems: "flex-start" }}>
-            <span style={{ fontFamily: FP.display, fontSize: 15, fontWeight: 600 }}>Prerna</span>
-            <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.18em", color: PL.muted, marginTop: 3 }}>PRODUCT DESIGNER</span>
-          </span>
-        </Link>
-        <div style={{ display: "flex", alignItems: "center", gap: 20, fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.18em" }}>
-          <Link href="/case-stage" style={{ color: PL.muted, textDecoration: "none" }} data-cursor="hover">← PREV · DISCOVERY</Link>
-          <span style={{ color: PL.rule }}>|</span>
-          <Link href="/" style={{ color: PL.ink2, textDecoration: "none" }} data-cursor="hover">INDEX</Link>
-        </div>
-      </Container>
-    </div>
+    <Container style={{ paddingTop: 28 }}>
+      <Link href="/#work" data-cursor="hover" className="group inline-flex items-center gap-2" style={{ color: PL.ink2, fontFamily: FP.body, fontSize: 14, fontWeight: 500, textDecoration: "none" }}>
+        <svg className="transition-transform group-hover:-translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+        Go back
+      </Link>
+    </Container>
   );
 }
 
 function CaseHero() {
   return (
-    <section className="pt-12 pb-10 md:pt-20 md:pb-[60px]" style={{borderBottom: `1px solid ${PL.rule}` }}>
+    <section className="pt-8 pb-10 md:pt-12 md:pb-[60px]" style={{borderBottom: `1px solid ${PL.rule}` }}>
       <Container>
         <div style={{ display: "flex", gap: 16, alignItems: "center", fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 32 }}>
           <span style={{ width: 24, height: 1, background: PL.rule }} />
