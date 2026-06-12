@@ -22,7 +22,6 @@ const CONFIG = {
 const LINKS = [
   { label: 'Work', href: '#work' },
   { label: 'About', href: '#about-story' },
-  { label: 'Contact', href: '#contact' },
   { label: 'Resume', href: '/resume.pdf', external: true },
 ];
 

@@ -101,20 +101,19 @@ export default function Hero() {
         <a
           href={MAILTO}
           data-cursor="hover"
-          className="absolute flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer"
+          className="group absolute flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer text-[#1d2f46] transition-colors duration-200 hover:text-[#2e5c8a]"
           style={{
             left: '7.81%',
             top: '69.2%',
             fontFamily: FP.body,
             fontWeight: 700,
             fontSize: '1.5625cqw',
-            color: NAVY,
             textDecoration: 'none',
             zIndex: 5,
           }}
         >
           <span className="whitespace-nowrap">{'// HIRE ME'}</span>
-          <span aria-hidden>→</span>
+          <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
         </a>
 
         {/* capabilities list (bottom-right) */}
@@ -175,11 +174,11 @@ export default function Hero() {
         <a
           href={MAILTO}
           data-cursor="hover"
-          className="mt-4 flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer"
-          style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 18, color: NAVY, textDecoration: 'none' }}
+          className="group mt-4 flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer text-[#1d2f46] transition-colors duration-200 hover:text-[#2e5c8a]"
+          style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 18, textDecoration: 'none' }}
         >
           <span className="whitespace-nowrap">{'// HIRE ME'}</span>
-          <span aria-hidden>→</span>
+          <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
         </a>
 
         <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1">
