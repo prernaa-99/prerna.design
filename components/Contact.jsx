@@ -100,12 +100,28 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* bottom, contact links */}
+        {/* bottom, contact links — [label, displayed text, href] (href optional) */}
         <div className="grid grid-cols-1 sm:grid-cols-3" style={{ borderTop: "1px solid rgba(255,255,255,0.2)", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em" }}>
-          {[["EMAIL", "hello@prerna.studio"], ["READ.CV", "read.cv/prerna"], ["LINKEDIN", "in/prerna-studio"]].map(([k, v]) => (
+          {[
+            ["EMAIL", "prernaa99@icloud.com", "mailto:prernaa99@icloud.com"],
+            ["READ.CV", "read.cv/prerna", null],
+            ["LINKEDIN", "in/prernaa99", "https://www.linkedin.com/in/prernaa99"],
+          ].map(([k, v, href]) => (
             <div key={k} className="border-solid border-white/20 px-4 py-5 border-b last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
               <div style={{ opacity: 0.5, marginBottom: 10 }}>{k}</div>
-              <div style={{ fontFamily: FP.body, fontSize: 16, letterSpacing: 0, fontWeight: 500 }}>{v}</div>
+              {href ? (
+                <a
+                  href={href}
+                  {...(href.startsWith("mailto:") ? {} : { target: "_blank", rel: "noreferrer" })}
+                  data-cursor="hover"
+                  className="hover:underline"
+                  style={{ fontFamily: FP.body, fontSize: 16, letterSpacing: 0, fontWeight: 500, color: "inherit", textDecoration: "none" }}
+                >
+                  {v}
+                </a>
+              ) : (
+                <div style={{ fontFamily: FP.body, fontSize: 16, letterSpacing: 0, fontWeight: 500 }}>{v}</div>
+              )}
             </div>
           ))}
         </div>
