@@ -61,8 +61,8 @@ export default function Contact() {
   const sizes = [{ s: 2, l: "Fine" }, { s: 4, l: "Medium" }, { s: 8, l: "Bold" }, { s: 16, l: "Chunky" }];
 
   return (
-    <section id="contact" className="min-h-[100svh] flex flex-col px-5 pt-24 pb-10 md:px-8 md:pt-24" style={{ background: V2.dark, color: V2.paper, borderTop: `1px solid ${V2.rule}` }}>
-      <div className="mx-auto w-full max-w-[1320px] flex flex-col flex-1 min-h-0 justify-between gap-6">
+    <section id="contact" className="flex flex-col px-5 pt-24 pb-12 md:px-8 md:pt-24 md:min-h-[100svh]" style={{ background: V2.dark, color: V2.paper, borderTop: `1px solid ${V2.rule}` }}>
+      <div className="mx-auto w-full max-w-[1320px] flex flex-col gap-8 md:flex-1 md:min-h-0 md:justify-between md:gap-6">
         {/* top, label + headline */}
         <div>
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 20 }}>GET IN TOUCH</div>
@@ -73,7 +73,7 @@ export default function Contact() {
 
         {/* middle, controls + a moderate canvas */}
         <div>
-          <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-3 md:gap-6">
             <div style={{ display: "flex", gap: 8 }}>
               {colors.map(c => (
                 <button key={c} onClick={() => setColor(c)} data-cursor="hover" style={{ width: 32, height: 32, borderRadius: "50%", background: c, border: color === c ? `2px solid ${V2.paper}` : "2px solid transparent", cursor: "pointer", transition: `transform 0.3s ${SPRING}`, transform: color === c ? "scale(1.15)" : "scale(1)" }} />
@@ -84,7 +84,7 @@ export default function Contact() {
                 <button key={s} onClick={() => setSize(s)} data-cursor="hover" style={{ padding: "8px 14px", background: size === s ? V2.accent : "transparent", color: V2.paper, border: `1px solid ${size === s ? V2.accent : "#444"}`, fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", cursor: "pointer" }}>{l.toUpperCase()}</button>
               ))}
             </div>
-            <div style={{ display: "flex", gap: 8, marginLeft: "auto" }}>
+            <div className="flex gap-2 sm:ml-auto">
               <button onClick={clear} data-cursor="hover" style={{ padding: "8px 14px", background: "transparent", color: V2.paper, border: "1px solid #444", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", cursor: "pointer" }}>CLEAR</button>
               <button onClick={save} data-cursor="hover" style={{ padding: "8px 14px", background: V2.paper, color: V2.dark, border: "none", fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.15em", cursor: "pointer", fontWeight: 600 }}>SAVE PNG ↓</button>
             </div>

@@ -63,7 +63,7 @@ function WorkCard({ p, i }) {
 
         {/* LEFT RAIL, role, rotated up the side */}
         <div className="flex items-center justify-center flex-row md:flex-col md:justify-start border-solid border-[#d4dbe5] border-b md:border-b-0 md:border-r px-5 py-3.5 md:px-0 md:py-7" style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: V2.muted }}>
-          <span className="rotate-0 [writing-mode:horizontal-tb] md:rotate-180 md:[writing-mode:vertical-rl] whitespace-nowrap">ROLE, {p.role.toUpperCase()}</span>
+          <span className="rotate-0 [writing-mode:horizontal-tb] md:rotate-180 md:[writing-mode:vertical-rl] whitespace-nowrap">ROLE · {p.role.toUpperCase()}</span>
         </div>
 
         {/* CONTENT, headline, rule, body, view link */}

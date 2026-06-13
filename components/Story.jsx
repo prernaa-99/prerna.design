@@ -80,8 +80,8 @@ export default function Story() {
   const [hov, setHov] = useState(-1);
 
   return (
-    <section id="about-story" className="min-h-[100svh] flex flex-col px-5 py-20 md:px-8 md:py-24" style={{ background: V2.bg, borderTop: `1px solid ${V2.rule}` }}>
-      <div className="mx-auto w-full max-w-[1180px] flex flex-col flex-1 min-h-0 justify-between gap-8">
+    <section id="about-story" className="flex flex-col px-5 py-20 md:px-8 md:py-24 md:min-h-[100svh]" style={{ background: V2.bg, borderTop: `1px solid ${V2.rule}` }}>
+      <div className="mx-auto w-full max-w-[1180px] flex flex-col gap-10 md:flex-1 md:min-h-0 md:justify-between md:gap-8">
         {/* header, label + tab switch */}
         <div className="flex items-center justify-between gap-4">
           <div style={{ fontFamily: FP.mono, fontSize: 11, letterSpacing: "0.2em", color: V2.muted }}>ABOUT</div>

@@ -38,7 +38,7 @@ export default function Stack() {
   return (
     <section
       id="skills"
-      className="min-h-screen flex items-center justify-center px-5 py-[100px] md:px-8 md:py-40"
+      className="flex items-center justify-center px-5 py-16 md:min-h-screen md:px-8 md:py-40"
       style={{ background: V2.bgDeep, color: V2.ink, borderTop: `1px solid ${V2.ruleSoft}` }}
     >
       <div className="mx-auto w-full max-w-[1320px] text-center">

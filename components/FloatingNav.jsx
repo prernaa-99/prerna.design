@@ -112,7 +112,8 @@ export default function FloatingNav() {
         transformOrigin: 'center',
       });
 
-      // Mobile menu starts hidden.
+      // Mobile menu starts hidden. Centered via CSS auto-margins (not a
+      // transform), so GSAP can own the transform (y) without conflict.
       gsap.set(menuRef.current, { autoAlpha: 0, y: -8 });
 
       return () => {
@@ -163,10 +164,38 @@ export default function FloatingNav() {
 
   return (
     <div ref={root}>
-      {/* Animated header bar, fixed, centered, glass values driven by GSAP */}
+      {/* ===== MOBILE: flat, full-width, fixed top bar (no pill) ===== */}
+      <header
+        className="md:hidden fixed top-0 inset-x-0 z-[60] flex items-center justify-between h-14 px-5"
+        style={{
+          background: 'rgba(252,252,252,0.9)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderBottom: '1px solid rgba(29,47,70,0.08)',
+          fontFamily: "'IBM Plex Sans', sans-serif",
+        }}
+      >
+        <a href="#hero" className="flex items-center gap-2.5" data-cursor="hover" aria-label="Prerna, home">
+          <span className="flex items-center justify-center w-9 h-9 rounded-[10px] text-white font-semibold text-[17px]" style={{ background: CONFIG.ink, backgroundImage: 'url(/logo.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>P</span>
+          <span className="text-[16px] font-semibold tracking-tight" style={{ color: CONFIG.ink }}>Prerna</span>
+        </a>
+        <button
+          type="button"
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          className="flex flex-col items-center justify-center w-8 h-8 gap-[5px]"
+          data-cursor="hover"
+        >
+          <span className="block w-5 h-[2px] rounded-full transition-transform duration-300" style={{ background: CONFIG.ink, transform: menuOpen ? 'translateY(3.5px) rotate(45deg)' : 'none' }} />
+          <span className="block w-5 h-[2px] rounded-full transition-transform duration-300" style={{ background: CONFIG.ink, transform: menuOpen ? 'translateY(-3.5px) rotate(-45deg)' : 'none' }} />
+        </button>
+      </header>
+
+      {/* ===== DESKTOP: animated glass pill (md+), glass values driven by GSAP ===== */}
       <header
         ref={barRef}
-        className="fixed left-1/2 -translate-x-1/2 z-[60] flex md:grid md:grid-cols-[1fr_auto_1fr] items-center justify-between rounded-full"
+        className="hidden md:grid md:grid-cols-[1fr_auto_1fr] fixed left-1/2 -translate-x-1/2 z-[60] items-center rounded-full"
         style={{
           top: HERO.top,
           width: 'calc(100% - 32px)',
@@ -179,22 +208,13 @@ export default function FloatingNav() {
         }}
       >
         {/* LEFT, logo */}
-        <a href="#hero" className="flex items-center gap-2.5 shrink-0 md:justify-self-start" data-cursor="hover" aria-label="Prerna, home">
-          {/* Swap this styled mark for <img src="/logo.png" .../> when ready */}
-          <span
-            className="flex items-center justify-center w-9 h-9 rounded-[10px] text-white font-semibold text-[17px]"
-            style={{ background: CONFIG.ink, backgroundImage: 'url(/logo.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
-          >
-            P
-          </span>
-          <span className="text-[16px] font-semibold tracking-tight" style={{ color: CONFIG.ink }}>
-            Prerna
-          </span>
+        <a href="#hero" className="flex items-center gap-2.5 shrink-0 justify-self-start" data-cursor="hover" aria-label="Prerna, home">
+          <span className="flex items-center justify-center w-9 h-9 rounded-[10px] text-white font-semibold text-[17px]" style={{ background: CONFIG.ink, backgroundImage: 'url(/logo.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>P</span>
+          <span className="text-[16px] font-semibold tracking-tight" style={{ color: CONFIG.ink }}>Prerna</span>
         </a>
 
-        {/* CENTER, links — sit in the centered grid column; weight is constant
-            (only color + underline animate) so hover never changes link width. */}
-        <nav ref={navRef} className="hidden md:flex items-center md:justify-self-center" style={{ gap: HERO.gap }}>
+        {/* CENTER, links — constant weight; only color + underline animate */}
+        <nav ref={navRef} className="flex items-center justify-self-center" style={{ gap: HERO.gap }}>
           {LINKS.map((l) => (
             <a
               key={l.label}
@@ -207,23 +227,14 @@ export default function FloatingNav() {
               onMouseLeave={(e) => (e.currentTarget.style.color = CONFIG.inkMuted)}
             >
               {l.label}
-              {/* underline reveal — absolutely positioned, never affects layout */}
-              <span
-                className="pointer-events-none absolute -bottom-1 left-0 right-0 h-[1.5px] origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
-                style={{ background: CONFIG.ink }}
-              />
+              <span className="pointer-events-none absolute -bottom-1 left-0 right-0 h-[1.5px] origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" style={{ background: CONFIG.ink }} />
             </a>
           ))}
         </nav>
 
-        {/* RIGHT, avatar -> Let's Talk + mobile hamburger. Raised z-index so the
-            expanding pill sits above the links it overlays. */}
-        <div className="relative z-10 flex items-center gap-3 shrink-0 md:justify-self-end">
-          {/* Fixed circle-sized slot. The pill is absolutely anchored to the
-              RIGHT and animates its width leftward, so it overlays the layout
-              on expand without ever changing this slot's footprint — siblings
-              never move. */}
-          <div className="relative shrink-0 md:mr-3" style={{ width: TALK_COLLAPSED, height: TALK_COLLAPSED }}>
+        {/* RIGHT, avatar -> Let's Talk pill (overlays leftward, no reflow) */}
+        <div className="relative z-10 flex items-center shrink-0 justify-self-end">
+          <div className="relative shrink-0 mr-3" style={{ width: TALK_COLLAPSED, height: TALK_COLLAPSED }}>
             <a
               ref={talkRef}
               href="#contact"
@@ -234,57 +245,22 @@ export default function FloatingNav() {
               className="absolute right-0 top-0 flex items-center h-11 rounded-full overflow-hidden"
               style={{ width: TALK_COLLAPSED, backgroundColor: 'rgba(0,0,0,0)' }}
             >
-              {/* avatar pinned to the pill's left edge */}
               <span className="absolute left-0 top-0 w-11 h-11 flex items-center justify-center shrink-0">
-                <span
-                  ref={ringRef}
-                  className="absolute inset-[1px] rounded-full"
-                  style={{ border: `2px solid ${CONFIG.ring}` }}
-                />
-                <span
-                  className="absolute inset-[4px] rounded-full bg-cover bg-center"
-                  style={{
-                    backgroundImage: 'url(/avatar.jpg)',
-                    backgroundColor: CONFIG.ink, // graceful fallback if image missing
-                  }}
-                />
+                <span ref={ringRef} className="absolute inset-[1px] rounded-full" style={{ border: `2px solid ${CONFIG.ring}` }} />
+                <span className="absolute inset-[4px] rounded-full bg-cover bg-center" style={{ backgroundImage: 'url(/avatar.jpg)', backgroundColor: CONFIG.ink }} />
               </span>
-              {/* revealing text */}
-              <span
-                ref={talkTextRef}
-                className="whitespace-nowrap text-[14px] font-medium pl-[52px] pr-4"
-                style={{ color: CONFIG.talkText }}
-              >
+              <span ref={talkTextRef} className="whitespace-nowrap text-[14px] font-medium pl-[52px] pr-4" style={{ color: CONFIG.talkText }}>
                 Let&apos;s Talk
               </span>
             </a>
           </div>
-
-          {/* hamburger (mobile only) */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            className="md:hidden flex flex-col items-center justify-center w-9 h-9 gap-[5px]"
-            data-cursor="hover"
-          >
-            <span
-              className="block w-5 h-[2px] rounded-full transition-transform duration-300"
-              style={{ background: CONFIG.ink, transform: menuOpen ? 'translateY(3.5px) rotate(45deg)' : 'none' }}
-            />
-            <span
-              className="block w-5 h-[2px] rounded-full transition-transform duration-300"
-              style={{ background: CONFIG.ink, transform: menuOpen ? 'translateY(-3.5px) rotate(-45deg)' : 'none' }}
-            />
-          </button>
         </div>
       </header>
 
-      {/* MOBILE dropdown panel */}
+      {/* ===== MOBILE dropdown — floating rounded glass panel ===== */}
       <div
         ref={menuRef}
-        className="md:hidden fixed left-1/2 -translate-x-1/2 z-[59] top-[76px] w-[calc(100%-32px)] max-w-[420px] rounded-2xl p-4"
+        className="md:hidden fixed left-0 right-0 mx-auto z-[59] top-[64px] w-[calc(100%-32px)] max-w-[420px] rounded-2xl p-4"
         style={{
           background: 'rgba(255,255,255,0.85)',
           backdropFilter: 'blur(16px)',
@@ -294,7 +270,7 @@ export default function FloatingNav() {
         }}
       >
         <nav className="flex flex-col">
-          {LINKS.map((l) => (
+          {[...LINKS, { label: 'Contact', href: '#contact' }].map((l) => (
             <a
               key={l.label}
               href={l.href}

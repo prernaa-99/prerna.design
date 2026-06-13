@@ -26,8 +26,13 @@ html, body { margin: 0; padding: 0; background: #fcfcfc; }
 html, body { overflow-x: clip; max-width: 100%; }
 html { scroll-behavior: smooth; }
 body { font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+/* No Tailwind Preflight, so reset the default link underline/color ourselves. */
+a { color: inherit; text-decoration: none; }
 ::selection { background: #2e5c8a; color: #fff; }
-body, body * { cursor: none !important; }
+/* Hide the native cursor only where we replace it with the custom one. */
+@media (hover: hover) and (pointer: fine) {
+  body, body * { cursor: none !important; }
+}
 
 @keyframes v2-wave {
   0%, 100% { transform: rotate(-15deg); }

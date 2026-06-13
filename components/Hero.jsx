@@ -142,30 +142,33 @@ export default function Hero() {
       </div>
 
       {/* ===================== MOBILE STACK (< md) ===================== */}
-      <div className="md:hidden px-5 pt-12 pb-4">
-        <p
+      <div className="md:hidden relative h-[100svh] overflow-hidden flex flex-col items-center text-center px-5 pt-24 pb-10">
+        {/* sharp navy heading */}
+        <h1
           aria-label="Prerna"
-          className="text-center m-0 leading-none"
-          style={{
-            fontFamily: FP.heroDisplay,
-            fontWeight: 700,
-            fontSize: 'clamp(2.75rem, 18vw, 5rem)',
-            color: NAVY,
-          }}
+          className="relative m-0 leading-none whitespace-nowrap"
+          style={{ zIndex: 1, fontFamily: FP.heroDisplay, fontWeight: 700, fontSize: 'clamp(3rem, 19vw, 5rem)', letterSpacing: '0.01em', color: NAVY }}
         >
           PRERNA
-        </p>
+        </h1>
 
-        <div className="relative mt-2 mx-auto max-w-[420px] overflow-hidden" style={{ height: '46vh' }}>
-          <img src="/hero/portrait.png" alt="Prerna" className="block w-full h-auto" />
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5"
-            style={{ background: 'linear-gradient(to bottom, rgba(252,252,252,0) 0%, rgba(252,252,252,0.5) 70%, #fcfcfc 100%)' }}
-          />
+        {/* LAYER 2: cutout portrait (z-2). Flexes to fill the rest of the fold,
+            pulled up so the head overlaps the heading (only the top of PRERNA
+            peeks above the hair), and faded at the bottom with a CSS mask. */}
+        <div
+          className="relative flex-1 min-h-0 w-full max-w-[400px] overflow-hidden"
+          style={{
+            zIndex: 2,
+            marginTop: '-14vw', // tune: how much the head covers the heading
+            WebkitMaskImage: 'linear-gradient(to bottom, #000 45%, rgba(0,0,0,0.55) 72%, transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, #000 45%, rgba(0,0,0,0.55) 72%, transparent 100%)',
+          }}
+        >
+          <img src="/hero/portrait.png" alt="Prerna" className="block w-full h-full" style={{ objectFit: 'cover', objectPosition: 'center top' }} />
         </div>
 
         <p
-          className="mt-4 m-0 max-w-[320px]"
+          className="mt-4 m-0 max-w-[340px]"
           style={{ fontFamily: FP.body, fontWeight: 500, fontSize: 15, lineHeight: 1.4, color: NAVY }}
         >
           I turn user insights into intuitive digital products that drive engagement, conversion, and growth.
@@ -174,28 +177,12 @@ export default function Hero() {
         <a
           href={MAILTO}
           data-cursor="hover"
-          className="group mt-4 flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer text-[#1d2f46] transition-colors duration-200 hover:text-[#2e5c8a]"
+          className="group mt-6 flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer text-[#1d2f46] transition-colors duration-200 hover:text-[#2e5c8a]"
           style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 18, textDecoration: 'none' }}
         >
           <span className="whitespace-nowrap">{'// HIRE ME'}</span>
           <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
         </a>
-
-        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1">
-          {CAPABILITIES.map((c) => (
-            <span
-              key={c.label}
-              style={{
-                fontFamily: FP.body,
-                fontWeight: c.active ? 700 : 400,
-                fontSize: 15,
-                color: c.active ? NAVY : NAVY_MUTED,
-              }}
-            >
-              {c.label}
-            </span>
-          ))}
-        </div>
       </div>
     </section>
   );

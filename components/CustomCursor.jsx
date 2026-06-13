@@ -8,8 +8,16 @@ export default function CustomCursor() {
   const target = useRef({ x: -50, y: -50 });
   const ringPos = useRef({ x: -50, y: -50 });
   const [mode, setMode] = useState("default");
+  const [enabled, setEnabled] = useState(false);
+
+  // Only devices with a real (fine) pointer get the custom cursor — never on
+  // touch screens, where it would otherwise sit as a stray dot.
+  useEffect(() => {
+    setEnabled(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
+  }, []);
 
   useEffect(() => {
+    if (!enabled) return;
     const move = (e) => {
       target.current = { x: e.clientX, y: e.clientY };
       if (dotRef.current) dotRef.current.style.transform = `translate(${e.clientX - 4}px,${e.clientY - 4}px)`;
@@ -28,9 +36,11 @@ export default function CustomCursor() {
     };
     raf = requestAnimationFrame(loop);
     return () => { window.removeEventListener("mousemove", move); cancelAnimationFrame(raf); };
-  }, []);
+  }, [enabled]);
 
   const ringSize = mode === "hover" ? 56 : mode === "crosshair" ? 1 : 36;
+
+  if (!enabled) return null;
 
   return (
     <>
