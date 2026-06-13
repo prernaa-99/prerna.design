@@ -182,11 +182,19 @@ export default function FloatingNav() {
           onClick={() => setMenuOpen((o) => !o)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
-          className="flex flex-col items-center justify-center w-8 h-8 gap-[5px]"
+          className="flex items-center justify-center w-8 h-8 bg-transparent border-0 p-0 appearance-none"
           data-cursor="hover"
         >
-          <span className="block w-5 h-[2px] rounded-full transition-transform duration-300" style={{ background: CONFIG.ink, transform: menuOpen ? 'translateY(3.5px) rotate(45deg)' : 'none' }} />
-          <span className="block w-5 h-[2px] rounded-full transition-transform duration-300" style={{ background: CONFIG.ink, transform: menuOpen ? 'translateY(-3.5px) rotate(-45deg)' : 'none' }} />
+          {menuOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={CONFIG.ink} strokeWidth="2" strokeLinecap="round">
+              <line x1="6" y1="6" x2="18" y2="18" />
+              <line x1="18" y1="6" x2="6" y2="18" />
+            </svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill={CONFIG.ink}>
+              <path d="M3 7V5H21V7H3ZM3 19V17H21V19H3ZM3 13V11H21V13H3Z" />
+            </svg>
+          )}
         </button>
       </header>
 
