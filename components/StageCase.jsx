@@ -197,7 +197,6 @@ function HeroVisual() {
           }}
         >
           <span>STAGE APP · LIVE PRODUCT</span>
-          <span>HOME → CATEGORIES → FILTERED</span>
         </div>
         <div
           className="grid grid-cols-1 gap-10 items-end mx-auto max-w-[900px] md:grid-cols-3 md:gap-8"
@@ -894,7 +893,7 @@ function ImpactBar({ label, value, caption }) {
   }, [value]);
 
   return (
-    <div ref={ref} style={{ background: "#0e1622", border: "1px solid #27323f", padding: 32 }}>
+    <div ref={ref} style={{ background: SC.paper, border: `1px solid ${SC.ruleSoft}`, boxShadow: "0 14px 34px rgba(0,0,0,0.28)", padding: 32 }}>
       <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: SC.muted, marginBottom: 28 }}>{label}</div>
       <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 32 }}>
         <span style={{ fontFamily: FP.display, fontSize: 96, fontWeight: 500, lineHeight: 0.9, letterSpacing: -3, color: SC.accent }}>
@@ -903,7 +902,7 @@ function ImpactBar({ label, value, caption }) {
         <span style={{ fontFamily: FP.display, fontSize: 48, fontWeight: 500, color: SC.accent }}>%</span>
         <span style={{ fontFamily: FP.mono, fontSize: 12, letterSpacing: "0.2em", color: SC.muted, marginLeft: 8 }}>↑</span>
       </div>
-      <div style={{ height: 8, background: "#27323f", position: "relative", marginBottom: 12 }}>
+      <div style={{ height: 8, background: SC.ruleSoft, position: "relative", marginBottom: 12 }}>
         <div style={{
           position: "absolute", left: 0, top: 0, bottom: 0,
           width: `${v / 50 * 100}%`,
@@ -916,7 +915,7 @@ function ImpactBar({ label, value, caption }) {
         <span>25%</span>
         <span>50%</span>
       </div>
-      <div style={{ fontSize: 14, lineHeight: 1.5, color: "#aaa", maxWidth: 360 }}>{caption}</div>
+      <div style={{ fontSize: 14, lineHeight: 1.5, color: SC.ink2, maxWidth: 360 }}>{caption}</div>
     </div>
   );
 }

@@ -176,9 +176,7 @@ export default function FloatingNav() {
         }}
       >
         <a href="#hero" className="flex items-center gap-2.5" data-cursor="hover" aria-label="Prerna, home">
-          <span className="flex items-center justify-center w-9 h-9 rounded-[10px] text-white font-semibold text-[17px]" style={{ background: CONFIG.ink, backgroundImage: 'url(/logo.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>P</span>
-          <span className="text-[16px] font-semibold tracking-tight" style={{ color: CONFIG.ink }}>Prerna</span>
-        </a>
+          <img src="/prerna_design_logo.svg" alt="prerna.design" className="h-[22px] w-auto" />        </a>
         <button
           type="button"
           onClick={() => setMenuOpen((o) => !o)}
@@ -209,9 +207,7 @@ export default function FloatingNav() {
       >
         {/* LEFT, logo */}
         <a href="#hero" className="flex items-center gap-2.5 shrink-0 justify-self-start" data-cursor="hover" aria-label="Prerna, home">
-          <span className="flex items-center justify-center w-9 h-9 rounded-[10px] text-white font-semibold text-[17px]" style={{ background: CONFIG.ink, backgroundImage: 'url(/logo.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>P</span>
-          <span className="text-[16px] font-semibold tracking-tight" style={{ color: CONFIG.ink }}>Prerna</span>
-        </a>
+          <img src="/prerna_design_logo.svg" alt="prerna.design" className="h-[22px] w-auto" />        </a>
 
         {/* CENTER, links — constant weight; only color + underline animate */}
         <nav ref={navRef} className="flex items-center justify-self-center" style={{ gap: HERO.gap }}>

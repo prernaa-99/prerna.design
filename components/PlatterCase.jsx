@@ -171,17 +171,17 @@ function OldPlatterAnnotated() {
   ];
   return (
     <div style={{ background: PL.paper, border: `1px solid ${PL.rule}` }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 24px", borderBottom: `1px solid ${PL.rule}`, background: "#fbeaea" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.bad }}>
-          <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 18, height: 18, borderRadius: "50%", background: PL.bad, color: "#fff", fontSize: 10, letterSpacing: 0 }}>✕</span>
-          <span>DIAGNOSTIC · OLD HOMEPAGE</span>
-          <span style={{ color: "#c97c7c" }}>·</span>
-          <span style={{ color: "#c97c7c" }}>3 BREAKS · 1 CONSEQUENCE</span>
+      <div className="flex flex-col items-start gap-2 md:flex-row md:items-center md:justify-between" style={{ padding: "14px 24px", borderBottom: `1px solid ${PL.rule}`, background: "#fbeaea" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 14, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: PL.bad }}>
+          <span style={{ flexShrink: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", width: 18, height: 18, borderRadius: "50%", background: PL.bad, color: "#fff", fontSize: 10, letterSpacing: 0 }}>✕</span>
+          <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", columnGap: 14, rowGap: 4, lineHeight: "18px" }}>
+            <span>DIAGNOSTIC · OLD HOMEPAGE</span>
+            <span style={{ color: "#c97c7c" }}>3 BREAKS · 1 CONSEQUENCE</span>
+          </div>
         </div>
-        <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: "#c97c7c" }}>CAPTURE · STAGE · v3.4</div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-[auto_1fr]" style={{gap: 0 }}>
-        <div style={{ padding: "32px 36px", background: "#fafbfc", borderRight: `1px solid ${PL.rule}`, position: "relative" }}>
+        <div style={{ padding: "32px 36px", background: "#fafbfc", borderRight: `1px solid ${PL.rule}`, position: "relative", display: "flex", justifyContent: "center" }}>
           <AnnotatedPhone />
         </div>
         <div style={{ padding: "28px 32px", display: "flex", flexDirection: "column", gap: 0 }}>
@@ -219,7 +219,6 @@ function ConversionFunnel() {
     <div style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 36 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 24 }}>
         <div style={{ fontFamily: FP.display, fontSize: 18, fontWeight: 500, color: PL.ink }}>Where users dropped off</div>
-        <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted }}>BASELINE · PRE-REDESIGN</div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         {steps.map((s, i) => (
@@ -235,7 +234,6 @@ function ConversionFunnel() {
       </div>
       <div style={{ marginTop: 20, paddingTop: 16, borderTop: `1px dashed ${PL.rule}`, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.18em", color: PL.muted, display: "flex", justifyContent: "space-between" }}>
         <span>↳ ~78% OF VIEWERS NEVER TAPPED THE HERO SLOT</span>
-        <span>SOURCE · INTERNAL ANALYTICS</span>
       </div>
     </div>
   );
@@ -254,7 +252,7 @@ function ProblemSection() {
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 880 }}>
           The <span style={{ background: PL.highlight, padding: "0 8px" }}>19.6%</span> problem
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 40, alignItems: "start" }}>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-[1.1fr_1fr] md:gap-14" style={{marginTop: 40, alignItems: "start" }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>STAGE's homepage poster looked good but wasn't doing its job. Only a fraction of users who saw it actually tapped through to content. The data told a clear story: the poster was <em>wallpaper</em>, not a doorway.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Three things were broken. None of them flashy on their own, together, they explained the leak.</p>
         </div>
@@ -307,11 +305,11 @@ function BenchmarkSection() {
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           What everyone <span style={{ fontStyle: "italic" }}>else</span> missed
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32 }}>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-[1.1fr_1fr] md:gap-14" style={{marginTop: 32 }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I audited four major streaming and content platforms. Every single one treated homepage posters the same way, big image, text overlay, CTA button. The pattern was so universal that nobody was questioning whether it worked.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The gap wasn't visual quality. It was <strong>interaction cost</strong>. Users were being asked to make a decision with almost no information. The poster gave them a mood, not a reason.</p>
         </div>
-        <div style={{ marginTop: 56, fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, marginBottom: 16 }}>COMPETITOR AUDIT · TOP-OF-HOMEPAGE TREATMENT</div>
+        <div className="whitespace-nowrap text-[8.5px] tracking-[0.1em] md:text-[10px] md:tracking-[0.2em]" style={{ marginTop: 56, fontFamily: FP.mono, color: PL.muted, marginBottom: 16 }}>COMPETITOR AUDIT · TOP-OF-HOMEPAGE TREATMENT</div>
         <div className="grid grid-cols-2 md:grid-cols-4" style={{gap: 12 }}>
           {peers.map((p, i) => <PeerCard key={i} idx={i} {...p} />)}
         </div>
@@ -379,7 +377,7 @@ function ExposureMini() {
           <circle cx="110" cy="52" r="3" fill={PL.bg} stroke={PL.accent} strokeWidth="1.5" />
           <circle cx="190" cy="24" r="3" fill={PL.bg} stroke={PL.accent} strokeWidth="1.5" />
           <text x="14" y="110" fontFamily={FP.mono} fontSize="8" fill={PL.muted}>0s</text>
-          <text x="220" y="110" fontFamily={FP.mono} fontSize="8" fill={PL.muted}>EXPOSURE</text>
+          <text x="240" y="110" textAnchor="end" fontFamily={FP.mono} fontSize="8" fill={PL.muted}>EXPOSURE</text>
           <text x="14" y="12" fontFamily={FP.mono} fontSize="8" fill={PL.muted}>PREFERENCE ↑</text>
         </svg>
       </div>
@@ -401,19 +399,20 @@ function HypothesisSection() {
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           What if the poster wasn't a <span style={{ fontStyle: "italic" }}>poster</span>, but a <span style={{ color: PL.accent }}>preview?</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32, alignItems: "start" }}>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-[1.1fr_1fr] md:gap-14" style={{marginTop: 32, alignItems: "start" }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Instead of a static frame, I explored turning the platter into a short, motion-driven preview, giving users a taste of the content before they committed. The goal was to reduce the decision cost to near zero.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>Research on the <strong>Mere Exposure Effect</strong> suggests that even brief, passive exposure increases familiarity and preference. A 2-3 second motion preview could do two things at once: inform the decision <em>and</em> build subconscious interest.</p>
         </div>
         <div style={{ marginTop: 64 }}>
-          <div className="grid grid-cols-1 md:grid-cols-2" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 40, gap: 56, alignItems: "center" }}>
+          <div className="grid grid-cols-1 gap-8 p-12 md:grid-cols-2 md:gap-14 md:p-10" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, alignItems: "center" }}>
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr]" style={{gap: 0, alignItems: "center" }}>
               {nodes.map((n, i) => (
                 <Fragment key={n.label}>
                   <ChainNode {...n} highlight={i === 2} />
                   {i < nodes.length - 1 && (
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, padding: "0 12px" }}>
-                      <span style={{ fontFamily: FP.mono, fontSize: 22, color: PL.accent, lineHeight: 1 }}>→</span>
+                      <span className="md:hidden" style={{ fontFamily: FP.mono, fontSize: 22, color: PL.accent, lineHeight: 1 }}>↓</span>
+                      <span className="hidden md:inline" style={{ fontFamily: FP.mono, fontSize: 22, color: PL.accent, lineHeight: 1 }}>→</span>
                     </div>
                   )}
                 </Fragment>
@@ -596,17 +595,17 @@ function ConstraintsSection() {
 
 function SpecFrame({ ratio, label, dims, detail, src, highlight = false }) {
   return (
-    <div style={{ position: "relative", padding: "32px 56px 32px 32px" }}>
+    <div className="relative py-2 md:py-8 md:pl-8 md:pr-14">
       <div style={{ width: "100%", aspectRatio: ratio, background: "#0c1320", borderRadius: 6, position: "relative", overflow: "hidden", border: highlight ? `2px solid ${PL.accent}` : "none" }}>
         <img src={src} alt={`${label}, ${detail}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         {highlight && <div style={{ position: "absolute", top: 8, right: 8, width: 8, height: 8, borderRadius: "50%", background: PL.accent }} />}
       </div>
-      <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div>
-          <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.25em", color: highlight ? PL.accent : PL.muted }}>{label}</div>
-          <div style={{ fontFamily: FP.display, fontSize: 28, fontWeight: 500, color: PL.ink, letterSpacing: -0.5, marginTop: 4 }}>{dims}</div>
+      <div style={{ marginTop: 16 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+          <div className="whitespace-nowrap text-[10px] tracking-[0.12em] md:tracking-[0.25em]" style={{ fontFamily: FP.mono, color: highlight ? PL.accent : PL.muted }}>{label}</div>
+          <div className="whitespace-nowrap text-[10px] tracking-[0.1em] md:tracking-[0.2em]" style={{ fontFamily: FP.mono, color: PL.muted, textAlign: "right" }}>{detail}</div>
         </div>
-        <div style={{ fontFamily: FP.mono, fontSize: 10, letterSpacing: "0.2em", color: PL.muted, textAlign: "right" }}>{detail}</div>
+        <div className="text-center md:text-left" style={{ fontFamily: FP.display, fontSize: 28, fontWeight: 500, color: PL.ink, letterSpacing: -0.5, marginTop: 4 }}>{dims}</div>
       </div>
     </div>
   );
@@ -620,7 +619,7 @@ function SolutionSection() {
         <h2 style={{ fontFamily: FP.display, fontSize: "clamp(36px, 4.5vw, 64px)", fontWeight: 500, lineHeight: 1, letterSpacing: -1.5, margin: 0, color: PL.ink, maxWidth: 980 }}>
           A <span style={{ color: PL.accent }}>two-ratio</span> system
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]" style={{gap: 56, marginTop: 32, alignItems: "start" }}>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-[1.1fr_1fr] md:gap-14" style={{marginTop: 32, alignItems: "start" }}>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>I designed a system that adapts the poster into two states, a <strong>static ratio</strong> for the default view and a <strong>motion ratio</strong> for the preview, and transitions between them seamlessly.</p>
           <p style={{ fontSize: 17, lineHeight: 1.65, color: PL.ink2, margin: 0 }}>The static state works exactly like the current poster: clean, art-directed, optimized for the hero slot. The motion state activates on pause, expanding the aspect ratio to accommodate a video preview without disrupting layout.</p>
         </div>
@@ -628,7 +627,7 @@ function SolutionSection() {
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 48, gap: 40, alignItems: "center" }}>
             <SpecFrame ratio="2 / 3" label="STATE 01 · STATIC" dims="2 : 3" detail="DEFAULT · POSTER" src="/2_poster_preview.png" />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
-              <svg width="32" height="14" viewBox="0 0 32 14" fill="none" stroke={PL.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="rotate-90 md:rotate-0" width="32" height="14" viewBox="0 0 32 14" fill="none" stroke={PL.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="2" y1="7" x2="28" y2="7" />
                 <polyline points="23 2 29 7 23 12" />
               </svg>
@@ -686,12 +685,12 @@ function PrinciplesSection() {
           Three frames of an interaction
         </h2>
         <p style={{ fontSize: 17, lineHeight: 1.6, color: PL.ink2, maxWidth: 720, marginTop: 24 }}>The principles guiding the design, read as a storyboard rather than a list.</p>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr]" style={{ marginTop: 48, gap: 0, alignItems: "stretch" }}>
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-0" style={{ marginTop: 48, alignItems: "stretch" }}>
           {frames.map((f, i) => (
             <Fragment key={f.n}>
               <StoryFrame frame={f} />
               {i < frames.length - 1 && (
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "0 20px" }}>
+                <div className="hidden md:flex" style={{ alignItems: "center", justifyContent: "center", padding: "0 20px" }}>
                   <div style={{ fontFamily: FP.mono, fontSize: 22, color: PL.accent }}>→</div>
                 </div>
               )}
