@@ -25,6 +25,9 @@ const LINKS = [
   { label: 'Resume', href: '/resume.pdf', external: true },
 ];
 
+// "Let's talk" opens the mail client, matching the Hero's "HIRE ME" CTA.
+const MAILTO = "mailto:prernaa99@icloud.com?subject=Let's%20work%20together";
+
 // Scroll threshold with hysteresis so it never flickers at the boundary.
 const ENTER = 120; // scrolled past this -> glass pill
 const EXIT = 70;   // scrolled above this -> hero state
@@ -241,7 +244,7 @@ export default function FloatingNav() {
           <div className="relative shrink-0 mr-3" style={{ width: TALK_COLLAPSED, height: TALK_COLLAPSED }}>
             <a
               ref={talkRef}
-              href="#contact"
+              href={MAILTO}
               onMouseEnter={expandTalk}
               onMouseLeave={collapseTalk}
               data-cursor="hover"
@@ -274,7 +277,7 @@ export default function FloatingNav() {
         }}
       >
         <nav className="flex flex-col">
-          {[...LINKS, { label: 'Contact', href: '#contact' }].map((l) => (
+          {[...LINKS, { label: "Let's talk", href: MAILTO }].map((l) => (
             <a
               key={l.label}
               href={l.href}
