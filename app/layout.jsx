@@ -11,7 +11,7 @@ export const metadata = {
     'Portfolio of Prerna, a product designer working at the seam of brand, product, and motion. Selected case studies in research, interaction, and design systems.',
   keywords: ['product designer', 'UX designer', 'portfolio', 'STAGE', 'interaction design', 'design systems', 'Bangalore'],
   authors: [{ name: 'Prerna' }],
-  icons: { icon: '/favicon.svg' },
+  icons: { icon: '/fevicon.png' },
   openGraph: {
     title: 'Prerna, Product Designer',
     description:

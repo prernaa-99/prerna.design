@@ -953,7 +953,7 @@ function CaseFooter() {
           </div>
           <div style={{ display: "flex", gap: 12 }}>
             <Link href="/" data-cursor="hover" style={{ padding: "12px 20px", border: `1px solid ${SC.ink}`, color: SC.ink, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 500 }}>← All work</Link>
-            <Link href="/#contact" data-cursor="hover" style={{ padding: "12px 20px", background: SC.accent, color: SC.paper, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 600 }}>Get in touch →</Link>
+            <a href="mailto:prernaa99@icloud.com?subject=Let's%20work%20together" data-cursor="hover" style={{ padding: "12px 20px", background: SC.accent, color: SC.paper, textDecoration: "none", fontFamily: FP.body, fontSize: 13, fontWeight: 600 }}>Get in touch →</a>
           </div>
         </div>
       </Container>
