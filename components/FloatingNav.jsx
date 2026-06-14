@@ -22,7 +22,7 @@ const CONFIG = {
 const LINKS = [
   { label: 'Work', href: '#work' },
   { label: 'About', href: '#about-story' },
-  { label: 'Resume', href: '/resume.pdf', external: true },
+  { label: 'Resume', href: '/prerna_product_designer.pdf', external: true },
 ];
 
 // "Let's talk" opens the mail client, matching the Hero's "HIRE ME" CTA.
