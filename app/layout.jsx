@@ -1,4 +1,5 @@
 import './globals.css';
+import { Analytics } from '@vercel/analytics/next';
 import CustomCursor from '@/components/CustomCursor';
 
 export const metadata = {
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
       <body>
         <CustomCursor />
         {children}
+        <Analytics />
       </body>
     </html>
   );
