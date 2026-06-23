@@ -3,6 +3,11 @@
 import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { track } from '@/lib/analytics';
+
+// Maps a nav label to a clean event name (Resume gets its own CTA event).
+const trackNav = (label) =>
+  track('cta_click', { cta: label.toLowerCase().replace(/[^a-z]+/g, '_'), location: 'nav' });
 
 gsap.registerPlugin(useGSAP);
 
@@ -227,6 +232,7 @@ export default function FloatingNav() {
               key={l.label}
               href={l.href}
               {...(l.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+              onClick={() => trackNav(l.label)}
               data-cursor="hover"
               className="group relative text-[14px] font-medium transition-colors duration-200"
               style={{ color: CONFIG.inkMuted }}
@@ -245,6 +251,7 @@ export default function FloatingNav() {
             <a
               ref={talkRef}
               href={MAILTO}
+              onClick={() => track('cta_click', { cta: 'lets_talk', location: 'nav' })}
               onMouseEnter={expandTalk}
               onMouseLeave={collapseTalk}
               data-cursor="hover"
@@ -282,7 +289,7 @@ export default function FloatingNav() {
               key={l.label}
               href={l.href}
               {...(l.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => { trackNav(l.label); setMenuOpen(false); }}
               className="py-3 px-2 text-[15px] font-medium border-b last:border-b-0"
               style={{ color: CONFIG.ink, borderColor: 'rgba(29,47,70,0.08)' }}
               data-cursor="hover"

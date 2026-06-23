@@ -2,6 +2,7 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { V2, FP, SPRING, PROJECTS } from '@/lib/data';
+import { track } from '@/lib/analytics';
 import Reveal from './Reveal';
 
 // Fallback visual for any project without a cover image.
@@ -55,7 +56,10 @@ function WorkCard({ p, i }) {
   const onLeave = () => { setTilt({ rx: 0, ry: 0, mx: 50, my: 50 }); setHover(false); };
 
   return (
-    <Link href={p.href || "#"} onClick={(e) => !p.href && e.preventDefault()}
+    <Link href={p.href || "#"} onClick={(e) => {
+        if (!p.href) { e.preventDefault(); return; }
+        track('case_study_click', { project: p.title, href: p.href });
+      }}
       ref={ref} onMouseMove={onMove} onMouseEnter={() => setHover(true)} onMouseLeave={onLeave}
       style={{ display: "block", textDecoration: "none", color: "inherit", perspective: 1500, position: "relative" }} data-cursor="hover">
       <div className="grid grid-cols-1 min-h-0 relative overflow-hidden md:grid-cols-[56px_1.1fr_1fr] md:h-[340px]" style={{ background: V2.paper, border: `1px solid ${V2.ruleSoft}`, transformStyle: "preserve-3d", transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)${hover ? " translateY(-6px)" : ""}`, transition: `transform 0.35s ${SPRING}, box-shadow 0.35s`, boxShadow: hover ? "0 24px 48px rgba(0,0,0,0.12)" : "0 2px 4px rgba(0,0,0,0.03)" }}>

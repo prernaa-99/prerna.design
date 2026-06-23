@@ -1,6 +1,8 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import CustomCursor from '@/components/CustomCursor';
+import Clarity from '@/components/Clarity';
 
 export const metadata = {
   metadataBase: new URL('https://prerna.design'),
@@ -37,7 +39,11 @@ export default function RootLayout({ children }) {
         <CustomCursor />
         {children}
         <Analytics />
+        <Clarity />
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }

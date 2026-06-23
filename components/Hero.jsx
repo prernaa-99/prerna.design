@@ -1,5 +1,6 @@
 'use client';
 import { FP } from '@/lib/data';
+import { track } from '@/lib/analytics';
 
 // Hero palette, taken straight from the Figma design (portfoluo_2026, node 1:2).
 const HERO_BG = '#fcfcfc';
@@ -100,6 +101,7 @@ export default function Hero() {
         {/* // HIRE ME → */}
         <a
           href={MAILTO}
+          onClick={() => track('cta_click', { cta: 'hire_me', location: 'hero' })}
           data-cursor="hover"
           className="group absolute flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer text-[#1d2f46] transition-colors duration-200 hover:text-[#2e5c8a]"
           style={{
@@ -176,6 +178,7 @@ export default function Hero() {
 
         <a
           href={MAILTO}
+          onClick={() => track('cta_click', { cta: 'hire_me', location: 'hero' })}
           data-cursor="hover"
           className="group mt-6 flex items-end gap-1 bg-transparent border-0 p-0 cursor-pointer text-[#1d2f46] transition-colors duration-200 hover:text-[#2e5c8a]"
           style={{ fontFamily: FP.body, fontWeight: 700, fontSize: 18, textDecoration: 'none' }}

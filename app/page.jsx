@@ -8,6 +8,7 @@ import Stack from '@/components/Stack';
 // import Experience from '@/components/Experience'; // CV LOG, hidden for now, re-add in phase 2
 import Contact from '@/components/Contact';
 import Reveal from '@/components/Reveal';
+import TrackSection from '@/components/TrackSection';
 
 export const metadata = {
   title: 'Prerna, Product Designer',
@@ -19,13 +20,13 @@ export default function HomePage() {
   return (
     <div style={{ background: V2.bg, color: V2.ink, fontFamily: "'IBM Plex Sans', sans-serif" }}>
       <FloatingNav />
-      <Hero />
-      <WorkSection />
-      <Reveal><Story /></Reveal>
-      <Reveal><About /></Reveal>
-      <Reveal><Stack /></Reveal>
+      <TrackSection name="hero"><Hero /></TrackSection>
+      <TrackSection name="work"><WorkSection /></TrackSection>
+      <TrackSection name="story"><Reveal><Story /></Reveal></TrackSection>
+      <TrackSection name="about"><Reveal><About /></Reveal></TrackSection>
+      <TrackSection name="stack"><Reveal><Stack /></Reveal></TrackSection>
       {/* CV LOG (Experience), hidden for now, re-add in phase 2 */}
-      <Contact />
+      <TrackSection name="contact"><Contact /></TrackSection>
     </div>
   );
 }
