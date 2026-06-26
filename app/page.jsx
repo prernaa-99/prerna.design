@@ -9,16 +9,54 @@ import Stack from '@/components/Stack';
 import Contact from '@/components/Contact';
 import Reveal from '@/components/Reveal';
 import TrackSection from '@/components/TrackSection';
+import JsonLd from '@/components/JsonLd';
+
+const SITE = 'https://prernaa99.in';
+
+// One description, reused for meta + OG so they never drift apart.
+const HOME_DESCRIPTION =
+  'Product designer working at the seam of brand, product, and motion. Currently freelancing from Bangalore, taking on selective work for ambitious teams.';
 
 export const metadata = {
-  title: 'Prerna, Product Designer',
-  description:
-    'Product designer working at the seam of brand, product, and motion. Currently freelancing from Bangalore, taking on selective work for ambitious teams.',
+  title: { absolute: 'Prerna — Product Designer' },
+  description: HOME_DESCRIPTION,
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'Prerna — Product Designer',
+    description: HOME_DESCRIPTION,
+    url: '/',
+  },
+};
+
+// Structured data: who this person is + the site itself. Drives eligibility
+// for a knowledge panel on name/role searches.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE}/#person`,
+      name: 'Prerna',
+      jobTitle: 'Product Designer',
+      url: SITE,
+      email: 'prernaa99@icloud.com',
+      address: { '@type': 'PostalAddress', addressLocality: 'Bangalore', addressCountry: 'IN' },
+      knowsAbout: ['Product Design', 'UX Design', 'Interaction Design', 'Design Systems', 'Motion Design', 'Brand'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      name: 'Prerna · Product Designer',
+      url: SITE,
+      publisher: { '@id': `${SITE}/#person` },
+    },
+  ],
 };
 
 export default function HomePage() {
   return (
     <div style={{ background: V2.bg, color: V2.ink, fontFamily: "'IBM Plex Sans', sans-serif" }}>
+      <JsonLd data={jsonLd} />
       <FloatingNav />
       <TrackSection name="hero"><Hero /></TrackSection>
       <TrackSection name="work"><WorkSection /></TrackSection>
