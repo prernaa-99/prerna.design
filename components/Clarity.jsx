@@ -1,9 +1,8 @@
-'use client';
-
 import Script from 'next/script';
 
 // Microsoft Clarity — heatmaps + session recordings.
-// Only loads when NEXT_PUBLIC_CLARITY_ID is set, so local/dev stays clean.
+// Server component (no hooks) so the script is serialized into the SSR HTML,
+// matching how GA renders. Only loads when NEXT_PUBLIC_CLARITY_ID is set.
 export default function Clarity() {
   const id = process.env.NEXT_PUBLIC_CLARITY_ID;
   if (!id) return null;
