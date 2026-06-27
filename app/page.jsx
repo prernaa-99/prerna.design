@@ -15,7 +15,7 @@ const SITE = 'https://prernaa99.in';
 
 // One description, reused for meta + OG so they never drift apart.
 const HOME_DESCRIPTION =
-  'Product designer working at the seam of brand, product, and motion. Currently freelancing from Bangalore, taking on selective work for ambitious teams.';
+  'I turn fuzzy user problems into products people love and businesses grow on. Real case studies, real numbers — see how I work end to end.';
 
 export const metadata = {
   title: { absolute: 'Prerna — Product Designer' },
