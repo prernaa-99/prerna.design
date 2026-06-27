@@ -202,17 +202,17 @@ function HeroVisual() {
           className="grid grid-cols-1 gap-10 items-end mx-auto max-w-[900px] md:grid-cols-3 md:gap-8"
         >
           <PhoneFrame
-            src="/images/stage/home-1.png"
+            src="/images/stage/home-1.jpg"
             alt="STAGE home with featured original poster"
             caption="Home · Originals"
           />
           <PhoneFrame
-            src="/images/stage/home-2.png"
+            src="/images/stage/home-2.jpg"
             alt="STAGE categories with cultural genres"
             caption="Categories · Discovery"
           />
           <PhoneFrame
-            src="/images/stage/home-3.png"
+            src="/images/stage/home-3.jpg"
             alt="STAGE movies filtered view"
             caption="Movies · Filtered"
           />

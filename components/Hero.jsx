@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { FP } from '@/lib/data';
 import { track } from '@/lib/analytics';
 
@@ -62,9 +63,13 @@ export default function Hero() {
           className="absolute overflow-hidden"
           style={{ left: '26.17%', top: '22.14%', width: '47.42%', height: '78.57%', zIndex: 3 }}
         >
-          <img
+          <Image
             src="/hero/portrait.png"
             alt="Prerna"
+            width={1024}
+            height={1536}
+            priority
+            sizes="(min-width: 768px) 48vw, 100vw"
             className="block w-full h-auto"
           />
         </div>
@@ -166,7 +171,7 @@ export default function Hero() {
             maskImage: 'linear-gradient(to bottom, #000 45%, rgba(0,0,0,0.55) 72%, transparent 100%)',
           }}
         >
-          <img src="/hero/portrait.png" alt="Prerna" className="block w-full h-full" style={{ objectFit: 'cover', objectPosition: 'center top' }} />
+          <Image src="/hero/portrait.png" alt="Prerna" fill priority sizes="100vw" className="block" style={{ objectFit: 'cover', objectPosition: 'center top' }} />
         </div>
 
         <p

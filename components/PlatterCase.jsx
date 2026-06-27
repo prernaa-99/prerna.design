@@ -155,7 +155,7 @@ function AnnotatedPhone() {
     <div style={{ position: "relative", width: 220 }}>
       <div style={{ width: 220, aspectRatio: "9 / 19", background: "#000", borderRadius: 26, padding: 6 }}>
         <div style={{ width: "100%", height: "100%", background: "#0c1320", borderRadius: 21, position: "relative", overflow: "hidden" }}>
-          <img src="/2_home_old.png" alt="STAGE old homepage, static poster with no preview layer" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src="/2_home_old.jpg" alt="STAGE old homepage, static poster with no preview layer" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", width: 60, height: 14, background: "#000", borderRadius: 8 }} />
         </div>
       </div>
@@ -293,10 +293,10 @@ function PeerCard({ idx, name, src }) {
 
 function BenchmarkSection() {
   const peers = [
-    { name: "Hotstar", src: "/hotstar.png" },
-    { name: "JioCinema", src: "/jiocenima.png" },
-    { name: "Netflix", src: "/netflix.png" },
-    { name: "SonyLIV", src: "/sonyliv.png" },
+    { name: "Hotstar", src: "/hotstar.jpg" },
+    { name: "JioCinema", src: "/jiocenima.jpg" },
+    { name: "Netflix", src: "/netflix.jpg" },
+    { name: "SonyLIV", src: "/sonyliv.jpg" },
   ];
   return (
     <section className="py-16 md:py-[100px]" style={{background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
@@ -625,7 +625,7 @@ function SolutionSection() {
         </div>
         <div style={{ marginTop: 64 }}>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]" style={{ background: PL.paper, border: `1px solid ${PL.rule}`, padding: 48, gap: 40, alignItems: "center" }}>
-            <SpecFrame ratio="2 / 3" label="STATE 01 · STATIC" dims="2 : 3" detail="DEFAULT · POSTER" src="/2_poster_preview.png" />
+            <SpecFrame ratio="2 / 3" label="STATE 01 · STATIC" dims="2 : 3" detail="DEFAULT · POSTER" src="/2_poster_preview.jpg" />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
               <svg className="rotate-90 md:rotate-0" width="32" height="14" viewBox="0 0 32 14" fill="none" stroke={PL.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="2" y1="7" x2="28" y2="7" />
@@ -634,7 +634,7 @@ function SolutionSection() {
               <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>ON DWELL</span>
               <span style={{ fontFamily: FP.mono, fontSize: 9, letterSpacing: "0.2em", color: PL.muted }}>≈ 2.5s</span>
             </div>
-            <SpecFrame ratio="2 / 3" label="STATE 02 · MOTION" dims="1 : 1" detail="ACTIVE · PREVIEW" src="/2_video_preview.png" highlight />
+            <SpecFrame ratio="2 / 3" label="STATE 02 · MOTION" dims="1 : 1" detail="ACTIVE · PREVIEW" src="/2_video_preview.jpg" highlight />
           </div>
         </div>
       </Container>
@@ -673,9 +673,9 @@ function StoryFrame({ frame }) {
 
 function PrinciplesSection() {
   const frames = [
-    { n: "01", title: "Scrolling", principle: "Poster earns attention first", caption: "The static frame still does the heavy lifting for first impressions. Motion is additive, not a replacement.", src: "/2_default.png" },
-    { n: "02", title: "Pause", principle: "Movement becomes the preview", caption: 'A 2-3s clip answers "is this for me?" passively. The content comes to the user, not the other way around.', src: "/2_transition.png" },
-    { n: "03", title: "Tap", principle: "Reward, not interruption", caption: "Motion only triggers when behavior suggests interest. It respects the browsing flow instead of hijacking it.", src: "/2_with_video.png" },
+    { n: "01", title: "Scrolling", principle: "Poster earns attention first", caption: "The static frame still does the heavy lifting for first impressions. Motion is additive, not a replacement.", src: "/2_default.jpg" },
+    { n: "02", title: "Pause", principle: "Movement becomes the preview", caption: 'A 2-3s clip answers "is this for me?" passively. The content comes to the user, not the other way around.', src: "/2_transition.jpg" },
+    { n: "03", title: "Tap", principle: "Reward, not interruption", caption: "Motion only triggers when behavior suggests interest. It respects the browsing flow instead of hijacking it.", src: "/2_with_video.jpg" },
   ];
   return (
     <section className="py-16 md:py-[100px]" style={{background: PL.bgDeep, borderTop: `1px solid ${PL.rule}` }}>
