@@ -40,6 +40,7 @@ const jsonLd = {
       jobTitle: 'Product Designer',
       url: SITE,
       email: 'prernaa99@icloud.com',
+      sameAs: ['https://www.linkedin.com/in/prernaa99'],
       worksFor: { '@type': 'Organization', name: 'Times Internet' },
       address: { '@type': 'PostalAddress', addressLocality: 'Noida', addressRegion: 'Uttar Pradesh', addressCountry: 'IN' },
       knowsAbout: ['Product Design', 'UX Design', 'Interaction Design', 'Design Systems', 'Motion Design', 'Brand'],
