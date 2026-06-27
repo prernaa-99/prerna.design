@@ -14,7 +14,7 @@ export const metadata = {
   },
   description:
     'Portfolio of Prerna, a product designer working at the seam of brand, product, and motion. Selected case studies in research, interaction, and design systems.',
-  keywords: ['product designer', 'UX designer', 'portfolio', 'STAGE', 'interaction design', 'design systems', 'Bangalore'],
+  keywords: ['product designer', 'UX designer', 'portfolio', 'STAGE', 'interaction design', 'design systems', 'Noida'],
   authors: [{ name: 'Prerna' }],
   creator: 'Prerna',
   // Favicon comes from app/icon.svg (the brand "pd" mark) via Next's file convention.

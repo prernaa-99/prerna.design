@@ -41,7 +41,7 @@ const jsonLd = {
       url: SITE,
       email: 'prernaa99@icloud.com',
       worksFor: { '@type': 'Organization', name: 'Times Internet' },
-      address: { '@type': 'PostalAddress', addressLocality: 'Bangalore', addressCountry: 'IN' },
+      address: { '@type': 'PostalAddress', addressLocality: 'Noida', addressRegion: 'Uttar Pradesh', addressCountry: 'IN' },
       knowsAbout: ['Product Design', 'UX Design', 'Interaction Design', 'Design Systems', 'Motion Design', 'Brand'],
     },
     {
