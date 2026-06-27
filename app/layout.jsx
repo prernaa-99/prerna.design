@@ -17,7 +17,7 @@ export const metadata = {
   keywords: ['product designer', 'UX designer', 'portfolio', 'STAGE', 'interaction design', 'design systems', 'Bangalore'],
   authors: [{ name: 'Prerna' }],
   creator: 'Prerna',
-  icons: { icon: '/fevicon.png' },
+  // Favicon comes from app/icon.svg (the brand "pd" mark) via Next's file convention.
   openGraph: {
     siteName: 'Prerna · Product Designer',
     type: 'website',
